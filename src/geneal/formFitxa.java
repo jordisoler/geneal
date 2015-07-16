@@ -17,10 +17,10 @@
  */
 package geneal;
 
-import Exceptions.DBException;
-import Exceptions.GException;
+import Exceptions.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,9 +34,17 @@ public class formFitxa {
     private formData data;
     private formLloc lloc;
     private formLlista fills;
+    private int estat;
     
     private db.unio un;
     
+    private final static int existent = 0;
+    private final static int nousPares = 1;
+    private final static int fromConjuge1 = 2;
+    private final static int fromConjuge2 = 3;
+    
+    private static final boolean home = true;
+    private static final boolean dona = false;
     
     public formFitxa(){
         un = new db.unio();
@@ -64,6 +72,7 @@ public class formFitxa {
     public void fill(){
         if(!un.isNull()){
             try {
+                estat = existent;
                 fitxa.setText(String.valueOf(un.getFitxa()));
                 comentaris.setText(String.valueOf(un.getComentaris()));
                 if(un.isMarriage()){
@@ -95,9 +104,11 @@ public class formFitxa {
             if (conj){
                 c1.fill(p);
                 c2.fill(new db.persona());
+                estat = fromConjuge1;
             }else{
                 c1.fill(new db.persona());
                 c2.fill(p);
+                estat = fromConjuge2;
             }
         } catch (DBException ex) {
             Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
@@ -108,6 +119,46 @@ public class formFitxa {
         setEmpty();
         db.persona[] ps = {new db.persona(id_fill)};
         fills.fillList(ps);
+        estat = nousPares;
+    }
+    
+    private void clickLlista(db.persona p){
+        try{                                    // Es vol introduir una  persona  amb unió
+            un=db.unio.fromConjuge(p.getId());
+            fill();
+        }catch (MUException e){} catch (DBException ex) {
+            int reply = JOptionPane.showConfirmDialog(null, "La persona "+p+" no "
+                    + "està a cap unió. \nVols crear-ne una de nova?","Unió nova",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(reply==JOptionPane.YES_OPTION){  // Es vol introduir una persona sense unió
+                
+                if (checkSexe(p)){
+                    if (p.getSexe().equals("m")){   // La persona té gènere
+                        fill(p.getId(), home);
+                    }else{
+                        fill(p.getId(), dona);
+                    }
+                }else{                              // La persona no té gènere
+                    String[] options = {"Home", "Dona", "Cancelar"};
+                    int response = JOptionPane.showOptionDialog(null, "La persona "
+                            +p+" no té sexe. \nElegeix-ne un abans de  continuar",
+                            "Introduïr sexe", JOptionPane.DEFAULT_OPTION, 
+                            JOptionPane.PLAIN_MESSAGE, null, options, options[2]);
+                    switch(response){
+                        case 0:
+                            p.setSexe("m");
+                            fill(p.getId(), home);
+                            break;
+                        case 1:
+                            p.setSexe("f");
+                            fill(p.getId(), dona);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
     }
     
     private void setEmpty(){
@@ -136,4 +187,20 @@ public class formFitxa {
             data.disable();
         }
     }
+
+    private boolean checkSexe(db.persona p) {
+        try{
+            switch(p.getSexe()){
+                case "m":
+                    return true;
+                case "f":
+                    return true;
+                default:
+                    return false;
+            }
+        }catch (NullPointerException e){
+            return false;
+        }
+    }
+    
 }
