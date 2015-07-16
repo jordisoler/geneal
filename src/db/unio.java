@@ -47,8 +47,7 @@ public class unio extends conexio{
         this.idConjuge1 = -1;
         this.idConjuge2 = -1;
         this.comentaris = null;
-    }
-    
+    } 
     public unio(int id) throws DBException{
         super();
         try {
@@ -79,7 +78,6 @@ public class unio extends conexio{
             Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
     public static unio fromFitxa(int fitxa){
         unio u = new unio();
         try {
@@ -111,7 +109,6 @@ public class unio extends conexio{
         }
         return u;
     }
-    
     public static unio fromConjuge(int id) throws MUException, DBException{
         unio u = new unio();
         try {
@@ -245,8 +242,7 @@ public class unio extends conexio{
     
     public void setConjuge1(int in){
         this.idConjuge1 = in;
-    }
-    
+    }  
     public void setConjuge1(persona in){
         this.idConjuge1 = in.getId();
     }
@@ -254,7 +250,6 @@ public class unio extends conexio{
     public void setConjuge2(int in){
         this.idConjuge2 = in;
     }
-    
     public void setConjuge2(persona in){
         this.idConjuge2 = in.getId();
     }
@@ -274,7 +269,6 @@ public class unio extends conexio{
             this.addNewUnio();
         }
     }
-    
     
     public static boolean existFitxa(int fitxa){
         try {
@@ -299,7 +293,6 @@ public class unio extends conexio{
             return false;
         }
     }
-    
     public static boolean exist(unio in){
         return unio.exist(in.getId());
     }
@@ -379,5 +372,20 @@ public class unio extends conexio{
 
     public boda getBoda() {
         return new boda(this.idUnio);
+    }
+    
+    /**
+     *  Deletes the 'boda' associated with the 'unio'
+     */
+    public void deleteBoda(){
+        try {
+            String msg = "delete from boda where id_unio = ?";
+            PreparedStatement pst = con.prepareStatement(msg);
+            pst.setInt(1, this.idUnio);
+            pst.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(unio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 }
