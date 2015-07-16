@@ -122,7 +122,11 @@ public class formFitxa {
         estat = nousPares;
     }
     
-    private void clickLlista(db.persona p){
+    /**
+     * Callback for click in a person.
+     * @param p Person to be handled.
+     */
+    public void clickLlista(db.persona p){
         try{                                    // Es vol introduir una  persona  amb unió
             un=db.unio.fromConjuge(p.getId());
             fill();
