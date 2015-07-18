@@ -100,6 +100,10 @@ public class formPersona {
         return this.id==idNull;
     }
     
+    public int getId(){
+        return this.id;
+    }
+    
     public void fill(db.persona p) throws DBException{
         if (p.isNull()){
             id = idNull;
@@ -200,7 +204,12 @@ public class formPersona {
     }
     
     public db.naixement getNaixement(int idu) throws dateException, LEException {
-        db.naixement n = new db.naixement();
+        db.naixement n;
+        try {
+            n = new db.naixement(idu);
+        } catch (DBException ex) {
+            n = new db.naixement();
+        }
         try {
             n.setDate(dnaixement.getDate());
         } catch (dateException ex) {
@@ -215,7 +224,7 @@ public class formPersona {
             ex.setContext("naixement "+conj());
             throw ex;
         }
-        n.setUnio(idu);
+        n.setFill(idu);
         return n;
     }
     public db.naixement getNaixement() throws dateException, LEException{
@@ -223,6 +232,7 @@ public class formPersona {
     }
     
     private void setEmptyPrivate(){
+        id = idNull;
         label.setText(unknown);
         llnaixement.iniciar();
         lldefuncio.iniciar();

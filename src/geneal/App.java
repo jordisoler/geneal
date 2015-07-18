@@ -19,19 +19,15 @@ package geneal;
 
 import Exceptions.*;
 import javax.swing.UIManager;
-import db.unio;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import javax.swing.UnsupportedLookAndFeelException;
 import static geneal.formutils.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 import java.awt.*;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  *
@@ -39,9 +35,10 @@ import javax.swing.JTextField;
  */
 public class App extends javax.swing.JFrame {
 
-    private db.unio un; // Padrins paterns 25
-    private int idc1, idc2, idfill;
-    private ArrayList<Integer> lfills = new ArrayList<>(), lcerca = new ArrayList<>();
+    //private db.unio un; // Padrins paterns 25
+    private formFitxa f;
+    private formLlista cerca, fills;
+    //private ArrayList<Integer> lfills = new ArrayList<>(), lcerca = new ArrayList<>();
     
     private final static String newPares = "Afegir pares";
     private final static String newUnio = "Crear fitxa";
@@ -50,204 +47,17 @@ public class App extends javax.swing.JFrame {
      */
     public App() {
         initialize();
-        try {
-            un = new db.unio(31);
-            fillForm();
-        } catch (DBException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        System.out.println(this.find_list.getSize());
     }
     
-      
-    public void loadFitxa(int f){
-        if (db.unio.existFitxa(f)){
-            un = db.unio.fromFitxa(f);
-            try {
-                fillForm();
-            } catch (DBException ex) {
-                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-                ex.setMessage("Hi ha hagut problemes al carregar la fitxa "+f);
-                ex.show();
-            }
-        }else{
-            String msg = "S'ha intentat carregar una fitxa inexistent. ";
-            if (f!=-1){
-                msg = msg+"\n Fitxa: "+f;
-            }
-            try {
-                throw new GException(msg);
-            } catch (GException ex) {
-                ex.show();
-            }
-        }
-    }
-    
-    // Methods to fill people's lists
-    private void fillList(javax.swing.JList l, db.persona[] ps, boolean fills){
-        javax.swing.DefaultListModel<String> lm = new javax.swing.DefaultListModel<>();
-        
-        lfills = new ArrayList<>();
-        for (db.persona p : ps){
-            lm.addElement(formatList(p, fills));
-        }
-        l.setModel(lm);
-    }
-  
-    private String formatList(db.persona p, boolean fills){
-        String naixement = "", sdn = "", sdd="", p1="", p2="", p3="", sfitxa="";
-        db.unio u = new unio();
-        try {
-            u = db.unio.fromConjuge(p.getId());
-        } catch (MUException |DBException ex) {
-            System.out.println("La persona "+p+" no té unió.");
-            //Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        if (!u.isNull()){
-            sfitxa="[Fitxa "+u.getFitxa()+"] ";
-        }
-        if (fills){
-            lfills.add(p.getId());
-        }else{
-            lcerca.add(p.getId());
-        }
-        db.lloc n = p.getLlocNaixement();
-        db.date dn = p.getDateNaixement();
-        db.date dd = p.getDataDefuncio();
-        if (!n.isNull()){
-            naixement = ", "+n;
-        }
-        if (!dn.isNull() || !dd.isNull()){
-            p1 = " (";
-            p2 = "/";
-            p3 = ")";
-        }
-        if (!dn.isNull()){
-            sdn = dn.toString();
-        }
-        if (!dd.isNull()){
-            sdd = dd.toString();
-        }
-        return sfitxa+p+naixement+p1+sdn+p2+sdd+p3;
-    }
     
     // Callbacks lists' item clicked
     private void fillClicat(int idx){
-        db.persona p = new db.persona(this.lfills.get(idx));
-        clickLlista(p);
+        db.persona p = fills.getSelectedPerson();
+        f.clickLlista(p);
     }
     private void cercaFillClicat(int idx){
-        db.persona p = new db.persona(lcerca.get(idx));
-        clickLlista(p);
-    }
-    
-    private void clickLlista(db.persona p){
-        db.unio u;
-        try{
-            u=unio.fromConjuge(p.getId());
-            int f = u.getFitxa();
-            loadFitxa(f);
-        }catch (MUException e){} catch (DBException ex) {     
-            int reply = JOptionPane.showConfirmDialog(null, "La persona "+p+" no "
-                    + "està a cap unió. \nVols crear-ne una de nova?","Unió nova",
-                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            if (reply == JOptionPane.YES_OPTION){
-                if (p.getSexe()!=null){
-                    switch (p.getSexe()){
-                        case "m":
-                            try {
-                                fillConjuge1(p);
-                                fillConjuge2(new db.persona());
-                                idc1 = p.getId();
-                                idc2 = -1;
-                            } catch (DBException ex1) {
-                                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex1);
-                            }
-                            break;
-                        case "f":
-                            try {
-                                fillConjuge2(p);
-                                fillConjuge1(new db.persona());
-                                idc2 = p.getId();
-                                idc1 = -1;
-                            } catch (DBException ex1) {
-                                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex1);
-                            }
-                        default:
-                            String[] options = {"Home", "Dona", "Cancelar"};
-                            int response = JOptionPane.showOptionDialog(null, "La persona "
-                                    +p+" no té sexe. \nElegeix-ne un abans de  continuar",
-                                    "Introduïr sexe", JOptionPane.DEFAULT_OPTION, 
-                                    JOptionPane.PLAIN_MESSAGE, null, options, options[2]);
-                            switch (response){
-                                case 0:
-                                    try {
-                                        p.setSexe("m");
-                                        fillConjuge1(p);
-                                        fillConjuge2(new db.persona());
-                                        idc1 = p.getId();
-                                        idc2 = -1;
-                                    } catch (DBException ex1) {
-                                        Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex1);
-                                    }
-                                    break;
-                                case 1:
-                                    try {
-                                        p.setSexe("f");
-                                        fillConjuge2(p);
-                                        fillConjuge1(new db.persona());
-                                        idc2 = p.getId();
-                                        idc1 = -1;
-                                    } catch (DBException ex1) {
-                                        Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex1);
-                                    }
-                                    break;
-                                case 2:
-                                    return;
-                            }
-                    }
-                }else{
-                    String[] options = {"Home", "Dona", "Cancelar"};
-                    int response = JOptionPane.showOptionDialog(null, "La persona "
-                            +p+" no té sexe. \nElegeix-ne un abans de  continuar",
-                            "Introduïr sexe", JOptionPane.DEFAULT_OPTION, 
-                            JOptionPane.PLAIN_MESSAGE, null, options, options[2]);
-                    switch (response){
-                        case 0:
-                            try {
-                                p.setSexe("m");
-                                fillConjuge1(p);
-                                fillConjuge2(new db.persona());
-                                idc1 = p.getId();
-                                idc2 = -1;
-                            } catch (DBException ex1) {
-                                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex1);
-                            }
-                            break;
-                        case 1:
-                            try {
-                                p.setSexe("f");
-                                fillConjuge2(p);
-                                fillConjuge1(new db.persona());
-                                idc2 = p.getId();
-                                idc1 = -1;
-                            } catch (DBException ex1) {
-                                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex1);
-                            }
-                            break;
-                        case 2:
-                            return;
-                    }
-                }
-                un = new unio();
-                iniciarUnio();
-                this.b_eafegir.setText("Afegir fitxa");
-                this.b_eafegir.setEnabled(true);
-                this.b_eborrar.setEnabled(false);
-            }
-        }
+        db.persona p = cerca.getSelectedPerson();
+        f.clickLlista(p);
     }
     
     private int getRow(javax.swing.JList list, Point point){
@@ -2069,7 +1879,7 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_c_1sexeActionPerformed
 
     private void b_1paresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_1paresActionPerformed
-        paresClicked(true);
+        f.loadPares(formFitxa.home);
     }//GEN-LAST:event_b_1paresActionPerformed
 
     private void c_1mesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1mesActionPerformed
@@ -2101,7 +1911,7 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_c_2sexeActionPerformed
 
     private void b_2paresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_2paresActionPerformed
-        paresClicked(false);
+        f.loadPares(formFitxa.dona);
     }//GEN-LAST:event_b_2paresActionPerformed
 
     private void c_umesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_umesActionPerformed
@@ -2113,121 +1923,7 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void b_eafegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_eafegirActionPerformed
-        int l = 5;
-        String sc1 = "conjuge 1 ("+this.l_e_conjuge1.getText()+")", 
-                sc2 = "conjuge 2 ("+this.l_e_conjuge2.getText()+")";
-        String[] referencia = {"matrimoni", "naixement "+sc1,
-            "naixement "+sc2, "defunció "+sc1, "defunció "+sc2};
-        
-        db.lloc[] llocs = new db.lloc [l];
-        db.date [] dates = new db.date [l];
-        formLloc[] fllocs = {this.fmatrimoni, this.fnmarit, this.fnmuller, 
-            this.fdmarit, this.fdmuller};
-        formData[] fdates = {this.fdmatrimoni, this.fdnmarit, this.fdnmuller,
-            this.fddmarit, this.fddmuller};
-        javax.swing.JComboBox[] fsexes = {this.c_1sexe,  this.c_2sexe};
-        
-        // Aconseguir tots els llocs i dates necessaris
-        for (int i = 0; i<l; i++){
-            try {
-                llocs[i] = fllocs[i].getLloc();
-                dates[i] = fdates[i].getDate();
-                System.out.println(dates[i]);
-            } catch (dateException ex) {
-                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-                ex.setContext(referencia[i]);
-                ex.show();
-                dates[i] = new db.date();
-            } catch (SQLException ex) {
-                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-                return;
-            } catch (LEException ex) {
-                ex.show();
-                llocs[i] = new db.lloc();
-            }
-        }
-        
-        // Confirmar introducció de persona sense sexe
-        javax.swing.JTextField[] ts = {this.t_e_1nom, this.t_2nom};
-        for(int i = 0; i<2; i++){
-            if (fsexes[i].getSelectedIndex() == 0 && !ts[i].getText().isEmpty() ){
-                int r = JOptionPane.showConfirmDialog(null, "La persona que vols "
-                        + "introduir (Conjuge "+i+") no té sexe. \n Vols introduir-la igualment?", 
-                        "Sexe no especificat", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if (r != JOptionPane.YES_OPTION){
-                    JOptionPane.showMessageDialog(null, "Corregeix l'error i "
-                            + "tora-ho  a provar.", "Corregeig l'error", 
-                            JOptionPane.OK_OPTION);
-                    return;
-                }
-            }
-        }
-        
-        // Modificar fitxa
-        if (unio.exist(un)){
-            db.boda boda = new db.boda(un.getId());
-            db.persona p1 = new db.persona(), p2 = new db.persona(), 
-                    c1 = un.getConjuge1(), c2 = un.getConjuge2();
-            db.naixement n1 = new db.naixement(), n2 = new db.naixement(), 
-                    n3 = new db.naixement(), n4 = new db.naixement();
-            javax.swing.JTextField[] tf = {this.t_e_1nom,  this.t_2nom, this.t_e_1llinatge1,
-                this.t_2llinatge1, this.t_e_1llinatge2,  this.t_2llinatge2};
-            javax.swing.JTextArea[] comentaris = {this.t_1comentaris,  this.t_2comentaris};
-        
-            try {
-                n3 = new db.naixement(c1.getId());
-            } catch (DBException ex) {}
-            try {
-                n4 = new db.naixement(c2.getId());
-            } catch (DBException ex) {}
-            db.persona[] persones= {p1, p2}, p_original = {c1, c2};
-            db.naixement[] ns = {n1, n2}, n_original = {n3, n4};
-            
-            for (int i = 0; i<2; i++){
-                ns[i].setFill(p_original[i].getId());
-                ns[i].setDate(dates[i+1]);
-                ns[i].setLloc(llocs[i+1]);
-                ns[i].setUnio(n_original[i].getIdUnio());
-                if (!ns[i].equals(n_original[i])){
-                    ns[i].addNaixement();
-                }
-                persones[i].setId(p_original[i].getId());
-                persones[i].setNom(tf[i].getText());
-                persones[i].setLlinatge1(tf[i+2].getText());
-                persones[i].setLlinatge2(tf[i+4].getText());
-                persones[i].setLlocDefuncio(llocs[i+3].getId());
-                persones[i].setDataDefuncio(dates[i+3]);
-                persones[i].setComentaris(comentaris[i].getText());
-                persones[i].setSexe(getSexe(fsexes[i]));
-                if (!persones[i].equals(p_original[i])){
-                    persones[i].addPersona();
-                }                
-            }
-            db.unio u = new db.unio();
-            u.setId(un.getId());
-            u.setConjuge1(c1);
-            u.setConjuge2(c2);
-            try{
-                u.setFitxa(Integer.parseInt(this.t_fitxa.getText()));
-            }catch (Exception e){
-                new GException("Número de fitxa incorrecte.\n Canvia-ho abans de "
-                        + "procedir.","Fitxa incorrecte").show();
-                return;
-            }
-            u.setComentaris(this.t_ucomentaris.getText());
-            if (!u.equals(un)){
-                u.addUnio();
-                un = u;
-            }
-            boda.setUnio(un);
-            boda.setData(dates[0]);
-            boda.setLloc(llocs[0]);
-            if (!boda.equals(un.getBoda())){
-                boda.addBoda();
-            }
-        }else{  // Introduir fitxa nova
-            if ()
-        }
+        f.committ();
     }//GEN-LAST:event_b_eafegirActionPerformed
 
     private void c_umunicipiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_umunicipiActionPerformed
@@ -2271,11 +1967,13 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_c_2dmunicipiActionPerformed
 
     private void b_cercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_cercaActionPerformed
-        fillFind();
+        db.persona[] ps = db.persona.getPeopleLike(find_nom.getText(), 
+                find_llinatge1.getText(), find_llinatge2.getText());
+        cerca.fillList(ps);
     }//GEN-LAST:event_b_cercaActionPerformed
 
     private void b_afegirfillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_afegirfillActionPerformed
-        new NewFill(this,un).setVisible(true);
+        new NewFill(fills,f.getUnio()).setVisible(true);
     }//GEN-LAST:event_b_afegirfillActionPerformed
 
     private void c_1dmunicipiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1dmunicipiActionPerformed
@@ -2324,19 +2022,13 @@ public class App extends javax.swing.JFrame {
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
         if(null != popuplist.getLabel())switch (popuplist.getLabel()) {
-            case "Cerca":{
-                db.persona p = new db.persona(this.lcerca.get(this.find_list.getSelectedIndex()));
-                p.delete();
-                fillFind();
+            case "Cerca":
+                cerca.dropPerson();                
                 break;
-                }
-            case "Fills":{
-                db.persona p = new db.persona(this.lfills.get(this.ll_ufills.getSelectedIndex()));
-                p.delete();
-                db.persona[] fills = un.getFills();
-                fillList(this.ll_ufills,fills, true);
+            case "Fills":
+                f.deleteFill();
                 break;
-            }
+            
         }
     }//GEN-LAST:event_EliminarActionPerformed
 
@@ -2349,30 +2041,11 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_ll_ufillsMouseClicked
 
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
-        String sf = JOptionPane.showInputDialog(null, "Número de fitxa a carregar",
-                "Carregar fitxa", JOptionPane.OK_CANCEL_OPTION);
-        try{
-            int f = Integer.parseInt(sf);
-            if(!db.unio.existFitxa(f)){
-                throw new DBException();
-            }else{
-                loadFitxa(f);
-            }
-        }catch (NumberFormatException | DBException e){
-            new GException("La fitxa introduida no és correcte.", "Fitxa incorrete").show();
-        }
+        novaFitxa();
     }//GEN-LAST:event_openMenuItemActionPerformed
 
     private void c_casamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_casamentActionPerformed
-        if (this.c_casament.isSelected()){
-            this.fdmatrimoni.enable();
-            this.fmatrimoni.enable();
-        }else{
-            this.fmatrimoni.iniciar();
-            this.fdmatrimoni.iniciar();
-            this.fmatrimoni.disable();
-            this.fdmatrimoni.disable();
-        }
+        f.ActionPerformedCasament();
     }//GEN-LAST:event_c_casamentActionPerformed
     
     
@@ -2384,6 +2057,14 @@ public class App extends javax.swing.JFrame {
         initComponents();
         
         this.setVisible(true);
+        
+        db.unio un;
+        try {
+            un = new db.unio(31);
+        } catch (DBException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            un = new db.unio();
+        }
         
         ll_ufills.addMouseListener(new MouseAdapter() {
             @Override
@@ -2432,173 +2113,30 @@ public class App extends javax.swing.JFrame {
         fdnmuller = new formData(this.c_2ndia, this.c_2nmes, this.t_2nany);
         fddmuller = new formData(this.c_2ddia, this.c_2dmes, this.t_2dany);
         
-    }
-    
-    private void newParesForm(boolean c1) {
-        try {
-            db.persona p = new db.persona();
-            fillConjuge1(p);
-            fillConjuge2(p);
-            iniciarUnio();
-            if (c1){
-                p = new db.persona(idc1);
-            }else{
-                p = new db.persona(idc2);
-            }
-            System.out.println("Afegint pares de: "+p+", id: "+p.getId());
-            db.persona[] ps = {p};
-            fillList(this.ll_ufills,ps,true);
-            this.b_eafegir.setText(newUnio);
-            
-        } catch (DBException ex) {
-            ex.show();
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        javax.swing.JTextField[] nomC1 = {this.t_e_1nom, this.t_e_1llinatge1,
+                this.t_e_1llinatge2};
+        javax.swing.JTextField[] nomC2 = {this.t_2nom, this.t_2llinatge1,
+                this.t_2llinatge2};
         
-    }
-    
-    private void fillForm() throws DBException {
-        if (!un.isNull()){
-            idc1 = -1;
-            idc2 = -1;
-            //this.l_generacio.setText("Generació "+un.getConjuge1().getGenerationsString());
-            if (un.isMarriage()){
-                this.c_casament.setSelected(true);
-                this.fmatrimoni.fill(un.getLlocMatrimoni());
-                fdmatrimoni.fill(un.getDataMatrimoni());
-            }else{
-                this.c_casament.setSelected(false);
-                this.c_umunicipi.setEnabled(false);
-                this.c_uparroquia.setEnabled(false);
-                this.c_ullogaret.setEnabled(false);
-                this.c_udia.setEnabled(false);
-                this.c_umes.setEnabled(false);
-                this.c_uany.setEnabled(false);
-            }
-            fillText(this.t_fitxa,un.getFitxa());
-            fillText(this.t_ucomentaris, un.getComentaris());
-            db.persona[] fills = un.getFills();
-            fillList(this.ll_ufills,fills, true);
-
-            db.persona c1 = un.getConjuge1();
-            db.persona c2 = un.getConjuge2();
-            
-            fillConjuge1(c1);
-            fillConjuge2(c2);
-            
-        }else{
-            if(idc1 != 0){
-                db.persona p = new db.persona(idc1);
-                fillConjuge1(p);
-                fillConjuge2(new db.persona());
-            }else if (idc2 != 0){
-                db.persona p = new db.persona(idc2);
-                fillConjuge1(new db.persona());
-                fillConjuge2(p);
-            }else{
-                throw new DBException("S'ha produit un error en la carrega de dades.");
-            }
-        }
-        this.b_eafegir.setText("Modificar");
-        this.b_eafegir.setEnabled(true);
-        this.b_eborrar.setEnabled(true);
-    }
-    
-    
-    public void updateFills(){
-        db.persona[] fills = un.getFills();
-        fillList(this.ll_ufills,fills, true);
-    }
-    
-    private void fillConjuge1(db.persona c1) throws DBException{
-        if (c1.isNull()){
-            javax.swing.JTextField[] ts = {t_e_1nom, t_e_1llinatge1, t_e_1llinatge2};
-            javax.swing.JLabel[] ls = {l_pare, l_ppare, l_mppare, l_pppare,
-            l_mpare, l_pmpare, l_mmpare};
-            for (JTextField t : ts) {
-                t.setText("");
-            }
-            for (javax.swing.JLabel jl:  ls){
-                jl.setText(unknown);
-            }
-            this.c_1sexe.setSelectedIndex(0);
-            this.t_1comentaris.setText("");
-            fnmarit.iniciar();
-            fdmarit.iniciar();
-            fdnmarit.iniciar();
-            fddmarit.iniciar();
-            this.b_1pares.setEnabled(false);
-            
-        }else{
-            fillText(this.t_e_1nom,c1.getNom());
-            fillText(this.t_e_1llinatge1, c1.getLlinatge1());
-            fillText(this.t_e_1llinatge2, c1.getLlinatge2());
-            this.fnmarit.fill(c1.getLlocNaixement());
-            fdnmarit.fill(c1.getDateNaixement());
-            this.fdmarit.fill(c1.getLlocDefuncio());
-            fddmarit.fill(c1.getDataDefuncio());
-            fillSexe(this.c_1sexe, c1);
-            fillText(this.t_1comentaris, c1.getComentaris());
-            this.l_e_conjuge1.setText(sexe(un.getConjuge1()));
-
-            db.persona cp1 = c1.getPare();
-            db.persona cm1 = c1.getMare();
-            this.l_pare.setText(c1.toString());
-            this.l_ppare.setText(cp1.toString());
-            this.l_pppare.setText(cp1.getPare().toString());
-            this.l_mppare.setText(cp1.getMare().toString());
-            this.l_mpare.setText(cm1.toString());
-            this.l_pmpare.setText(cm1.getPare().toString());
-            this.l_mmpare.setText(cm1.getMare().toString());
-
-            setupButton(c1.getId(),this.b_1pares);
-        }
-    }
-    
-    private void fillConjuge2(db.persona c2) throws DBException{
-        if (c2.isNull()){
-            javax.swing.JTextField[] ts = {t_2nom, t_2llinatge1, t_2llinatge2};
-            javax.swing.JLabel[] ls = {l_mare, l_pmare, l_mpmare, l_ppmare,
-            l_mmare, l_pmmare, l_mmmare};
-            for (JTextField t : ts) {
-                t.setText("");
-            }
-            for (javax.swing.JLabel jl:  ls){
-                jl.setText(unknown);
-            }
-            this.t_2comentaris.setText("");
-            this.c_2sexe.setSelectedIndex(0);
-            fnmuller.iniciar();
-            fdmuller.iniciar();
-            fdnmuller.iniciar();
-            fddmuller.iniciar();
-            this.b_2pares.setEnabled(false);
-            
-        }else{
-            fillText(this.t_2nom,c2.getNom());
-            fillText(this.t_2llinatge1, c2.getLlinatge1());
-            fillText(this.t_2llinatge2, c2.getLlinatge2());
-            this.fnmuller.fill(c2.getLlocNaixement());
-            fdnmuller.fill(c2.getDateNaixement());
-            this.fdmuller.fill(c2.getLlocDefuncio());
-            fddmuller.fill(c2.getDataDefuncio());
-            fillSexe(this.c_2sexe, c2); 
-            fillText(this.t_2comentaris, c2.getComentaris());
-            this.l_e_conjuge2.setText(sexe(un.getConjuge2()));
-
-            db.persona cp2 = c2.getPare();
-            db.persona cm2 = c2.getMare();
-            this.l_mare.setText(c2.toString());
-            this.l_pmare.setText(cp2.toString());
-            this.l_ppmare.setText(cp2.getPare().toString());
-            this.l_mpmare.setText(cp2.getMare().toString());
-            this.l_mmare.setText(cm2.toString());
-            this.l_pmmare.setText(cm2.getPare().toString());
-            this.l_mmmare.setText(cm2.getMare().toString());
-
-
-            setupButton(c2.getId(),this.b_2pares);
-        }
+        javax.swing.JLabel[] tree1 = {this.l_pare, this.l_ppare,  this.l_pppare,
+                this.l_mppare, this.l_mpare, this.l_pmpare, this.l_mmpare};
+        javax.swing.JLabel[] tree2 = {this.l_mare, this.l_pmare,  this.l_ppmare,
+                this.l_mpmare, this.l_mmare, this.l_pmmare, this.l_mmmare};
+        
+        formPersonaFitxa c1 = new formPersonaFitxa(un.getConjuge1().getId(), fnmarit, 
+                fdmarit, fdnmarit, fddmarit, nomC1, t_1comentaris, c_1sexe,
+                l_e_conjuge1, tree1, geneal.formPersona.Conjuge1, b_1pares);
+        formPersonaFitxa c2 = new formPersonaFitxa(un.getConjuge2().getId(), fnmuller, 
+                fdmuller, fdnmuller, fddmuller, nomC2, t_2comentaris, c_2sexe,
+                l_e_conjuge2, tree2, geneal.formPersona.Conjuge2, b_2pares);
+        
+        fills = new formLlista(this.ll_ufills);
+        cerca = new formLlista(this.find_list);
+        
+        f = new formFitxa(un, c1, c2, t_fitxa,  t_ucomentaris, c_casament, fills,
+                fmatrimoni, fdmatrimoni);
+        
+        novaFitxa();
     }
     
     private void setupButton(int id_p, javax.swing.JButton b){
@@ -2612,7 +2150,7 @@ public class App extends javax.swing.JFrame {
                 }
             }catch (DBException e){
                 b.setText(newPares);
-                System.out.println("Excepció");
+                e.show();
             }
     }
     
@@ -2871,83 +2409,19 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JTextArea t_ucomentaris;
     // End of variables declaration//GEN-END:variables
 
-    private void fillFind() {
-        lcerca = new ArrayList<>();
-        db.persona[] people = db.persona.getPeopleLike(this.find_nom.getText(),
-                this.find_llinatge1.getText(), this.find_llinatge2.getText());
-        this.fillList(this.find_list, people, false);
-    }
-
-    private void iniciarUnio() {
-        this.fmatrimoni.iniciar();
-        this.fdmatrimoni.iniciar();
-        this.fmatrimoni.disable();
-        this.fdmatrimoni.disable();
-        this.t_ucomentaris.setText("");
-        this.t_fitxa.setText("");
-        this.c_casament.setSelected(false);
-        fillList(this.ll_ufills,new db.persona [0], true);
-    }
-
-    private void paresClicked(boolean c1) {
-        javax.swing.JButton b;
-        String idc;
-        int id, id2;
-        if (c1){
-            b = this.b_1pares;
-            idc = "idc1";
-            id = idc1;
-            id2 = idc2;
-        }else{
-            b = this.b_2pares;
-            idc = "idc2";
-            id = idc2;
-            id2  =idc1;
-        }
-        
-        // S'han d'afegir pares nous
-        if (b.getText().equals(newPares)){
-            if (c1){
-                idc1 = un.getConjuge1().getId();
-                idc2 = -1;
+    private void novaFitxa() {
+        String sf = JOptionPane.showInputDialog(null, "Número de fitxa a carregar",
+                "Carregar fitxa", JOptionPane.OK_CANCEL_OPTION);
+        try{
+            int fitxa = Integer.parseInt(sf);
+            if(!db.unio.existFitxa(fitxa)){
+                throw new DBException();
             }else{
-                idc2 = un.getConjuge2().getId();
-                idc1 = -1;
+                f.fillFitxa(fitxa);
             }
-            un = new unio();
-            this.newParesForm(c1);
-        }else{  // S'ha de carregar una fitxa de pares
-            try {
-                if (un.isNull()){
-                    if(id != -1){
-                        if (b.getText().equals(newPares)){  // Afegir pares sabent persona
-                            un = new unio();
-                            this.newParesForm(c1);
-                        }else{                              // Carregar pares sabent persona
-                            un = new db.unio(new db.persona(id).getPare().getId());
-                            idc1 = -1;
-                            idc2 = -1;
-                            this.fillForm();
-                        }
-                    }else{                                  // Error: no es sap ni persona ni unió
-                        new GException("S'ha perdut la pista de l'arbre.\n No hi ha "
-                                + "cap ID de referència.","Error greu.").show();
-                    }
-                }else{                                      // Carregar pares sabent unió
-                    if (c1){
-                        un = unio.fromConjuge(un.getConjuge1().getPare().getId());
-                    }else{
-                        un = unio.fromConjuge(un.getConjuge2().getPare().getId());
-                    }
-                    this.fillForm();
-                }
-
-            } catch (DBException ex) {} catch (MUException ex) {
-                Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        }catch (NumberFormatException | DBException e){
+            new GException("La fitxa introduida no és correcte.", "Fitxa incorrete").show();
         }
     }
-    
-    
 
 }

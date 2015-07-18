@@ -57,13 +57,17 @@ public class formData {
     }
         
     public void fill(db.date d){
-        Dia.setSelectedIndex(d.getDay());
-        Mes.setSelectedIndex(d.getMonth());
-        if (d.isNull()){
-            Any.setText(funknown);
-        }else{
-            Any.setText(String.valueOf(d.getYear()));
-        }
+        try{
+            Dia.setSelectedIndex(d.getDay());
+            Mes.setSelectedIndex(d.getMonth());
+            if (d.isNull()){
+                Any.setText(funknown);
+            }else{
+                Any.setText(String.valueOf(d.getYear()));
+            }
+        }catch (NullPointerException e){
+            iniciar();
+        }        
     }
     
     public db.date getDate() throws BYException, dateException{

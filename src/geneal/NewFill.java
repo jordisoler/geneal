@@ -33,13 +33,13 @@ public class NewFill extends javax.swing.JFrame {
 
     private String stitol = "";
     private db.unio unio;
-    private geneal.App app;
+    private formLlista list;
     /**
      * Creates new form NewFill
      * @param un
      */
-    public NewFill(geneal.App App, db.unio un) {
-        app = App;
+    public NewFill(formLlista list_, db.unio un) {
+        list = list_;
         unio = un;
         stitol = "Nou fill de la fitxa "+un.getFitxa();
         initComponents();
@@ -394,7 +394,7 @@ public class NewFill extends javax.swing.JFrame {
         db.date dnaixement = new db.date(), ddefuncio = new db.date();
         if (t_nom.getText().isEmpty()){
             Exceptions.GException e = new Exceptions.GException("El nom d'aquest fill és nul."
-                    + " No es pot introduir. Corregi-ho i torna-ho a provar.",
+                    + " No es pot introduir. Corregeix-ho i torna-ho a provar.",
                     "Error al introduir fill.", Exceptions.GException.LOW);
             e.show();
             commit = false;
@@ -468,7 +468,7 @@ public class NewFill extends javax.swing.JFrame {
             n.setLloc(lnaixement.getId());
             n.addNaixement();
             
-            app.updateFills();
+            list.add(p);
             this.dispose();
         }
                     

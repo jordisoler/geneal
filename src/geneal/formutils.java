@@ -68,11 +68,15 @@ public class formutils {
         if (p==null || p.isNull()){
             return unknown;
         }
-        if (p.getSexe().equals("m")){
-            return "Home";
-        }else if (p.getSexe().equals("f")){
-            return "Dona";
-        }else{
+        try{
+            if (p.getSexe().equals("m")){
+                return "Home";
+            }else if (p.getSexe().equals("f")){
+                return "Dona";
+            }else{
+                return unknown;
+            }
+        }catch (NullPointerException e){
             return unknown;
         }
     }

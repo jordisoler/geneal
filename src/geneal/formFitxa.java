@@ -18,6 +18,9 @@
 package geneal;
 
 import Exceptions.*;
+import static geneal.formutils.fillText;
+import static geneal.formutils.s2q;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -27,14 +30,14 @@ import javax.swing.JOptionPane;
  * @author jordi
  */
 public class formFitxa {
-    private formPersona c1, c2;
+    private formPersonaFitxa c1, c2;
     private javax.swing.JTextField fitxa;
     private javax.swing.JTextArea comentaris;
     private javax.swing.JCheckBox casament;
     private formData data;
     private formLloc lloc;
     private formLlista fills;
-    private int estat;
+    private int estat, idfill;
     
     private db.unio un;
     
@@ -43,13 +46,13 @@ public class formFitxa {
     private final static int fromConjuge1 = 2;
     private final static int fromConjuge2 = 3;
     
-    private static final boolean home = true;
-    private static final boolean dona = false;
+    public static final boolean home = true;
+    public static final boolean dona = false;
     
     public formFitxa(){
         un = new db.unio();
     }
-    public formFitxa(db.unio un_,formPersona c1_, formPersona c2_, javax.swing.JTextField fitxa_,
+    public formFitxa(db.unio un_,formPersonaFitxa c1_, formPersonaFitxa c2_, javax.swing.JTextField fitxa_,
             javax.swing.JTextArea comentaris_, javax.swing.JCheckBox casament_,
             formLlista fills_,formLloc lloc_, formData data_){
         un = un_;
@@ -62,7 +65,7 @@ public class formFitxa {
         lloc = lloc_;
         data = data_;
     }
-    public formFitxa(formPersona c1_, formPersona c2_, javax.swing.JTextField fitxa_,
+    public formFitxa(formPersonaFitxa c1_, formPersonaFitxa c2_, javax.swing.JTextField fitxa_,
             javax.swing.JTextArea comentaris_, javax.swing.JCheckBox casament_,
             formLlista fills_,formLloc lloc_, formData data_){
         this(new db.unio(), c1_, c2_, fitxa_,  comentaris_, casament_, fills_,
@@ -73,8 +76,9 @@ public class formFitxa {
         if(!un.isNull()){
             try {
                 estat = existent;
+                
                 fitxa.setText(String.valueOf(un.getFitxa()));
-                comentaris.setText(String.valueOf(un.getComentaris()));
+                fillText(comentaris,String.valueOf(un.getComentaris()));
                 if(un.isMarriage()){
                     toggleCasament(true);
                     data.fill(un.getDataMatrimoni());
@@ -101,11 +105,14 @@ public class formFitxa {
         setEmptyUnio();
         db.persona p = new db.persona(id);
         try {
+            un = new db.unio();
             if (conj){
+                p.setSexe("m");
                 c1.fill(p);
                 c2.fill(new db.persona());
                 estat = fromConjuge1;
             }else{
+                p.setSexe("f");
                 c1.fill(new db.persona());
                 c2.fill(p);
                 estat = fromConjuge2;
@@ -120,6 +127,14 @@ public class formFitxa {
         db.persona[] ps = {new db.persona(id_fill)};
         fills.fillList(ps);
         estat = nousPares;
+        un = new db.unio();
+        c1.setEmpty();
+        c2.setEmpty();
+        idfill = id_fill;
+    }
+    public void fillFitxa(int ifitxa){
+        un = db.unio.fromFitxa(ifitxa);
+        fill();
     }
     
     /**
@@ -127,6 +142,7 @@ public class formFitxa {
      * @param p Person to be handled.
      */
     public void clickLlista(db.persona p){
+        System.out.println("persona clicada: "+p);
         try{                                    // Es vol introduir una  persona  amb unió
             un=db.unio.fromConjuge(p.getId());
             fill();
@@ -150,11 +166,9 @@ public class formFitxa {
                             JOptionPane.PLAIN_MESSAGE, null, options, options[2]);
                     switch(response){
                         case 0:
-                            p.setSexe("m");
                             fill(p.getId(), home);
                             break;
                         case 1:
-                            p.setSexe("f");
                             fill(p.getId(), dona);
                             break;
                         default:
@@ -163,6 +177,160 @@ public class formFitxa {
                 }
             }
         }
+    }
+    
+    public void committ(){
+        db.persona p1, p2;
+        db.unio u;
+        db.boda b;
+        db.naixement n1, n2, n;
+        switch (estat){
+            case existent:
+                try{
+                    p1 = c1.getPerson();
+                    p2 = c2.getPerson();
+                    n1 = c1.getNaixement();
+                    n2 = c2.getNaixement();
+                    
+                    u = getUnioFromData();
+                    p1.addPersona();
+                    p2.addPersona();
+                    n1.addNaixement();
+                    n2.addNaixement();
+                    u.addUnio();
+                    if (casament.isSelected()){
+                        b = getBoda();
+                        b.addBoda();
+                    }else{
+                        u.deleteBoda();
+                    }
+                    System.out.println("S'ha modificat fitxa existent. Unió: "+u.getId());
+                }catch (LEException |dateException e){
+                    e.show();
+                }
+                break;
+                
+            case nousPares:
+                try{
+                    System.out.println("S'intentarà afegir la persona amb id: "+idfill+
+                            ", "+new db.persona(idfill));
+                    int id1,  id2;
+                    p1 = c1.getPerson();
+                    p2 = c2.getPerson();
+                    
+                    id1 = p1.addPersona();
+                    id2 = p2.addPersona();
+                    
+                    System.out.println("S'han introduit els conjuges amb id: "+id1+
+                            ", "+new db.persona(id1)+" i id: "+id2+
+                            ", "+new db.persona(id2));
+
+                    u = getUnioFromData();
+                    u.setConjuge1(id1);
+                    u.setConjuge2(id2);
+                    u.addUnio();
+                    System.out.println("S'ha introduit la unió:  "+u.getId());
+                    
+
+                    if(casament.isSelected()){
+                        b = getBoda();
+                        b.setUnio(u);
+                        b.addBoda();
+                    }
+
+                    n = new db.naixement(idfill);
+                    n.setFill(idfill);
+                    n.setUnio(u);
+                    n.addNaixement();
+                    System.out.println("S'ha afegit el naixement del fill: "+new db.persona(idfill)+
+                            " (id: "+idfill+") unió: "+u.getId());
+                    System.out.println("S'ha afegit una fitxa. Són els pares de: "
+                            + new db.persona(idfill)+". Unió: "+u.getId());
+                }catch (GException e){
+                    e.show();
+                }
+                break;
+            
+            case fromConjuge1:
+                try{
+                    int id1, id2;
+                    p1 = c1.getPerson();
+                    p2 = c2.getPerson();
+                    id1 = p1.addPersona();
+                    id2 = p2.addPersona();
+
+                    u = getUnioFromData();
+                    u.setConjuge1(id1);
+                    u.setConjuge2(id2);
+                    u.addUnio();
+
+                    if(casament.isSelected()){
+                        b = getBoda();
+                        b.setUnio(u);
+                        b.addBoda();
+                    }
+                    System.out.println("S'ha afegit la  fitxa de "+p1+" i "+p2);
+
+                }catch (GException e){
+                    e.show();
+                }
+                break;
+            case fromConjuge2:
+                try{
+                    int id1, id2;
+                    p1 = c1.getPerson();
+                    p2 = c2.getPerson();
+                    id1 = p1.addPersona();
+                    id2 = p2.addPersona();
+
+                    u = getUnioFromData();
+                    u.setConjuge1(id1);
+                    u.setConjuge2(id2);
+                    u.addUnio();
+
+                    if(casament.isSelected()){
+                        b = getBoda();
+                        b.setUnio(u);
+                        b.addBoda();
+                    }
+                    System.out.println("S'ha afegit la  fitxa de "+p1+" i "+p2);
+
+                }catch (GException e){
+                    e.show();
+                }
+                break;
+            default:
+                System.out.println("ERROR: L'estat es desconegut: "+estat);
+                
+        }
+    }
+    
+    public void deleteFill(){
+        fills.dropPerson();
+    }
+    
+    public db.unio getUnio(){
+        return this.un;
+    }
+    
+    public void loadPares(boolean esHome){
+        db.persona p;
+        if (esHome){
+            p = new db.persona(c1.getId());
+            if (c1.newPares()){
+                fill(c1.getId());
+            }else{
+                loadParesFromPerson(p);
+            }
+        }else{
+            p = new db.persona(c2.getId());
+            if (c2.newPares()){
+                fill(c2.getId());
+            }else{
+                loadParesFromPerson(p);
+            }
+        }
+        
     }
     
     private void setEmpty(){
@@ -191,6 +359,18 @@ public class formFitxa {
             data.disable();
         }
     }
+    
+    public void ActionPerformedCasament(){
+        if (casament.isSelected()){
+            lloc.enable();
+            data.enable();
+        }else{
+            lloc.iniciar();
+            data.iniciar();
+            lloc.disable();
+            data.disable();
+        }
+    }
 
     private boolean checkSexe(db.persona p) {
         try{
@@ -207,4 +387,54 @@ public class formFitxa {
         }
     }
     
+    private void loadParesFromPerson(db.persona p){
+        try {
+            db.naixement n = new db.naixement(p.getId());
+            un = new db.unio(n.getIdUnio());
+            fill();
+        } catch (DBException ex) {
+            Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
+            ex.show();
+        }
+    }
+    
+    private db.unio getUnioFromData(){
+        db.unio u = new db.unio();;
+        if (db.unio.exist(un)){
+            u = un;
+        }
+        try{
+            try{
+                u.setFitxa(Integer.parseInt(fitxa.getText()));
+                u.setComentaris(s2q(comentaris.getText()));
+                u.setConjuge1(c1.getId());
+                u.setConjuge2(c2.getId());
+            }catch (NumberFormatException e){
+                if  (fitxa.getText().isEmpty()){
+                    u.setFitxa(-1);
+                }else{
+                    throw new GException("El valor escrit a la fitxa és incorrecte.\n"
+                        + "Canvia-ho abans de procedir", "Número incorrecte");
+                }
+            }
+        }catch (GException e){
+            e.show();
+        }
+        return u;
+    }
+    
+    private db.boda getBoda(){
+        db.boda b = un.getBoda();
+        try {
+            b.setData(data.getDate());
+            b.setLloc(lloc.getLloc());
+            b.setUnio(un);
+        } catch (LEException |dateException ex) {
+            Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
+            ex.show();
+        } catch (SQLException ex) {
+            Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return b;
+    }
 }

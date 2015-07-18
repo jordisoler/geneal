@@ -262,11 +262,14 @@ public class unio extends conexio{
         this.comentaris = in;
     }
     
-    public void addUnio(){
+    public int addUnio(){
         if (unio.exist(this)){
             this.updateUnio();
+            return this.idUnio;
         }else{
-            this.addNewUnio();
+            int id_u = this.addNewUnio();
+            this.idUnio = id_u;
+            return id_u;
         }
     }
     
@@ -310,11 +313,11 @@ public class unio extends conexio{
         }
     }
     
-    private void addNewUnio(){
+    private int addNewUnio(){
         try {
             String str = "insert into unio (fitxa, id_conjuge1, id_conjuge2,"
                     + "unio_comentaris) values (?,?,?,?)";
-            PreparedStatement pst=con.prepareStatement(str);
+            PreparedStatement pst=con.prepareStatement(str, Statement.RETURN_GENERATED_KEYS);
             if (this.fitxa == -1){
                 pst.setNull(1, Types.INTEGER);
             }else{
@@ -334,8 +337,15 @@ public class unio extends conexio{
             }
             pst.setString(4, this.comentaris);
             pst.execute();
+            ResultSet rs = pst.getGeneratedKeys();
+            if (rs.next()){
+                return rs.getInt(1);
+            }else{
+                return -1;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(municipi.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
         }
     }
     

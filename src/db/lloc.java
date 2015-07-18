@@ -296,7 +296,7 @@ public class lloc extends conexio{
         try {
             String str = "insert into lloc (id_municipi, llogaret, parroquia)"
                     + " values (?,?,?)";
-            PreparedStatement pst=con.prepareStatement(str);
+            PreparedStatement pst=con.prepareStatement(str, Statement.RETURN_GENERATED_KEYS);
             if (this.nomMunicipi == null){
                 throw new SQLException("S'ha intentat introduir un lloc sense municipi.");
             }
@@ -304,7 +304,11 @@ public class lloc extends conexio{
             pst.setString(2, this.llogaret);
             pst.setString(3, this.parroquia);
             pst.execute();
-            int keys = Statement.RETURN_GENERATED_KEYS;
+            ResultSet rs = pst.getGeneratedKeys();
+            int keys = -1;
+            if (rs.next()){
+                keys = rs.getInt(1);
+            }
             this.idLloc =  keys;
             return keys;
         } catch (SQLException ex) {

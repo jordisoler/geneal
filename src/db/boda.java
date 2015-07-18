@@ -171,7 +171,7 @@ public class boda extends conexio{
             }else{
                 pst.setInt(2, this.idLloc);
             }
-            pst.setDate(3, this.data.tojDate());
+            pst.setString(3, this.data.toQuery());
             pst.execute();
         } catch (SQLException ex) {
             Logger.getLogger(municipi.class.getName()).log(Level.SEVERE, null, ex);

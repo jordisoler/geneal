@@ -68,9 +68,10 @@ public class formLloc {
         boolean newmunicipi, newparroquia, newllogaret;
         String sparroquia ="", sllogaret="", queryparroquia = "", queryllogaret ="";
         String m = String.valueOf(Municipi.getSelectedItem());
-        String p = String.valueOf(Parroquia.getSelectedItem());
-        String ll = String.valueOf(Llogaret.getSelectedItem());
-        newmunicipi = !db.municipi.exist(m) && Municipi.getSelectedIndex() !=0;
+        String p = Parroquia.getSelectedItem().toString();
+        String ll = Llogaret.getSelectedItem().toString();
+        newmunicipi = (!db.municipi.exist(m) && Municipi.getSelectedIndex() !=0) &&
+                !m.equals("null");
         newparroquia = !db.lloc.isAlreadyParroquia(p,m) && Parroquia.getSelectedIndex() !=0;
         newllogaret = !db.lloc.isAlreadyLlogaret(ll,m) && Llogaret.getSelectedIndex() !=0;
         
@@ -85,6 +86,7 @@ public class formLloc {
             out.setMunicipi(m);
         }
         if (newmunicipi){
+            System.out.println("Municipi '"+Municipi.getSelectedItem()+"'");
             if (Parroquia.getSelectedIndex()!=0){
                 out.setParroquia(p);
                 sparroquia = " (amb la parroquuia '"+p+"')";
@@ -129,13 +131,15 @@ public class formLloc {
                 out.setParroquia(p);
                 sparroquia = " (a la parroquia '"+p+"')";
             }
-            String msg = "El llogaret '"+p+"' no consta com a llogaret del municipi '"
-                    + m +"'. Vols afegir '"+p+"' "+sparroquia+" com a nou lloc?";
+            String msg = "El llogaret '"+ll+"' no consta com a llogaret del municipi '"
+                    + m +"'. Vols afegir '"+ll+"' "+sparroquia+" com a nou lloc?";
             int reply = JOptionPane.showConfirmDialog(null, msg, "Nou llogaret",
                     JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (reply==JOptionPane.YES_OPTION){
-                out.addLloc();
-                return out;
+                int newid = out.addLloc();
+                System.out.println("El lloc esta al municipi "+out.getMunicipi()+
+                        " amb id "+out.getId());
+                return new db.lloc(newid);
             }else{
                 throw new LEException("Hi ha errors en el lloc. Corregeix-ho abans de procedir.");
             }
@@ -147,7 +151,11 @@ public class formLloc {
             queryllogaret = ll;
         }
         try{
-            out = db.lloc.loadLloc(m, queryparroquia, queryllogaret);
+            if (m.equals("null")){
+                out = new db.lloc();
+            }else{
+                out = db.lloc.loadLloc(m, queryparroquia, queryllogaret);
+            }
         }catch (LEException e){
             String msg = "El lloc amb municipi "+m+" llogaret "+ll+" i parroquia "+
                     p+" no existex. Vols introduir-ho?";
@@ -219,4 +227,6 @@ public class formLloc {
         Llogaret.setEnabled(true);
         Parroquia.setEnabled(true);
     }
+    
+   
 }

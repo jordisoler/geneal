@@ -30,7 +30,8 @@ public class formLlista {
     private javax.swing.JList list;
     private ArrayList<Integer> people;
     
-    public formLlista(){
+    public formLlista(javax.swing.JList list_){
+        list = list_;
         people = new ArrayList<>();
         db.persona[] ps = {};
         fillList(ps);
@@ -40,8 +41,31 @@ public class formLlista {
         return new db.persona(people.get(i));
     }
     
+    public db.persona getSelectedPerson(){
+        int idx = list.getSelectedIndex();
+        return getPerson(idx);
+    }
+    
+    public void add(db.persona p){
+        people.add(p.getId());
+        javax.swing.DefaultListModel<String> lm = (javax.swing.DefaultListModel<String>) list.getModel();
+        lm.addElement(formatList(p));
+        list.setModel(lm);
+    }
+    
+    public void dropPerson(){
+        int i = list.getSelectedIndex();
+        db.persona p = getPerson(i);
+        p.delete();
+        people.remove(i);
+        javax.swing.DefaultListModel<String> lm = (javax.swing.DefaultListModel<String>) list.getModel();
+        lm.removeElementAt(i);
+        list.setModel(lm);
+    }
+    
     public void fillList(db.persona[] ps){
         javax.swing.DefaultListModel<String> lm = new javax.swing.DefaultListModel<>();
+        people = new ArrayList<>();
         
         for (db.persona p : ps){
             lm.addElement(formatList(p));
@@ -55,7 +79,7 @@ public class formLlista {
         try {
             u = db.unio.fromConjuge(p.getId());
         } catch (MUException |DBException ex) {
-            System.out.println("La persona "+p+" no té unió.");
+            //System.out.println("La persona "+p+" no té unió.");
             //Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
         

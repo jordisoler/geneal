@@ -270,13 +270,14 @@ public class persona extends conexio{
     
     public int addPersona(){
         if (this.idPersona == -1){
-            return addNewPersona();
+            int id = addNewPersona();
+            this.idPersona = id;
+            return id;
         }else{
             updatePersona();
             return this.idPersona;
         }
     }
-    
     public int addPersona(naixement n){
         int idf = addPersona();
         n.setFill(idf);
@@ -303,8 +304,6 @@ public class persona extends conexio{
                     }else{
                         return false;
                     }
-                }else{
-                    System.out.println("S'ha intentat eliminar una unió inexistent");
                 }
             } catch (MUException ex) {
                 int reply = JOptionPane.showConfirmDialog(null, "La persona "+this+" es troba "
@@ -385,17 +384,26 @@ public class persona extends conexio{
         }
     }
     
+    /**
+     *  Cerca persones a la base de dades a partir del seu nom complet.
+     * S'ha d'afegir tractament per a camps nuls.
+     * @param name Nom
+     * @param l1 Primer llinatge
+     * @param l2 Segon llinatge
+     * @return Array amb les persones trobades
+     */
     public static persona[] getPeopleLike(String name, String l1, String l2){
         persona.connect();
         ArrayList<persona> people = new ArrayList<>();
         try {
             String stm = "select * from persona where nom like '%"+name+
-                    "%' and llinatge1 like '%"+l1+"%' and llinatge2 like '%"+l2+"%'";
+                    "%' and (llinatge1 like '%"+l1+"%') and (llinatge2 like '%"+l2+"%')";
             Statement ps  =  con.createStatement();
             ResultSet rs = ps.executeQuery(stm);
             while(rs.next()){
                 people.add(new persona(rs.getInt("id_persona")));
             }
+            System.out.println(stm);
         } catch (SQLException ex) {
             Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
         }
