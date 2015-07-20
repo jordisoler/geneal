@@ -33,7 +33,7 @@ import java.util.logging.Logger;
  */
 public class municipi extends conexio{
     
-    private String nomMunicipi;
+    private final String nomMunicipi;
     
     public municipi() {
         this.nomMunicipi = null;
@@ -55,6 +55,11 @@ public class municipi extends conexio{
         }
     }
     
+    @Override
+    public String toString(){
+        return this.nomMunicipi;
+    }
+    
     public static boolean exist(String m){
         municipi.connect();
         try{
@@ -68,10 +73,6 @@ public class municipi extends conexio{
             Logger.getLogger(municipi.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-    }
-    
-    public String toString(){
-        return this.nomMunicipi;
     }
     
     public static String[] getAll(){

@@ -17,7 +17,6 @@
  */
 package db;
 
-
 import Exceptions.DBException;
 import Exceptions.dateException;
 import java.sql.PreparedStatement;
@@ -154,6 +153,11 @@ public class naixement extends conexio{
         }
     }
     
+    public boolean equals(naixement in){
+        return this.idFill == in.getIdFill() && this.idLloc == in.getIdLloc() &&
+                this.idUnio == in.getIdUnio() && this.dataNaixement == in.getDate();
+    }
+    
     public static boolean exist(int in){
         try {
             String str = "select * from naixement where id_fill="+in;
@@ -165,7 +169,6 @@ public class naixement extends conexio{
             return false;
         }
     }
-    
     public static boolean exist(naixement in){
         if (in.getIdFill()==-1){
             return false;
@@ -173,19 +176,7 @@ public class naixement extends conexio{
         return exist(in.getIdFill());
     }
     
-    private int nullify(int in){
-        if (in == 0){
-            return -1;
-        }else{
-            return in;
-        }
-    }
-    
-    public boolean equals(naixement in){
-        return this.idFill == in.getIdFill() && this.idLloc == in.getIdLloc() &&
-                this.idUnio == in.getIdUnio() && this.dataNaixement == in.getDate();
-    }
-    
+    //----------PRIVATE methods----------
     private void addNewNaixement(){
         try {
             String str = "insert into naixement (data_naixement, id_fill, id_unio,"
@@ -240,4 +231,13 @@ public class naixement extends conexio{
             Logger.getLogger(municipi.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private int nullify(int in){
+        if (in == 0){
+            return -1;
+        }else{
+            return in;
+        }
+    }
+    
 }

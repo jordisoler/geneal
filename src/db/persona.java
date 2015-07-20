@@ -44,6 +44,7 @@ public class persona extends conexio{
     private String sexe;
     private String comentaris;
     
+    //--------CONSTRUCTORS---------
     public persona(){
         super();
         this.idPersona = -1;
@@ -85,6 +86,8 @@ public class persona extends conexio{
         }
     }
     
+    //----------PUBLIC methods----------
+    //----------Getting properties----------
     public int getId(){
         return this.idPersona;
     }
@@ -108,7 +111,6 @@ public class persona extends conexio{
     public int getIdLlocDefuncio(){
         return this.idLlocDefuncio;
     }
-    
     public lloc getLlocDefuncio(){
         lloc l = new lloc(this.idLlocDefuncio);
         return l;
@@ -122,7 +124,7 @@ public class persona extends conexio{
         return this.comentaris;
     }
     
-    // Additional gets
+    //----------Additional gets----------
     public persona getPare(){
         try {
             if (this.isNull()){
@@ -151,10 +153,6 @@ public class persona extends conexio{
             return new persona();
             //Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    public boolean isNull(){
-        return this.idPersona == -1;
     }
     
     public ArrayList<familia> getFamilies(){
@@ -225,7 +223,7 @@ public class persona extends conexio{
         }
     }
     
-    // Setting data
+    //----------Setting data----------
     public void setId(int in){
         this.idPersona = in;
     }
@@ -268,6 +266,7 @@ public class persona extends conexio{
         this.comentaris = in;
     }
     
+    //----------Adding data to database----------
     public int addPersona(){
         if (this.idPersona == -1){
             int id = addNewPersona();
@@ -285,6 +284,7 @@ public class persona extends conexio{
         return idf;
     }
     
+    //---------Deleting data from  database----------
     public boolean delete(){
         if(persona.exist(this)){
             try {
@@ -338,19 +338,7 @@ public class persona extends conexio{
         }
     }
     
-    public static boolean exist(persona p){
-        try {
-            String str = "select * from  persona where id_persona = ?";
-            PreparedStatement pst = con.prepareStatement(str);
-            pst.setInt(1, Types.INTEGER);
-            ResultSet rs = pst.executeQuery();
-            return rs.next();
-        } catch (SQLException ex) {
-            Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
-    }
-    
+    //----------Boolean methods-----------
     public boolean innerTree(){
         Tree t = new Tree(this);
         ArrayList<ArrayList<persona>> branches = t.getBranches(idroot1);
@@ -358,6 +346,11 @@ public class persona extends conexio{
         return !branches.isEmpty() || !branches2.isEmpty();
     }
     
+    public boolean isNull(){
+        return this.idPersona == -1;
+    }
+    
+    //----------Generation methods-----------
     public ArrayList<Integer> getGenerations(){
         ArrayList<Integer> generations = new ArrayList<>();
         Tree t = new Tree(this);
@@ -367,7 +360,6 @@ public class persona extends conexio{
         }
         return generations;
     }
-    
     public String getGenerationsString(){
         ArrayList<Integer> generations = this.getGenerations();
         if (generations.isEmpty()){
@@ -381,6 +373,37 @@ public class persona extends conexio{
                 sout = sout+i;
             }
             return sout;
+        }
+    }
+    
+    @Override
+    public String toString(){
+        if ((this.nom == null && this.llinatge1 == null && this.llinatge2 == null) ||
+                this.isNull()){
+            return geneal.formutils.unknown;
+        }else{
+            String l1 ="",  l2="";
+            if (this.llinatge1 != null){
+                l1 = " "+this.llinatge1;
+            }
+            if (this.llinatge2 != null){
+                l2 = " "+this.llinatge2;
+            }
+            return this.nom+l1+l2;
+        }
+    }
+    
+    // ----------STATIC methods (public)----------
+    public static boolean exist(persona p){
+        try {
+            String str = "select * from  persona where id_persona = ?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setInt(1, Types.INTEGER);
+            ResultSet rs = pst.executeQuery();
+            return rs.next();
+        } catch (SQLException ex) {
+            Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
     }
     
@@ -411,23 +434,7 @@ public class persona extends conexio{
         return people.toArray(peopleArr);
     }
      
-    @Override
-    public String toString(){
-        if ((this.nom == null && this.llinatge1 == null && this.llinatge2 == null) ||
-                this.isNull()){
-            return geneal.formutils.unknown;
-        }else{
-            String l1 ="",  l2="";
-            if (this.llinatge1 != null){
-                l1 = " "+this.llinatge1;
-            }
-            if (this.llinatge2 != null){
-                l2 = " "+this.llinatge2;
-            }
-            return this.nom+l1+l2;
-        }
-    }
-    
+    // ----------PRIVATE methods---------
     private int addNewPersona(){
         try {
             String str = "insert into persona (nom, llinatge1, llinatge2,"

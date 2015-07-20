@@ -17,14 +17,6 @@
  */
 package geneal;
 
-import Exceptions.DBException;
-import db.*;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author jordi

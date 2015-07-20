@@ -202,7 +202,6 @@ public class lloc extends conexio{
             return false;
         }
     }
-    
     public static Boolean isAlreadyLlogaret(String ll, String m){
         try {
             String str = "select id_lloc from lloc where llogaret='"+ll+"' and "
@@ -227,7 +226,6 @@ public class lloc extends conexio{
             return false;
         }
     }
-    
     public static Boolean isAlreadyParroquia(String p,  String m){
         try {
             String str = "select id_lloc from lloc where parroquia='"+p+"' and "
@@ -359,6 +357,9 @@ public class lloc extends conexio{
         String[] parroquiesArr = new String[parroquies.size()];
         return parroquies.toArray(parroquiesArr);
     }
+    public static String[] getParroquies(){
+        return getParroquies(null);
+    }
     
     public static String[] getLlogarets(String municipi){
         lloc.connect();
@@ -383,28 +384,22 @@ public class lloc extends conexio{
         String[] llogaretsArr = new String[llogarets.size()];
         return llogarets.toArray(llogaretsArr);
     }
-
-    public static String[] getParroquies(){
-        return getParroquies(null);
-    }
-    
     public static String[] getLlogarets(){
         return getLlogarets(null);
     }
     
+    @Override
     public String toString(){
-        String llogaret = "";
-        String parroquia = "";
+        String llogaret_ = "";
+        String parroquia_ = "";
         if (this.llogaret != null){
-            llogaret = " ("+this.llogaret+")";
+            llogaret_ = " ("+this.llogaret+")";
         }
         if (this.parroquia != null){
-            llogaret = " ("+this.parroquia+")";
+            llogaret_ = " ("+this.parroquia+")";
         }
-        return this.nomMunicipi+llogaret+parroquia;
+        return this.nomMunicipi+llogaret_+parroquia_;
     }
-    
-
     
     private void loadLloc(int id){
         try {
