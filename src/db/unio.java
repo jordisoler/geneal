@@ -51,9 +51,10 @@ public class unio extends conexio{
     public unio(int id) throws DBException{
         super();
         try {
-            String str = "select * from unio where id_unio="+id;
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select * from unio where id_unio=?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
             if (rs.next()){
                 this.idUnio = id;
                 this.fitxa = rs.getInt("fitxa");
@@ -81,9 +82,10 @@ public class unio extends conexio{
     public static unio fromFitxa(int fitxa){
         unio u = new unio();
         try {
-            String str = "select * from unio where fitxa="+fitxa;
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select * from unio where fitxa=?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setInt(1, fitxa);
+            ResultSet rs = pst.executeQuery();
             if (rs.next()){
                 u.idUnio = rs.getInt("id_unio");
                 if (rs.wasNull()){
@@ -112,10 +114,12 @@ public class unio extends conexio{
     public static unio fromConjuge(int id) throws MUException, DBException{
         unio u = new unio();
         try {
-            String str = "select * from unio where id_conjuge1="+id+" or "
-                    +"id_conjuge2="+id;
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select * from unio where id_conjuge1=? or "
+                    +"id_conjuge2=?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setInt(1, id);
+            pst.setInt(2, id);
+            ResultSet rs = pst.executeQuery();
             if (rs.next()){
                 u.idUnio = rs.getInt("id_unio");
                 if (rs.wasNull()){
@@ -275,9 +279,10 @@ public class unio extends conexio{
     
     public static boolean existFitxa(int fitxa){
         try {
-            String str = "select * from unio where fitxa="+fitxa;
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select * from unio where fitxa=?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setInt(1,fitxa);
+            ResultSet rs = pst.executeQuery();
             return rs.next();
         } catch (SQLException ex) {
             Logger.getLogger(lloc.class.getName()).log(Level.SEVERE, null, ex);
@@ -287,9 +292,10 @@ public class unio extends conexio{
     
     public static boolean exist(int id_unio){
         try {
-            String str = "select * from unio where id_unio="+id_unio;
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select * from unio where id_unio=?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setInt(1, id_unio);
+            ResultSet rs = pst.executeQuery();
             return rs.next();
         } catch (SQLException ex) {
             Logger.getLogger(lloc.class.getName()).log(Level.SEVERE, null, ex);
@@ -305,8 +311,9 @@ public class unio extends conexio{
         for (int i=0; i<2; i++){
             try {
                 String str = "update unio set "+conjuges[i]+" = null where "+conjuges[i]
-                        +" = "+id;
-                Statement pst = con.createStatement();
+                        +" = ?";
+                PreparedStatement pst = con.prepareStatement(str);
+                pst.setInt(1, id);
                 pst.executeQuery(str);
             } catch (SQLException ex) {}
             

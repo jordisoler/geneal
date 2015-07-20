@@ -79,20 +79,37 @@ public class lloc extends conexio{
     
     public static lloc loadLloc(String nomMunicipi, String parroquia, String llogaret) throws SQLException, LEException{
         lloc l = new lloc();
+        boolean b_ll = false, b_p = false;
         if (nomMunicipi == null || "".equals(nomMunicipi)){
             throw new SQLException("S'ha intentat introduir un nom de municipi nul.");
         }   
-        String query = "select * from lloc where id_municipi = '"+nomMunicipi+"' ";
+        String query = "select * from lloc where id_municipi = ? ";
         
         if (llogaret != null && !llogaret.equals("") && !llogaret.equals(funknown)){
-            query = query+" and llogaret='"+llogaret+"' ";
+            query = query+" and llogaret=? ";
+            b_ll = true;
         }
         if (parroquia != null && !parroquia.equals("") && !parroquia.equals(funknown)){
-            query = query+" and parroquia='"+parroquia+"' ";
+            query = query+" and parroquia=? ";
+            b_p = true;
         }
         
-        Statement stm = con.createStatement();
-        ResultSet rs = stm.executeQuery(query);
+        PreparedStatement pst = con.prepareStatement(query);
+        pst.setString(1, nomMunicipi);
+        if (b_ll){
+            if(b_p){
+                pst.setString(2, llogaret);
+                pst.setString(3, parroquia);
+            }else{
+                pst.setString(2, llogaret);
+            }
+        }else{
+            if (b_p){
+                pst.setString(2, parroquia);
+            }
+        }
+        
+        ResultSet rs = pst.executeQuery();
         if (rs.next()){
             l.idLloc = rs.getInt("id_lloc");
             l.nomMunicipi = rs.getString("id_municipi");
@@ -164,9 +181,10 @@ public class lloc extends conexio{
     public static lloc fromLlogaret(String in){
         lloc out = new lloc();
         try {
-            String str = "select id_lloc from lloc where llogaret='"+in+"'";
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select id_lloc from lloc where llogaret=?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setString(1, in);
+            ResultSet rs = pst.executeQuery();
             if(rs.next()){
                 out = new lloc(rs.getInt("id_lloc"));
             }
@@ -179,9 +197,10 @@ public class lloc extends conexio{
     public static lloc fromParroquia(String in){
         lloc out = new lloc();
         try {
-            String str = "select id_lloc from lloc where parroquia='"+in+"'";
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select id_lloc from lloc where parroquia=?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setString(1, in);
+            ResultSet rs = pst.executeQuery();
             if(rs.next()){
                 out = new lloc(rs.getInt("id_lloc"));
             }
@@ -193,9 +212,10 @@ public class lloc extends conexio{
     
     public static Boolean isAlreadyLlogaret(String in){
         try {
-            String str = "select id_lloc from lloc where llogaret='"+in+"'";
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select id_lloc from lloc where llogaret=?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setString(1, in);
+            ResultSet rs = pst.executeQuery();
             return rs.next();
         } catch (SQLException ex) {
             Logger.getLogger(lloc.class.getName()).log(Level.SEVERE, null, ex);
@@ -204,10 +224,12 @@ public class lloc extends conexio{
     }
     public static Boolean isAlreadyLlogaret(String ll, String m){
         try {
-            String str = "select id_lloc from lloc where llogaret='"+ll+"' and "
-                    + "id_municipi = '"+m+"'";
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select id_lloc from lloc where llogaret=? and "
+                    + "id_municipi = ?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setString(1, ll);
+            pst.setString(2, m);
+            ResultSet rs = pst.executeQuery();
             return rs.next();
         } catch (SQLException ex) {
             Logger.getLogger(lloc.class.getName()).log(Level.SEVERE, null, ex);
@@ -217,9 +239,10 @@ public class lloc extends conexio{
     
     public static Boolean isAlreadyParroquia(String in){
         try {
-            String str = "select id_lloc from lloc where parroquia='"+in+"'";
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select id_lloc from lloc where parroquia=?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setString(1, in);
+            ResultSet rs = pst.executeQuery();
             return rs.next();
         } catch (SQLException ex) {
             Logger.getLogger(lloc.class.getName()).log(Level.SEVERE, null, ex);
@@ -228,10 +251,12 @@ public class lloc extends conexio{
     }
     public static Boolean isAlreadyParroquia(String p,  String m){
         try {
-            String str = "select id_lloc from lloc where parroquia='"+p+"' and "
-                    + "id_municipi = '"+m+"'";
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select id_lloc from lloc where parroquia=? and "
+                    + "id_municipi = ?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setString(1, p);
+            pst.setString(2, m);
+            ResultSet rs = pst.executeQuery(str);
             return rs.next();
         } catch (SQLException ex) {
             Logger.getLogger(lloc.class.getName()).log(Level.SEVERE, null, ex);
@@ -241,9 +266,10 @@ public class lloc extends conexio{
     
     public static boolean isAlready(int in){
         try {
-            String str = "select id_lloc from lloc where id_lloc="+in;
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select id_lloc from lloc where id_lloc=?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setInt(1, in);
+            ResultSet rs = pst.executeQuery();
             return rs.next();
         } catch (SQLException ex) {
             Logger.getLogger(lloc.class.getName()).log(Level.SEVERE, null, ex);
@@ -258,9 +284,10 @@ public class lloc extends conexio{
     public boolean fromLlogaret2(String in){
         boolean hihes = false;
         try {
-            String str = "select id_lloc from lloc where llogaret='"+in+"'";
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select id_lloc from lloc where llogaret=?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setString(1, in);
+            ResultSet rs = pst.executeQuery();
             if (rs.next()){
                 hihes = true;
                 int id = rs.getInt("id_lloc");
@@ -276,9 +303,10 @@ public class lloc extends conexio{
     public boolean fromParroquia2(String in){
         boolean hihes = false;
         try {
-            String str = "select id_lloc from lloc where parroquia='"+in+"'";
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select id_lloc from lloc where parroquia=?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setString(1, in);
+            ResultSet rs = pst.executeQuery();
             if (rs.next()){
                 hihes = true;
                 int id = rs.getInt("id_lloc");
@@ -342,12 +370,15 @@ public class lloc extends conexio{
             if (municipi==null || "".equals(municipi)){
                 condition = "";
             }else{
-                condition = " and id_municipi = '"+municipi+"'";
+                condition = " and id_municipi = ?";
             }
             String str = "select parroquia from lloc where parroquia is not null "
                     + condition+" group by parroquia";
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            PreparedStatement pst = con.prepareStatement(str);
+            if (!condition.isEmpty()){
+                pst.setString(1, municipi);
+            }
+            ResultSet rs = pst.executeQuery();
             while (rs.next()){
                 parroquies.add(rs.getString("parroquia"));
             }
@@ -369,12 +400,13 @@ public class lloc extends conexio{
             if (municipi==null || "".equals(municipi)){
                 condition = "";
             }else{
-                condition = " and id_municipi = '"+municipi+"'";
+                condition = " and id_municipi = ?";
             }
             String str = "select llogaret from lloc where llogaret is not null "
                     + condition+" group by llogaret";
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setString(1, municipi);
+            ResultSet rs = pst.executeQuery();
             while (rs.next()){
                 llogarets.add(rs.getString("llogaret"));
             }
@@ -404,10 +436,11 @@ public class lloc extends conexio{
     private void loadLloc(int id){
         try {
             this.idLloc = id;
-            String ordre = "select id_municipi, llogaret, parroquia from lloc"
-                    +" where id_lloc = '"+id+"'";
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(ordre);
+            String str = "select id_municipi, llogaret, parroquia from lloc"
+                    +" where id_lloc = ?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
             if(rs.next()){
                 this.llogaret=rs.getString("llogaret");
                 this.parroquia=rs.getString("parroquia");

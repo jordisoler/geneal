@@ -48,9 +48,10 @@ public class naixement extends conexio{
     public naixement(int fill) throws DBException{
         super();
         try {
-            String str = "select * from naixement where id_fill="+fill;
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select * from naixement where id_fill=?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setInt(1, fill);
+            ResultSet rs = pst.executeQuery();
             if (rs.next()){
                 this.idFill = fill;
                 this.idLloc = nullify(rs.getInt("id_lloc"));
@@ -160,9 +161,10 @@ public class naixement extends conexio{
     
     public static boolean exist(int in){
         try {
-            String str = "select * from naixement where id_fill="+in;
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select * from naixement where id_fill=?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setInt(1, in);
+            ResultSet rs = pst.executeQuery();
             return rs.next();
         } catch (SQLException ex) {
             Logger.getLogger(lloc.class.getName()).log(Level.SEVERE, null, ex);

@@ -60,9 +60,10 @@ public class persona extends conexio{
     public persona(int id){
         super();
         try {
-            String str = "select * from persona where id_persona="+id;
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select * from persona where id_persona=?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
             if (rs.next()){
                 this.idPersona = id;
                 this.nom = rs.getString("nom");
@@ -419,10 +420,13 @@ public class persona extends conexio{
         persona.connect();
         ArrayList<persona> people = new ArrayList<>();
         try {
-            String stm = "select * from persona where nom like '%"+name+
-                    "%' and (llinatge1 like '%"+l1+"%') and (llinatge2 like '%"+l2+"%')";
-            Statement ps  =  con.createStatement();
-            ResultSet rs = ps.executeQuery(stm);
+            String stm = "select * from persona where nom like ?"
+                    + " and (llinatge1 like ?) and (llinatge2 like ?)";
+            PreparedStatement pst  =  con.prepareStatement(stm);
+            pst.setString(1, "%"+name+"%");
+            pst.setString(2, "%"+l1+"%");
+            pst.setString(3, "%"+l2+"%");
+            ResultSet rs = pst.executeQuery();
             while(rs.next()){
                 people.add(new persona(rs.getInt("id_persona")));
             }

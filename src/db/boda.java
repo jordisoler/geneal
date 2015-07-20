@@ -48,9 +48,10 @@ public class boda extends conexio{
     public boda(int unio){
         super();
         try {
-            String str = "select * from boda where id_unio="+unio;
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select * from boda where id_unio=?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setInt(1, unio);
+            ResultSet rs = pst.executeQuery();
             if (rs.next()){
                 this.idUnio  = unio;
                 this.idLloc = rs.getInt("id_lloc");
@@ -136,9 +137,10 @@ public class boda extends conexio{
     
     public static boolean exist(int in){
         try {
-            String str = "select * from boda where id_unio="+in;
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery(str);
+            String str = "select * from boda where id_unio=?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setInt(1, in);
+            ResultSet rs = pst.executeQuery();
             return rs.next();
         } catch (SQLException ex) {
             Logger.getLogger(lloc.class.getName()).log(Level.SEVERE, null, ex);
