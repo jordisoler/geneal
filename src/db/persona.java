@@ -410,7 +410,7 @@ public class persona extends conexio{
         persona[] peopleArr = new persona[people.size()];
         return people.toArray(peopleArr);
     }
-    
+     
     @Override
     public String toString(){
         if ((this.nom == null && this.llinatge1 == null && this.llinatge2 == null) ||

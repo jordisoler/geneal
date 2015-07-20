@@ -54,13 +54,17 @@ public class formutils {
     
     public static void fillCbEditable(javax.swing.JComboBox cb, String[] data){
         cb.setEditable(true);
+        fillCb(cb, data);
+        AutoCompletion ac = new AutoCompletion(cb);
+        ac.setStrict(false);
+    }
+    
+    public static void fillCb(javax.swing.JComboBox cb, String[] data){
         String[] emplenar = new String[data.length+1];
         emplenar[0] = unknown;
         System.arraycopy(data, 0, emplenar, 1, data.length);
         javax.swing.ComboBoxModel cbm = new javax.swing.DefaultComboBoxModel(emplenar);
         cb.setModel(cbm);
-        AutoCompletion ac = new AutoCompletion(cb);
-        ac.setStrict(false);
     }
     
     

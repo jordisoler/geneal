@@ -17,25 +17,10 @@
  */
 package geneal;
 
-import Exceptions.DBException;
-import db.*;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author jordi
  */
-public class Geneal {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        new App().setVisible(true);
-        System.out.println("Benvingut a l'aplicació geneològica Geneal ");
-    }
+public class config {
+    //private static final String
 }

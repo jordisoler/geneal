@@ -321,9 +321,6 @@ public class App extends javax.swing.JFrame {
         exitMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentsMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -1819,23 +1816,17 @@ public class App extends javax.swing.JFrame {
         menuBar.add(fileMenu);
 
         editMenu.setMnemonic('e');
-        editMenu.setText("Edit");
+        editMenu.setText("CSV");
 
+        cutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
         cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Cut");
+        cutMenuItem.setText("Generar CSV");
+        cutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cutMenuItemActionPerformed(evt);
+            }
+        });
         editMenu.add(cutMenuItem);
-
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Copy");
-        editMenu.add(copyMenuItem);
-
-        pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Paste");
-        editMenu.add(pasteMenuItem);
-
-        deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Delete");
-        editMenu.add(deleteMenuItem);
 
         menuBar.add(editMenu);
 
@@ -2047,6 +2038,10 @@ public class App extends javax.swing.JFrame {
     private void c_casamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_casamentActionPerformed
         f.ActionPerformedCasament();
     }//GEN-LAST:event_c_casamentActionPerformed
+
+    private void cutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cutMenuItemActionPerformed
+        new CSVgenerate.formCSV().setVisible(true);
+    }//GEN-LAST:event_cutMenuItemActionPerformed
     
     
     private void initialize(){
@@ -2200,9 +2195,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JComboBox c_umunicipi;
     private javax.swing.JComboBox c_uparroquia;
     private javax.swing.JMenuItem contentsMenuItem;
-    private javax.swing.JMenuItem copyMenuItem;
     private javax.swing.JMenuItem cutMenuItem;
-    private javax.swing.JMenuItem deleteMenuItem;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
@@ -2391,7 +2384,6 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JList ll_ufills;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JMenuItem pasteMenuItem;
     private javax.swing.JPopupMenu popuplist;
     private javax.swing.JTextField t_1any;
     private javax.swing.JTextArea t_1comentaris;
@@ -2412,15 +2404,17 @@ public class App extends javax.swing.JFrame {
     private void novaFitxa() {
         String sf = JOptionPane.showInputDialog(null, "Número de fitxa a carregar",
                 "Carregar fitxa", JOptionPane.OK_CANCEL_OPTION);
-        try{
-            int fitxa = Integer.parseInt(sf);
-            if(!db.unio.existFitxa(fitxa)){
-                throw new DBException();
-            }else{
-                f.fillFitxa(fitxa);
+        if (!(sf==null || sf.isEmpty())){
+            try{
+                int fitxa = Integer.parseInt(sf);
+                if(!db.unio.existFitxa(fitxa)){
+                    throw new DBException();
+                }else{
+                    f.fillFitxa(fitxa);
+                }
+            }catch (NumberFormatException | DBException e){
+                new GException("La fitxa introduida no és correcte.", "Fitxa incorrete").show();
             }
-        }catch (NumberFormatException | DBException e){
-            new GException("La fitxa introduida no és correcte.", "Fitxa incorrete").show();
         }
     }
 
