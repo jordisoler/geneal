@@ -2147,22 +2147,6 @@ public class App extends javax.swing.JFrame {
         novaFitxa();
     }
     
-    private void setupButton(int id_p, javax.swing.JButton b){
-        try{
-                db.naixement n = new db.naixement(id_p);
-                if (n.getIdUnio()==-1){
-                    b.setText(newPares);
-                    System.out.println("No unió. Id fill: "+id_p+", Id unió: "+n.getIdUnio());
-                }else{
-                    b.setText("Fitxa pares");
-                }
-            }catch (DBException e){
-                b.setText(newPares);
-                e.show();
-            }
-    }
-    
-    
     
     /**
      * @param args the command line arguments
