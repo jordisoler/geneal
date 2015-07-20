@@ -86,7 +86,6 @@ public class formLloc {
             out.setMunicipi(m);
         }
         if (newmunicipi){
-            System.out.println("Municipi '"+Municipi.getSelectedItem()+"'");
             if (Parroquia.getSelectedIndex()!=0){
                 out.setParroquia(p);
                 sparroquia = " (amb la parroquuia '"+p+"')";

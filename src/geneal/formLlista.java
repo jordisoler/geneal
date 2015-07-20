@@ -78,10 +78,7 @@ public class formLlista {
         db.unio u = new unio();
         try {
             u = db.unio.fromConjuge(p.getId());
-        } catch (MUException |DBException ex) {
-            //System.out.println("La persona "+p+" no té unió.");
-            //Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (MUException |DBException ex) {}
         
         if (!u.isNull()){
             sfitxa="[Fitxa "+u.getFitxa()+"] ";

@@ -66,7 +66,7 @@ public class naixement extends conexio{
                     + "inexistent (id de la persona: "+fill+")");
             }
         } catch (SQLException ex) {
-            System.out.println(ex);
+            Logger.getLogger(municipi.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -143,7 +143,6 @@ public class naixement extends conexio{
                 String str = "delete from  naixement where id_fill = ?";
                 PreparedStatement pst = con.prepareStatement(str);
                 pst.setInt(1, this.idFill);
-                System.out.println(pst);
                 pst.execute();
             } catch (SQLException ex) {
                 Logger.getLogger(naixement.class.getName()).log(Level.SEVERE, null, ex);

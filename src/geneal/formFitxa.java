@@ -300,7 +300,7 @@ public class formFitxa {
                 }
                 break;
             default:
-                System.out.println("ERROR: L'estat es desconegut: "+estat);
+                System.err.println("ERROR: L'estat es desconegut: "+estat);
                 
         }
     }

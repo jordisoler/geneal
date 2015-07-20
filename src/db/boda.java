@@ -66,7 +66,6 @@ public class boda extends conexio{
                 this.data = new date();
             }
         } catch (SQLException ex) {
-            System.out.println(ex);
             Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

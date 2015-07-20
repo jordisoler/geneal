@@ -82,7 +82,6 @@ public class persona extends conexio{
                 this.comentaris = rs.getString("comentaris");
             }
         } catch (SQLException ex) {
-            System.out.println(ex.getSQLState());
             Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -250,7 +249,6 @@ public class persona extends conexio{
     }
     
     public void setSexe(String in){
-        System.out.println(in);
         if (in == null || in.equals("m") || in.equals("f")){
             this.sexe = in;
         }else{
@@ -320,7 +318,6 @@ public class persona extends conexio{
             try{
                 naixement n = new naixement(this.getId());
                 boolean i = n.delete();
-                System.out.println(i);
             }catch (Exception e){
                 System.out.println("No s'ha eliminat  cap naixement per a la id: "+this.getId());
             }
@@ -331,7 +328,7 @@ public class persona extends conexio{
                 pst.execute();
                 return true;
             }catch (Exception e){
-                System.out.println(e);
+                Logger.getLogger(municipi.class.getName()).log(Level.SEVERE, null, e);
                 return false;
             }
         }else{
@@ -430,7 +427,6 @@ public class persona extends conexio{
             while(rs.next()){
                 people.add(new persona(rs.getInt("id_persona")));
             }
-            System.out.println(stm);
         } catch (SQLException ex) {
             Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -460,7 +460,6 @@ public class NewFill extends javax.swing.JFrame {
             p.setSexe(getSexe(this.c_1sexe));
             p.setComentaris(this.t_1comentaris.getText());
             int id_p = p.addPersona();
-            System.out.println(id_p);
             db.naixement n = new db.naixement();
             n.setUnio(unio);
             n.setFill(id_p);

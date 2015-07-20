@@ -113,12 +113,9 @@ public class date {
     }
     
     public Date tojDate(){
-        System.out.println("Dia: "+this.day+", mes: "+this.month+", any: "+this.year);
         if (this.isNull()){
-            System.out.println("Dia: "+this.day+", mes: "+this.month+", any: "+this.year);
             return null;
         }else{
-            System.out.println("Data en forma Query: "+ this.toQuery());
             //java.sql.Date sdate = new java.sql.Date(year, month, day);
             return java.sql.Date.valueOf(this.toQuery());
         }

@@ -294,7 +294,6 @@ public class lloc extends conexio{
                 loadLloc(id);
             }            
         } catch (SQLException ex) {
-            System.out.println(ex.getCause());
             Logger.getLogger(lloc.class.getName()).log(Level.SEVERE, null, ex);
         }
         return hihes;
@@ -355,7 +354,6 @@ public class lloc extends conexio{
                 llocs.add(l);
             }
         }catch (SQLException ex) {
-            System.out.println(ex);
             Logger.getLogger(municipi.class.getName()).log(Level.SEVERE, null, ex);
         }
         lloc[] llocsArr = new lloc[llocs.size()];
@@ -383,7 +381,7 @@ public class lloc extends conexio{
                 parroquies.add(rs.getString("parroquia"));
             }
         }catch (SQLException ex) {
-            System.out.println(ex);
+            Logger.getLogger(municipi.class.getName()).log(Level.SEVERE, null, ex);
         }
         String[] parroquiesArr = new String[parroquies.size()];
         return parroquies.toArray(parroquiesArr);
@@ -405,13 +403,15 @@ public class lloc extends conexio{
             String str = "select llogaret from lloc where llogaret is not null "
                     + condition+" group by llogaret";
             PreparedStatement pst = con.prepareStatement(str);
-            pst.setString(1, municipi);
+            if (!condition.isEmpty()){
+                pst.setString(1, municipi);
+            }
             ResultSet rs = pst.executeQuery();
             while (rs.next()){
                 llogarets.add(rs.getString("llogaret"));
             }
         }catch (SQLException ex) {
-            System.out.println(ex);
+            Logger.getLogger(municipi.class.getName()).log(Level.SEVERE, null, ex);
         }
         String[] llogaretsArr = new String[llogarets.size()];
         return llogarets.toArray(llogaretsArr);

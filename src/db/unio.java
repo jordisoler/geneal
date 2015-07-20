@@ -75,7 +75,6 @@ public class unio extends conexio{
                         + "inexistent (id="+id+")");
             }
         } catch (SQLException ex) {
-            System.out.println(ex.getSQLState());
             Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -106,7 +105,6 @@ public class unio extends conexio{
                 u.comentaris = rs.getString("unio_comentaris");
             }
         } catch (SQLException ex) {
-            System.out.println(ex.getSQLState());
             Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
         }
         return u;
@@ -152,7 +150,6 @@ public class unio extends conexio{
             }
             
         } catch (SQLException ex) {
-            System.out.println(ex.getSQLState());
             Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
         }
         return u;

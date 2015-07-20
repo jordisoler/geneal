@@ -69,7 +69,6 @@ public class municipi extends conexio{
             ResultSet rs = stm.executeQuery();
             return rs.next();
         }catch (SQLException ex) {
-            System.out.println(ex);
             Logger.getLogger(municipi.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
@@ -86,7 +85,6 @@ public class municipi extends conexio{
                 municipis.add(rs.getString("nom_municipi"));
             }
         }catch (SQLException ex) {
-            System.out.println(ex);
             Logger.getLogger(municipi.class.getName()).log(Level.SEVERE, null, ex);
         }
         String[] municipisArr = new String[municipis.size()];
