@@ -322,7 +322,6 @@ public class App extends javax.swing.JFrame {
         editMenu = new javax.swing.JMenu();
         cutMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
-        contentsMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
 
         jList3.setModel(new javax.swing.AbstractListModel() {
@@ -333,6 +332,11 @@ public class App extends javax.swing.JFrame {
         jScrollPane6.setViewportView(jList3);
 
         Seleccionar.setText("Veure");
+        Seleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SeleccionarActionPerformed(evt);
+            }
+        });
         popuplist.add(Seleccionar);
 
         Eliminar.setText("Eliminar");
@@ -1831,14 +1835,15 @@ public class App extends javax.swing.JFrame {
         menuBar.add(editMenu);
 
         helpMenu.setMnemonic('h');
-        helpMenu.setText("Help");
-
-        contentsMenuItem.setMnemonic('c');
-        contentsMenuItem.setText("Contents");
-        helpMenu.add(contentsMenuItem);
+        helpMenu.setText("Ajuda");
 
         aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
+        aboutMenuItem.setText("Sobre Geneal");
+        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aboutMenuItemActionPerformed(evt);
+            }
+        });
         helpMenu.add(aboutMenuItem);
 
         menuBar.add(helpMenu);
@@ -2042,6 +2047,14 @@ public class App extends javax.swing.JFrame {
     private void cutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cutMenuItemActionPerformed
         new CSVgenerate.formCSV().setVisible(true);
     }//GEN-LAST:event_cutMenuItemActionPerformed
+
+    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+        new GException("Aquesta opció encara no la he programat. \n\t:(","Opció no suportada").show();
+    }//GEN-LAST:event_aboutMenuItemActionPerformed
+
+    private void SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarActionPerformed
+        new GException("Aquesta opció encara no la he programat. \n\t:(","Opció no suportada").show();
+    }//GEN-LAST:event_SeleccionarActionPerformed
     
     
     private void initialize(){
@@ -2194,7 +2207,6 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JComboBox c_umes;
     private javax.swing.JComboBox c_umunicipi;
     private javax.swing.JComboBox c_uparroquia;
-    private javax.swing.JMenuItem contentsMenuItem;
     private javax.swing.JMenuItem cutMenuItem;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem exitMenuItem;
@@ -2417,5 +2429,5 @@ public class App extends javax.swing.JFrame {
             }
         }
     }
-
+    
 }
