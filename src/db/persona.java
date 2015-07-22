@@ -405,6 +405,66 @@ public class persona extends conexio{
         }
     }
     
+    public static int count(){
+        persona.connect();
+        try {
+            String str = "select count(*) as num from  persona;";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(str);
+            if (rs.next()){
+                return rs.getInt("num");
+            }else{
+                throw new SQLException();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+    }
+    
+    public static persona[] search(String[] valors){
+        persona.connect();
+        ArrayList<persona> people = new ArrayList<>();
+        String llocn = "llocn", llocd = "llocd", id_p = "id";
+        String[] camps = {"persona.nom", "persona.llinatge1", "persona.llinatge2",
+            llocn+".id_municipi",llocd+".id_municipi"};
+        try{
+            String str = "select persona.id_persona as "+id_p+" from  persona\n" +
+                "inner join naixement on\n" +
+                "persona.id_persona = naixement.id_fill\n" +
+                "inner join lloc as "+llocn+" on\n" +
+                "naixement.id_lloc = "+llocn+".id_lloc\n" +
+                "inner join lloc as "+llocd+" on\n" +
+                "persona.lloc_defuncio = "+llocd+".id_lloc\n" +
+                "where true ";
+            
+            int idx = 0;
+            for (String s : camps){
+                if (valors[idx]!=null){
+                    str = str + "and "+s+" like ? ";
+                }
+                idx ++;
+            }
+            
+            PreparedStatement pst = con.prepareStatement(str);
+            int counter = 0;
+            for (String s : valors){
+                if (s!=null){
+                    counter++;
+                    pst.setString(counter, "%"+s+"%");
+                }
+            }
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()){
+                people.add(new persona(rs.getInt(id_p)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        persona[] peopleArr = new persona[people.size()];
+        return people.toArray(peopleArr);
+    }
+    
     /**
      *  Cerca persones a la base de dades a partir del seu nom complet.
      * S'ha d'afegir tractament per a camps nuls.

@@ -79,6 +79,7 @@ public class unio extends conexio{
         }
     }
     public static unio fromFitxa(int fitxa){
+        unio.connect();
         unio u = new unio();
         try {
             String str = "select * from unio where fitxa=?";
@@ -301,6 +302,22 @@ public class unio extends conexio{
     }
     public static boolean exist(unio in){
         return unio.exist(in.getId());
+    }
+    
+    public static int count(){
+        try {
+            String str = "select count(*) as num from  unio;";
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(str);
+            if (rs.next()){
+                return rs.getInt("num");
+            }else{
+                throw new SQLException();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
     }
     
     public static void deletePersona(int id){

@@ -320,7 +320,8 @@ public class App extends javax.swing.JFrame {
         openMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
+        mu_csv = new javax.swing.JMenuItem();
+        mu_taula = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
@@ -1820,17 +1821,27 @@ public class App extends javax.swing.JFrame {
         menuBar.add(fileMenu);
 
         editMenu.setMnemonic('e');
-        editMenu.setText("CSV");
+        editMenu.setText("Eines");
 
-        cutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Generar CSV");
-        cutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        mu_csv.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
+        mu_csv.setMnemonic('t');
+        mu_csv.setText("Generar llistes");
+        mu_csv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cutMenuItemActionPerformed(evt);
+                mu_csvActionPerformed(evt);
             }
         });
-        editMenu.add(cutMenuItem);
+        editMenu.add(mu_csv);
+
+        mu_taula.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        mu_taula.setMnemonic('t');
+        mu_taula.setText("Taula");
+        mu_taula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mu_taulaActionPerformed(evt);
+            }
+        });
+        editMenu.add(mu_taula);
 
         menuBar.add(editMenu);
 
@@ -2044,9 +2055,9 @@ public class App extends javax.swing.JFrame {
         f.ActionPerformedCasament();
     }//GEN-LAST:event_c_casamentActionPerformed
 
-    private void cutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cutMenuItemActionPerformed
-        new CSVgenerate.formCSV().setVisible(true);
-    }//GEN-LAST:event_cutMenuItemActionPerformed
+    private void mu_taulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mu_taulaActionPerformed
+        new taula(f).setVisible(true);
+    }//GEN-LAST:event_mu_taulaActionPerformed
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         new GException("Aquesta opció encara no la he programat. \n\t:(","Opció no suportada").show();
@@ -2055,6 +2066,10 @@ public class App extends javax.swing.JFrame {
     private void SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarActionPerformed
         new GException("Aquesta opció encara no la he programat. \n\t:(","Opció no suportada").show();
     }//GEN-LAST:event_SeleccionarActionPerformed
+
+    private void mu_csvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mu_csvActionPerformed
+        new CSVgenerate.formCSV().setVisible(true);
+    }//GEN-LAST:event_mu_csvActionPerformed
     
     
     private void initialize(){
@@ -2068,7 +2083,7 @@ public class App extends javax.swing.JFrame {
         
         db.unio un;
         try {
-            un = new db.unio(31);
+            un = new db.unio(1);
         } catch (DBException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
             un = new db.unio();
@@ -2191,7 +2206,6 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JComboBox c_umes;
     private javax.swing.JComboBox c_umunicipi;
     private javax.swing.JComboBox c_uparroquia;
-    private javax.swing.JMenuItem cutMenuItem;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
@@ -2379,6 +2393,8 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel l_pppare;
     private javax.swing.JList ll_ufills;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem mu_csv;
+    private javax.swing.JMenuItem mu_taula;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JPopupMenu popuplist;
     private javax.swing.JTextField t_1any;
