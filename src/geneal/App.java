@@ -2166,6 +2166,9 @@ public class App extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    public static void main(String[] args){
+        new App().setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Eliminar;

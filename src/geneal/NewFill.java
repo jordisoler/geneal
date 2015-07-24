@@ -490,9 +490,6 @@ public class NewFill extends javax.swing.JFrame {
         this.defuncio.selectedLlogaret();
     }//GEN-LAST:event_c_1dllogaretActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b_afegirfill;
