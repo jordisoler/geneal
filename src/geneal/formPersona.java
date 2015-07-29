@@ -64,6 +64,9 @@ public class formPersona {
         sexe = sexe_;
         label =  label_;
         tree = tree_;
+        for (javax.swing.JLabel l : tree){
+            l.setText(unknown);
+        }
         if (conjuge_ == Conjuge1 || conjuge_==Conjuge2){
             conjuge = conjuge_;
         }else{
