@@ -47,6 +47,7 @@ public class App extends javax.swing.JFrame {
      */
     public App() {
         initialize();
+        System.out.println("Benvingut a l'aplicació geneològica Geneal!");
     }
     
     
@@ -2081,13 +2082,7 @@ public class App extends javax.swing.JFrame {
         
         this.setVisible(true);
         
-        db.unio un;
-        try {
-            un = new db.unio(1);
-        } catch (DBException ex) {
-            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-            un = new db.unio();
-        }
+        db.unio un = new db.unio();
         
         ll_ufills.addMouseListener(new MouseAdapter() {
             @Override
