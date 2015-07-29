@@ -248,9 +248,17 @@ public class taula extends javax.swing.JFrame {
         values[1] = p.getNom();
         values[2] = p.getLlinatge1();
         values[3] = p.getLlinatge2();
-        values[4] = n.getDate().toString();
+        try{
+            values[4] = n.getDate().toString();
+        }catch (NullPointerException ex){
+            System.out.println("Naixement: "+n.toString());
+        }
         values[5] = n.getLloc().getMunicipi();
-        values[6] = p.getDataDefuncio().toString();
+        try{
+            values[6] = p.getDataDefuncio().toString();
+        }catch (NullPointerException ex){
+            System.out.println("Defunció: "+p);
+        }
         values[7] = p.getLlocDefuncio().getMunicipi();
         values[8] = p.getSexe();
         model.addRow(values);

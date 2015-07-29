@@ -96,6 +96,7 @@ public class date {
         return result;
     }
     
+    @Override
     public String toString(){
         String d = "", m ="", y = "<desconegut>";
         if (this.year != -1){
@@ -107,7 +108,7 @@ public class date {
                 }
             }
         }else{
-            return null;
+            return "";
         }
         return d+m+y;
     }

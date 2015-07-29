@@ -66,6 +66,7 @@ public class naixement extends conexio{
                     + "inexistent (id de la persona: "+fill+")");
             }
         } catch (SQLException ex) {
+            System.err.println("Excepció amb id_fill: "+fill);
             Logger.getLogger(municipi.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

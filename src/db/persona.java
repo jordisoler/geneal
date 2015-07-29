@@ -82,6 +82,7 @@ public class persona extends conexio{
                 this.comentaris = rs.getString("comentaris");
             }
         } catch (SQLException ex) {
+            System.err.println("Excepicó amb id_persona: "+id);
             Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -430,11 +431,11 @@ public class persona extends conexio{
             llocn+".id_municipi",llocd+".id_municipi"};
         try{
             String str = "select persona.id_persona as "+id_p+" from  persona\n" +
-                "inner join naixement on\n" +
+                "left join naixement on\n" +
                 "persona.id_persona = naixement.id_fill\n" +
-                "inner join lloc as "+llocn+" on\n" +
+                "left join lloc as "+llocn+" on\n" +
                 "naixement.id_lloc = "+llocn+".id_lloc\n" +
-                "inner join lloc as "+llocd+" on\n" +
+                "left join lloc as "+llocd+" on\n" +
                 "persona.lloc_defuncio = "+llocd+".id_lloc\n" +
                 "where true ";
             

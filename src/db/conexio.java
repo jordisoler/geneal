@@ -44,10 +44,8 @@ public class conexio {
             try {
                 Class.forName("org.gjt.mm.mysql.Driver");
                 con=DriverManager.getConnection("jdbc:mysql://localhost:3306/"
-                        +db, usuari, contrasenya);
-            } catch (SQLException ex) {
-                Logger.getLogger(conexio.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
+                        +db+"?zeroDateTimeBehavior=convertToNull", usuari, contrasenya);
+            } catch (SQLException | ClassNotFoundException ex) {
                 Logger.getLogger(conexio.class.getName()).log(Level.SEVERE, null, ex);
             }
         }        

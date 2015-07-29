@@ -23,8 +23,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.UnsupportedLookAndFeelException;
 import static geneal.formutils.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 import java.awt.*;
 import javax.swing.JOptionPane;
