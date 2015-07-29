@@ -1877,7 +1877,7 @@ public class App extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
+        tancar();
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void c_1sexeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1sexeActionPerformed
@@ -2424,6 +2424,11 @@ public class App extends javax.swing.JFrame {
                 new GException("La fitxa introduida no és correcte.", "Fitxa incorrete").show();
             }
         }
+    }
+
+    private void tancar() {
+        System.out.println("Fins aviat!");
+        System.exit(0);
     }
     
 }
