@@ -292,7 +292,7 @@ public class App extends javax.swing.JFrame {
         t_ucomentaris.setRows(5);
         jScrollPane3.setViewportView(t_ucomentaris);
 
-        topleft.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 340, 50));
+        topleft.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 320, 50));
 
         jLabel51.setFont(normalFont);
         jLabel51.setText("Fills");
@@ -370,7 +370,7 @@ public class App extends javax.swing.JFrame {
         topleft.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 30, -1));
 
         c_uany.setFont(normalFont);
-        topleft.add(c_uany, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 40, -1));
+        topleft.add(c_uany, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 30, -1));
 
         ll_ufills.setFont(smallFont);
         ll_ufills.setVisibleRowCount(10);
@@ -381,7 +381,7 @@ public class App extends javax.swing.JFrame {
         });
         jScrollPane7.setViewportView(ll_ufills);
 
-        topleft.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 480, 50));
+        topleft.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 460, 50));
 
         b_afegirfill.setFont(normalFont);
         b_afegirfill.setText("Afegir fill");
@@ -390,7 +390,7 @@ public class App extends javax.swing.JFrame {
                 b_afegirfillActionPerformed(evt);
             }
         });
-        topleft.add(b_afegirfill, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 70, 20));
+        topleft.add(b_afegirfill, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 70, 20));
 
         jLabel49.setFont(boldFont);
         jLabel49.setText("Fitxa");
@@ -533,8 +533,8 @@ public class App extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, toprightLayout.createSequentialGroup()
                 .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(searchpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3476, 3476, 3476))
+                .addComponent(searchpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3530, 3530, 3530))
         );
         toprightLayout.setVerticalGroup(
             toprightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -563,7 +563,7 @@ public class App extends javax.swing.JFrame {
         bottolleft.add(t_e_1llinatge1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 150, -1));
 
         t_e_1llinatge2.setFont(normalFont);
-        bottolleft.add(t_e_1llinatge2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 180, -1));
+        bottolleft.add(t_e_1llinatge2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 160, -1));
 
         jLabel4.setFont(normalFont);
         jLabel4.setText("Primer llinatge");
@@ -642,10 +642,10 @@ public class App extends javax.swing.JFrame {
 
         jLabel12.setFont(smallFont);
         jLabel12.setText("Any");
-        bottolleft.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 70, -1));
+        bottolleft.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 70, -1));
 
         t_1any.setFont(normalFont);
-        bottolleft.add(t_1any, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 60, -1));
+        bottolleft.add(t_1any, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 50, -1));
 
         jLabel13.setFont(normalFont);
         jLabel13.setText("Defunció");
@@ -712,14 +712,14 @@ public class App extends javax.swing.JFrame {
                 c_1dmesActionPerformed(evt);
             }
         });
-        bottolleft.add(c_1dmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, -1, -1));
+        bottolleft.add(c_1dmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 50, -1));
 
         t_1dany.setFont(normalFont);
-        bottolleft.add(t_1dany, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 50, -1));
+        bottolleft.add(t_1dany, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, 50, -1));
 
         jLabel19.setFont(smallFont);
         jLabel19.setText("Any");
-        bottolleft.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, 50, -1));
+        bottolleft.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 50, -1));
 
         jLabel21.setFont(normalFont);
         jLabel21.setText("Sexe");
@@ -858,14 +858,14 @@ public class App extends javax.swing.JFrame {
 
         jLabel30.setFont(smallFont);
         jLabel30.setText("Mes");
-        bottomright.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 94, -1));
+        bottomright.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 60, -1));
 
         jLabel31.setFont(smallFont);
         jLabel31.setText("Any");
-        bottomright.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 40, -1));
+        bottomright.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 40, -1));
 
         t_2nany.setFont(normalFont);
-        bottomright.add(t_2nany, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 40, -1));
+        bottomright.add(t_2nany, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 40, -1));
 
         jLabel32.setFont(normalFont);
         jLabel32.setText("Defunció");
@@ -924,7 +924,7 @@ public class App extends javax.swing.JFrame {
 
         jLabel37.setFont(smallFont);
         jLabel37.setText("Mes");
-        bottomright.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 94, -1));
+        bottomright.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 60, -1));
 
         c_2dmes.setFont(normalFont);
         c_2dmes.addActionListener(new java.awt.event.ActionListener() {
@@ -936,10 +936,10 @@ public class App extends javax.swing.JFrame {
 
         jLabel38.setFont(smallFont);
         jLabel38.setText("Any");
-        bottomright.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 50, -1));
+        bottomright.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, 50, -1));
 
         t_2dany.setFont(normalFont);
-        bottomright.add(t_2dany, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 40, -1));
+        bottomright.add(t_2dany, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 40, -1));
 
         jLabel39.setFont(normalFont);
         jLabel39.setText("Sexe");
