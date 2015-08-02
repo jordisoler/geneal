@@ -97,7 +97,6 @@ public class App extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         t_ucomentaris = new javax.swing.JTextArea();
         jLabel51 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
         jLabel41 = new javax.swing.JLabel();
         c_umunicipi = new javax.swing.JComboBox();
         jLabel42 = new javax.swing.JLabel();
@@ -264,7 +263,7 @@ public class App extends javax.swing.JFrame {
         setTitle("Geneal");
 
         jPanel1.setFont(normalFont);
-        jPanel1.setMinimumSize(new java.awt.Dimension(1470, 550));
+        jPanel1.setMinimumSize(new java.awt.Dimension(700, 550));
         jPanel1.setPreferredSize(new java.awt.Dimension(780, 715));
         jPanel1.setLayout(new java.awt.GridLayout(2, 2));
 
@@ -293,19 +292,11 @@ public class App extends javax.swing.JFrame {
         t_ucomentaris.setRows(5);
         jScrollPane3.setViewportView(t_ucomentaris);
 
-        topleft.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 380, 50));
+        topleft.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 340, 50));
 
         jLabel51.setFont(normalFont);
         jLabel51.setText("Fills");
         topleft.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
-
-        jButton4.setText("Afegir fill");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        topleft.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1056, 333, -1, -1));
 
         jLabel41.setFont(smallFont);
         jLabel41.setText("Municipi");
@@ -328,11 +319,11 @@ public class App extends javax.swing.JFrame {
                 c_umunicipiKeyPressed(evt);
             }
         });
-        topleft.add(c_umunicipi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 100, -1));
+        topleft.add(c_umunicipi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 70, -1));
 
         jLabel42.setFont(smallFont);
         jLabel42.setText("Parroquia");
-        topleft.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 94, -1));
+        topleft.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 94, -1));
 
         c_uparroquia.setFont(normalFont);
         c_uparroquia.addActionListener(new java.awt.event.ActionListener() {
@@ -340,11 +331,11 @@ public class App extends javax.swing.JFrame {
                 c_uparroquiaActionPerformed(evt);
             }
         });
-        topleft.add(c_uparroquia, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 100, -1));
+        topleft.add(c_uparroquia, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 80, -1));
 
         jLabel45.setFont(smallFont);
         jLabel45.setText("Llogaret");
-        topleft.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 94, -1));
+        topleft.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 94, -1));
 
         c_ullogaret.setFont(normalFont);
         c_ullogaret.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -353,14 +344,14 @@ public class App extends javax.swing.JFrame {
                 c_ullogaretActionPerformed(evt);
             }
         });
-        topleft.add(c_ullogaret, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 90, -1));
+        topleft.add(c_ullogaret, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 90, -1));
 
         jLabel46.setFont(smallFont);
         jLabel46.setText("Dia");
-        topleft.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 94, -1));
+        topleft.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 60, -1));
 
         c_udia.setFont(normalFont);
-        topleft.add(c_udia, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 70, -1));
+        topleft.add(c_udia, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 70, -1));
 
         c_umes.setFont(normalFont);
         c_umes.addActionListener(new java.awt.event.ActionListener() {
@@ -368,18 +359,18 @@ public class App extends javax.swing.JFrame {
                 c_umesActionPerformed(evt);
             }
         });
-        topleft.add(c_umes, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 60, -1));
+        topleft.add(c_umes, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 60, -1));
 
         jLabel47.setFont(smallFont);
         jLabel47.setText("Mes");
-        topleft.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 94, -1));
+        topleft.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, 90, -1));
 
         jLabel48.setFont(smallFont);
         jLabel48.setText("Any");
-        topleft.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 94, -1));
+        topleft.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 30, -1));
 
         c_uany.setFont(normalFont);
-        topleft.add(c_uany, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 40, -1));
+        topleft.add(c_uany, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 40, -1));
 
         ll_ufills.setFont(smallFont);
         ll_ufills.setVisibleRowCount(10);
@@ -390,7 +381,7 @@ public class App extends javax.swing.JFrame {
         });
         jScrollPane7.setViewportView(ll_ufills);
 
-        topleft.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 520, 50));
+        topleft.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 480, 50));
 
         b_afegirfill.setFont(normalFont);
         b_afegirfill.setText("Afegir fill");
@@ -399,7 +390,7 @@ public class App extends javax.swing.JFrame {
                 b_afegirfillActionPerformed(evt);
             }
         });
-        topleft.add(b_afegirfill, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, 80, 20));
+        topleft.add(b_afegirfill, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 70, 20));
 
         jLabel49.setFont(boldFont);
         jLabel49.setText("Fitxa");
@@ -410,7 +401,7 @@ public class App extends javax.swing.JFrame {
 
         l_generacio.setFont(normalFont);
         l_generacio.setText("Generació");
-        topleft.add(l_generacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, -1, -1));
+        topleft.add(l_generacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
 
         b_eafegir.setFont(normalFont);
         b_eafegir.setText("Afegir fitxa");
@@ -423,7 +414,7 @@ public class App extends javax.swing.JFrame {
 
         b_eborrar.setFont(normalFont);
         b_eborrar.setText("Esborrar");
-        topleft.add(b_eborrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 73, 20));
+        topleft.add(b_eborrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 70, 20));
 
         jPanel1.add(topleft);
 
@@ -540,11 +531,10 @@ public class App extends javax.swing.JFrame {
         toprightLayout.setHorizontalGroup(
             toprightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, toprightLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3521, 3521, 3521))
+                .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(searchpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3476, 3476, 3476))
         );
         toprightLayout.setVerticalGroup(
             toprightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -573,7 +563,7 @@ public class App extends javax.swing.JFrame {
         bottolleft.add(t_e_1llinatge1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 150, -1));
 
         t_e_1llinatge2.setFont(normalFont);
-        bottolleft.add(t_e_1llinatge2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 210, -1));
+        bottolleft.add(t_e_1llinatge2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 180, -1));
 
         jLabel4.setFont(normalFont);
         jLabel4.setText("Primer llinatge");
@@ -640,7 +630,7 @@ public class App extends javax.swing.JFrame {
                 c_1mesActionPerformed(evt);
             }
         });
-        bottolleft.add(c_1mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 70, -1));
+        bottolleft.add(c_1mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 50, -1));
 
         jLabel10.setFont(smallFont);
         jLabel10.setText("Dia");
@@ -652,10 +642,10 @@ public class App extends javax.swing.JFrame {
 
         jLabel12.setFont(smallFont);
         jLabel12.setText("Any");
-        bottolleft.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 94, -1));
+        bottolleft.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 70, -1));
 
         t_1any.setFont(normalFont);
-        bottolleft.add(t_1any, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 70, -1));
+        bottolleft.add(t_1any, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 60, -1));
 
         jLabel13.setFont(normalFont);
         jLabel13.setText("Defunció");
@@ -722,14 +712,14 @@ public class App extends javax.swing.JFrame {
                 c_1dmesActionPerformed(evt);
             }
         });
-        bottolleft.add(c_1dmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 70, -1));
+        bottolleft.add(c_1dmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, -1, -1));
 
         t_1dany.setFont(normalFont);
-        bottolleft.add(t_1dany, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 70, -1));
+        bottolleft.add(t_1dany, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 50, -1));
 
         jLabel19.setFont(smallFont);
         jLabel19.setText("Any");
-        bottolleft.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, 94, -1));
+        bottolleft.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, 50, -1));
 
         jLabel21.setFont(normalFont);
         jLabel21.setText("Sexe");
@@ -758,7 +748,7 @@ public class App extends javax.swing.JFrame {
         t_1comentaris.setRows(5);
         jScrollPane1.setViewportView(t_1comentaris);
 
-        bottolleft.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 400, 40));
+        bottolleft.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 340, 40));
 
         jLabel22.setFont(normalFont);
         jLabel22.setText("Comentaris");
@@ -860,7 +850,7 @@ public class App extends javax.swing.JFrame {
                 c_2nmesActionPerformed(evt);
             }
         });
-        bottomright.add(c_2nmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 60, -1));
+        bottomright.add(c_2nmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 50, -1));
 
         jLabel29.setFont(smallFont);
         jLabel29.setText("Dia");
@@ -875,7 +865,7 @@ public class App extends javax.swing.JFrame {
         bottomright.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 40, -1));
 
         t_2nany.setFont(normalFont);
-        bottomright.add(t_2nany, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 40, -1));
+        bottomright.add(t_2nany, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 40, -1));
 
         jLabel32.setFont(normalFont);
         jLabel32.setText("Defunció");
@@ -942,14 +932,14 @@ public class App extends javax.swing.JFrame {
                 c_2dmesActionPerformed(evt);
             }
         });
-        bottomright.add(c_2dmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 60, -1));
+        bottomright.add(c_2dmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 50, -1));
 
         jLabel38.setFont(smallFont);
         jLabel38.setText("Any");
         bottomright.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 50, -1));
 
         t_2dany.setFont(normalFont);
-        bottomright.add(t_2dany, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 40, -1));
+        bottomright.add(t_2dany, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 40, -1));
 
         jLabel39.setFont(normalFont);
         jLabel39.setText("Sexe");
@@ -978,7 +968,7 @@ public class App extends javax.swing.JFrame {
         t_2comentaris.setRows(5);
         jScrollPane2.setViewportView(t_2comentaris);
 
-        bottomright.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 340, 40));
+        bottomright.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 330, 40));
 
         jLabel40.setFont(normalFont);
         jLabel40.setText("Comentaris");
@@ -1055,7 +1045,7 @@ public class App extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1087, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1251,10 +1241,6 @@ public class App extends javax.swing.JFrame {
         this.fmatrimoni.selectedMunicipi();
     }//GEN-LAST:event_c_umunicipiActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void c_casamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_casamentActionPerformed
         f.ActionPerformedCasament();
     }//GEN-LAST:event_c_casamentActionPerformed
@@ -1401,7 +1387,6 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JTextField find_llinatge2;
     private javax.swing.JTextField find_nom;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
