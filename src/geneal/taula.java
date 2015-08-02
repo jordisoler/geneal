@@ -20,6 +20,8 @@ package geneal;
 import Exceptions.DBException;
 import Exceptions.MUException;
 import db.persona;
+import static geneal.config.normalFont;
+import static geneal.config.smallFont;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
@@ -89,7 +91,7 @@ public class taula extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        table.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
+        table.setFont(normalFont);
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -101,7 +103,7 @@ public class taula extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        table.setRowHeight(28);
+        table.setRowHeight(24);
         table.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableMouseClicked(evt);
@@ -109,64 +111,67 @@ public class taula extends javax.swing.JFrame {
         });
         scrollpane.setViewportView(table);
 
-        getContentPane().add(scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 1380, 650));
+        getContentPane().add(scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 870, 650));
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel1.setFont(smallFont);
         jLabel1.setText("Lloc defunció");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, -1, -1));
 
-        t_nom.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        getContentPane().add(t_nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 180, -1));
+        t_nom.setFont(normalFont);
+        getContentPane().add(t_nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 130, -1));
 
-        t_llin1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        getContentPane().add(t_llin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 180, -1));
+        t_llin1.setFont(normalFont);
+        getContentPane().add(t_llin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 150, -1));
 
-        t_llin2.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        getContentPane().add(t_llin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 200, -1));
+        t_llin2.setFont(normalFont);
+        getContentPane().add(t_llin2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 160, -1));
 
-        l_total.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        l_total.setFont(normalFont);
         l_total.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         l_total.setText("jLabel1");
-        getContentPane().add(l_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 780, 430, -1));
+        getContentPane().add(l_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 780, 330, -1));
 
-        jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel3.setFont(smallFont);
         jLabel3.setText("Nom");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel4.setFont(smallFont);
         jLabel4.setText("Primer llinatge");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel5.setFont(smallFont);
         jLabel5.setText("Segon llinatge");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel6.setFont(smallFont);
         jLabel6.setText("Lloc naixement");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, -1, -1));
 
-        l_info.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        l_info.setFont(normalFont);
         l_info.setText("jLabel1");
         getContentPane().add(l_info, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 780, -1, -1));
 
+        b_cerca.setFont(normalFont);
         b_cerca.setText("Cerca");
         b_cerca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_cercaActionPerformed(evt);
             }
         });
-        getContentPane().add(b_cerca, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 80, 110, -1));
+        getContentPane().add(b_cerca, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 60, 70, -1));
 
+        c_llocd.setFont(normalFont);
         c_llocd.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         c_llocd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 c_llocdActionPerformed(evt);
             }
         });
-        getContentPane().add(c_llocd, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 80, 160, -1));
+        getContentPane().add(c_llocd, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 160, -1));
 
+        c_llocn.setFont(normalFont);
         c_llocn.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(c_llocn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, 160, -1));
+        getContentPane().add(c_llocn, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, 150, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
