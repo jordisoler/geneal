@@ -17,10 +17,21 @@
  */
 package geneal;
 
+import java.awt.Font;
+
 /**
  *
  * @author jordi
  */
 public class config {
     //private static final String
+    private static final Font defaultNormalFont = new Font("Ubuntu", Font.PLAIN, 14);
+    private static final Font defaultBoldFont = new Font("Ubuntu", Font.BOLD, 14);
+    private static final Font defaultSmallFont = new Font("Ubuntu", Font.PLAIN, 12);
+    private static final Font defaultTinyFont = new Font("Ubuntu", Font.PLAIN, 10);
+    
+    public static Font normalFont = defaultNormalFont;
+    public static Font smallFont = defaultSmallFont;
+    public static Font boldFont = defaultBoldFont;
+    public static Font tinyFont = defaultTinyFont;
 }

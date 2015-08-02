@@ -18,6 +18,10 @@
 package geneal;
 
 import Exceptions.*;
+import static geneal.config.boldFont;
+import static geneal.config.normalFont;
+import static geneal.config.smallFont;
+import static geneal.config.tinyFont;
 import javax.swing.UIManager;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -85,9 +89,63 @@ public class App extends javax.swing.JFrame {
         popuplist = new javax.swing.JPopupMenu();
         Seleccionar = new javax.swing.JMenuItem();
         Eliminar = new javax.swing.JMenuItem();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        topleft = new javax.swing.JPanel();
+        jLabel43 = new javax.swing.JLabel();
+        c_casament = new javax.swing.JCheckBox();
+        jLabel44 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        t_ucomentaris = new javax.swing.JTextArea();
+        jLabel51 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jLabel41 = new javax.swing.JLabel();
+        c_umunicipi = new javax.swing.JComboBox();
+        jLabel42 = new javax.swing.JLabel();
+        c_uparroquia = new javax.swing.JComboBox();
+        jLabel45 = new javax.swing.JLabel();
+        c_ullogaret = new javax.swing.JComboBox();
+        jLabel46 = new javax.swing.JLabel();
+        c_udia = new javax.swing.JComboBox();
+        c_umes = new javax.swing.JComboBox();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        c_uany = new javax.swing.JTextField();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        ll_ufills = new javax.swing.JList();
+        b_afegirfill = new javax.swing.JButton();
+        jLabel49 = new javax.swing.JLabel();
+        t_fitxa = new javax.swing.JTextField();
+        l_generacio = new javax.swing.JLabel();
+        b_eafegir = new javax.swing.JButton();
+        b_eborrar = new javax.swing.JButton();
+        topright = new javax.swing.JPanel();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        treepanel = new javax.swing.JPanel();
+        l_pare = new javax.swing.JLabel();
+        l_ppare = new javax.swing.JLabel();
+        l_pppare = new javax.swing.JLabel();
+        l_mppare = new javax.swing.JLabel();
+        l_mpare = new javax.swing.JLabel();
+        l_pmpare = new javax.swing.JLabel();
+        l_mmpare = new javax.swing.JLabel();
+        l_mare = new javax.swing.JLabel();
+        l_pmare = new javax.swing.JLabel();
+        l_ppmare = new javax.swing.JLabel();
+        l_mpmare = new javax.swing.JLabel();
+        l_mmare = new javax.swing.JLabel();
+        l_pmmare = new javax.swing.JLabel();
+        l_mmmare = new javax.swing.JLabel();
+        searchpanel = new javax.swing.JPanel();
+        jLabel52 = new javax.swing.JLabel();
+        find_nom = new javax.swing.JTextField();
+        find_llinatge1 = new javax.swing.JTextField();
+        jLabel53 = new javax.swing.JLabel();
+        find_llinatge2 = new javax.swing.JTextField();
+        jLabel54 = new javax.swing.JLabel();
+        b_cerca = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        find_list = new javax.swing.JList();
+        bottolleft = new javax.swing.JPanel();
         l_e_conjuge1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         t_e_1nom = new javax.swing.JTextField();
@@ -129,9 +187,7 @@ public class App extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList();
-        jPanel7 = new javax.swing.JPanel();
+        bottomright = new javax.swing.JPanel();
         l_e_conjuge2 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         t_2nom = new javax.swing.JTextField();
@@ -171,149 +227,6 @@ public class App extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         t_2comentaris = new javax.swing.JTextArea();
         jLabel40 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel43 = new javax.swing.JLabel();
-        c_casament = new javax.swing.JCheckBox();
-        jLabel44 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        t_ucomentaris = new javax.swing.JTextArea();
-        jLabel51 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jLabel41 = new javax.swing.JLabel();
-        c_umunicipi = new javax.swing.JComboBox();
-        jLabel42 = new javax.swing.JLabel();
-        c_uparroquia = new javax.swing.JComboBox();
-        jLabel45 = new javax.swing.JLabel();
-        c_ullogaret = new javax.swing.JComboBox();
-        jLabel46 = new javax.swing.JLabel();
-        c_udia = new javax.swing.JComboBox();
-        c_umes = new javax.swing.JComboBox();
-        jLabel47 = new javax.swing.JLabel();
-        jLabel48 = new javax.swing.JLabel();
-        c_uany = new javax.swing.JTextField();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        ll_ufills = new javax.swing.JList();
-        b_afegirfill = new javax.swing.JButton();
-        jLabel49 = new javax.swing.JLabel();
-        t_fitxa = new javax.swing.JTextField();
-        l_generacio = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel52 = new javax.swing.JLabel();
-        find_nom = new javax.swing.JTextField();
-        find_llinatge1 = new javax.swing.JTextField();
-        jLabel53 = new javax.swing.JLabel();
-        find_llinatge2 = new javax.swing.JTextField();
-        jLabel54 = new javax.swing.JLabel();
-        b_cerca = new javax.swing.JButton();
-        jScrollPane17 = new javax.swing.JScrollPane();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        find_list = new javax.swing.JList();
-        b_eafegir = new javax.swing.JButton();
-        b_eborrar = new javax.swing.JButton();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        jScrollPane16 = new javax.swing.JScrollPane();
-        jPanel9 = new javax.swing.JPanel();
-        l_pare = new javax.swing.JLabel();
-        l_ppare = new javax.swing.JLabel();
-        l_pppare = new javax.swing.JLabel();
-        l_mppare = new javax.swing.JLabel();
-        l_mpare = new javax.swing.JLabel();
-        l_pmpare = new javax.swing.JLabel();
-        l_mmpare = new javax.swing.JLabel();
-        l_mare = new javax.swing.JLabel();
-        l_pmare = new javax.swing.JLabel();
-        l_ppmare = new javax.swing.JLabel();
-        l_mpmare = new javax.swing.JLabel();
-        l_mmare = new javax.swing.JLabel();
-        l_pmmare = new javax.swing.JLabel();
-        l_mmmare = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel55 = new javax.swing.JLabel();
-        jLabel56 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel58 = new javax.swing.JLabel();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        jList6 = new javax.swing.JList();
-        jScrollPane12 = new javax.swing.JScrollPane();
-        jList7 = new javax.swing.JList();
-        jLabel59 = new javax.swing.JLabel();
-        jLabel61 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
-        jLabel62 = new javax.swing.JLabel();
-        jPanel11 = new javax.swing.JPanel();
-        jLabel65 = new javax.swing.JLabel();
-        jLabel66 = new javax.swing.JLabel();
-        jLabel67 = new javax.swing.JLabel();
-        jPanel12 = new javax.swing.JPanel();
-        jLabel68 = new javax.swing.JLabel();
-        jLabel69 = new javax.swing.JLabel();
-        jLabel70 = new javax.swing.JLabel();
-        jPanel14 = new javax.swing.JPanel();
-        jLabel74 = new javax.swing.JLabel();
-        jLabel75 = new javax.swing.JLabel();
-        jLabel76 = new javax.swing.JLabel();
-        jLabel63 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
-        jPanel13 = new javax.swing.JPanel();
-        jLabel71 = new javax.swing.JLabel();
-        jLabel72 = new javax.swing.JLabel();
-        jLabel73 = new javax.swing.JLabel();
-        jPanel15 = new javax.swing.JPanel();
-        jLabel77 = new javax.swing.JLabel();
-        jLabel78 = new javax.swing.JLabel();
-        jLabel79 = new javax.swing.JLabel();
-        jPanel16 = new javax.swing.JPanel();
-        jLabel80 = new javax.swing.JLabel();
-        jLabel81 = new javax.swing.JLabel();
-        jLabel82 = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
-        jLabel64 = new javax.swing.JLabel();
-        jLabel60 = new javax.swing.JLabel();
-        jPanel17 = new javax.swing.JPanel();
-        jLabel83 = new javax.swing.JLabel();
-        jLabel84 = new javax.swing.JLabel();
-        jScrollPane13 = new javax.swing.JScrollPane();
-        jList8 = new javax.swing.JList();
-        jScrollPane14 = new javax.swing.JScrollPane();
-        jList9 = new javax.swing.JList();
-        jLabel85 = new javax.swing.JLabel();
-        jLabel86 = new javax.swing.JLabel();
-        jButton10 = new javax.swing.JButton();
-        jLabel87 = new javax.swing.JLabel();
-        jPanel18 = new javax.swing.JPanel();
-        jLabel88 = new javax.swing.JLabel();
-        jLabel89 = new javax.swing.JLabel();
-        jLabel90 = new javax.swing.JLabel();
-        jPanel19 = new javax.swing.JPanel();
-        jLabel91 = new javax.swing.JLabel();
-        jLabel92 = new javax.swing.JLabel();
-        jLabel93 = new javax.swing.JLabel();
-        jPanel20 = new javax.swing.JPanel();
-        jLabel94 = new javax.swing.JLabel();
-        jLabel95 = new javax.swing.JLabel();
-        jLabel96 = new javax.swing.JLabel();
-        jLabel97 = new javax.swing.JLabel();
-        jButton11 = new javax.swing.JButton();
-        jPanel21 = new javax.swing.JPanel();
-        jLabel98 = new javax.swing.JLabel();
-        jLabel99 = new javax.swing.JLabel();
-        jLabel100 = new javax.swing.JLabel();
-        jPanel22 = new javax.swing.JPanel();
-        jLabel101 = new javax.swing.JLabel();
-        jLabel102 = new javax.swing.JLabel();
-        jLabel103 = new javax.swing.JLabel();
-        jPanel23 = new javax.swing.JPanel();
-        jLabel104 = new javax.swing.JLabel();
-        jLabel105 = new javax.swing.JLabel();
-        jLabel106 = new javax.swing.JLabel();
-        jButton12 = new javax.swing.JButton();
-        jLabel107 = new javax.swing.JLabel();
-        jPanel24 = new javax.swing.JPanel();
-        jLabel57 = new javax.swing.JLabel();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jScrollPane15 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -349,476 +262,42 @@ public class App extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Geneal");
-        setResizable(false);
 
-        jTabbedPane1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jPanel1.setFont(normalFont);
+        jPanel1.setMinimumSize(new java.awt.Dimension(1470, 550));
+        jPanel1.setPreferredSize(new java.awt.Dimension(780, 715));
+        jPanel1.setLayout(new java.awt.GridLayout(2, 2));
 
-        jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        topleft.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        topleft.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        l_e_conjuge1.setFont(new java.awt.Font("Ubuntu", 1, 26)); // NOI18N
-        l_e_conjuge1.setText("Conjuge1");
-        jPanel6.add(l_e_conjuge1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 15, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel2.setText("Nom");
-        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 50, -1, -1));
-
-        t_e_1nom.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel6.add(t_e_1nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 230, -1));
-
-        t_e_1llinatge1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel6.add(t_e_1llinatge1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 260, -1));
-
-        t_e_1llinatge2.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel6.add(t_e_1llinatge2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 310, -1));
-
-        jLabel4.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel4.setText("Primer llinatge");
-        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel5.setText("Segon llinatge");
-        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel6.setText("Naixement:");
-        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 130, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel7.setText("Municipi");
-        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 165, -1, -1));
-
-        c_1municipi.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        c_1municipi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        c_1municipi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_1municipiActionPerformed(evt);
-            }
-        });
-        c_1municipi.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                c_1municipiFocusLost(evt);
-            }
-        });
-        jPanel6.add(c_1municipi, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 192, 150, -1));
-
-        c_1parroquia.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        c_1parroquia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        c_1parroquia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_1parroquiaActionPerformed(evt);
-            }
-        });
-        jPanel6.add(c_1parroquia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 165, -1));
-
-        jLabel8.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel8.setText("Parroquia");
-        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 94, -1));
-
-        c_1llogaret.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        c_1llogaret.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        c_1llogaret.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_1llogaretActionPerformed(evt);
-            }
-        });
-        jPanel6.add(c_1llogaret, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 148, -1));
-
-        jLabel9.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel9.setText("Llogaret");
-        jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 94, -1));
-
-        c_1dia.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel6.add(c_1dia, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, 90, -1));
-
-        c_1mes.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        c_1mes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_1mesActionPerformed(evt);
-            }
-        });
-        jPanel6.add(c_1mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 190, 100, -1));
-
-        jLabel10.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel10.setText("Dia");
-        jPanel6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, 94, -1));
-
-        jLabel11.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel11.setText("Mes");
-        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, 94, -1));
-
-        jLabel12.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel12.setText("Any");
-        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 160, 94, -1));
-
-        t_1any.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel6.add(t_1any, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 190, 120, -1));
-
-        jLabel13.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel13.setText("Defunció");
-        jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 237, -1, -1));
-
-        jLabel14.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel14.setText("Municipi");
-        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 272, -1, -1));
-
-        c_1dmunicipi.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        c_1dmunicipi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        c_1dmunicipi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_1dmunicipiActionPerformed(evt);
-            }
-        });
-        c_1dmunicipi.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                c_1dmunicipiFocusLost(evt);
-            }
-        });
-        jPanel6.add(c_1dmunicipi, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 299, 150, -1));
-
-        c_1dparroquia.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        c_1dparroquia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        c_1dparroquia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_1dparroquiaActionPerformed(evt);
-            }
-        });
-        jPanel6.add(c_1dparroquia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 170, -1));
-
-        jLabel15.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel15.setText("Parroquia");
-        jPanel6.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 94, -1));
-
-        jLabel16.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel16.setText("Llogaret");
-        jPanel6.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 94, -1));
-
-        c_1dllogaret.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        c_1dllogaret.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        c_1dllogaret.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_1dllogaretActionPerformed(evt);
-            }
-        });
-        jPanel6.add(c_1dllogaret, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 148, -1));
-
-        jLabel17.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel17.setText("Dia");
-        jPanel6.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 94, -1));
-
-        c_1ddia.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel6.add(c_1ddia, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, 90, -1));
-
-        jLabel18.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel18.setText("Mes");
-        jPanel6.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 270, 94, -1));
-
-        c_1dmes.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        c_1dmes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_1dmesActionPerformed(evt);
-            }
-        });
-        jPanel6.add(c_1dmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 300, 100, -1));
-
-        t_1dany.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel6.add(t_1dany, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, 120, -1));
-
-        jLabel19.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel19.setText("Any");
-        jPanel6.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 270, 94, -1));
-
-        jLabel21.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel21.setText("Sexe");
-        jPanel6.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 344, -1, -1));
-
-        c_1sexe.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        c_1sexe.setModel(cbsexe);
-        c_1sexe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_1sexeActionPerformed(evt);
-            }
-        });
-        jPanel6.add(c_1sexe, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 379, 130, -1));
-
-        b_1pares.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        b_1pares.setText("Fitxa pares");
-        b_1pares.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_1paresActionPerformed(evt);
-            }
-        });
-        jPanel6.add(b_1pares, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 424, 160, -1));
-
-        t_1comentaris.setColumns(20);
-        t_1comentaris.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        t_1comentaris.setRows(5);
-        jScrollPane1.setViewportView(t_1comentaris);
-
-        jPanel6.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 379, 670, 86));
-
-        jLabel22.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel22.setText("Comentaris");
-        jPanel6.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 344, -1, -1));
-
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane4.setViewportView(jList1);
-
-        jPanel6.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -120, -1, 100));
-
-        jList2.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane5.setViewportView(jList2);
-
-        jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -120, 550, 100));
-
-        jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        l_e_conjuge2.setFont(new java.awt.Font("Ubuntu", 1, 26)); // NOI18N
-        l_e_conjuge2.setText("Conjuge1");
-        jPanel7.add(l_e_conjuge2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 15, -1, -1));
-
-        jLabel20.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel20.setText("Nom");
-        jPanel7.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 50, -1, -1));
-
-        t_2nom.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel7.add(t_2nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 230, -1));
-
-        t_2llinatge1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel7.add(t_2llinatge1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 260, -1));
-
-        t_2llinatge2.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel7.add(t_2llinatge2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 310, -1));
-
-        jLabel23.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel23.setText("Primer llinatge");
-        jPanel7.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, -1, -1));
-
-        jLabel24.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel24.setText("Segon llinatge");
-        jPanel7.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, -1, -1));
-
-        jLabel25.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel25.setText("Naixement:");
-        jPanel7.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 130, -1, -1));
-
-        jLabel26.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel26.setText("Municipi");
-        jPanel7.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 165, -1, -1));
-
-        c_2nmunicipi.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        c_2nmunicipi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        c_2nmunicipi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_2nmunicipiActionPerformed(evt);
-            }
-        });
-        c_2nmunicipi.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                c_2nmunicipiFocusLost(evt);
-            }
-        });
-        jPanel7.add(c_2nmunicipi, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 192, 150, -1));
-
-        c_2nparroquia.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        c_2nparroquia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        c_2nparroquia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_2nparroquiaActionPerformed(evt);
-            }
-        });
-        jPanel7.add(c_2nparroquia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 165, -1));
-
-        jLabel27.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel27.setText("Parroquia");
-        jPanel7.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 94, -1));
-
-        c_2nllogaret.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        c_2nllogaret.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        c_2nllogaret.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_2nllogaretActionPerformed(evt);
-            }
-        });
-        jPanel7.add(c_2nllogaret, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 148, -1));
-
-        jLabel28.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel28.setText("Llogaret");
-        jPanel7.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 94, -1));
-
-        c_2ndia.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel7.add(c_2ndia, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, 90, -1));
-
-        c_2nmes.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        c_2nmes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_2nmesActionPerformed(evt);
-            }
-        });
-        jPanel7.add(c_2nmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 190, 100, -1));
-
-        jLabel29.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel29.setText("Dia");
-        jPanel7.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, 94, -1));
-
-        jLabel30.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel30.setText("Mes");
-        jPanel7.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, 94, -1));
-
-        jLabel31.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel31.setText("Any");
-        jPanel7.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 160, 94, -1));
-
-        t_2nany.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel7.add(t_2nany, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 190, 120, -1));
-
-        jLabel32.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel32.setText("Defunció");
-        jPanel7.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 237, -1, -1));
-
-        jLabel33.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel33.setText("Municipi");
-        jPanel7.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 272, -1, -1));
-
-        c_2dmunicipi.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        c_2dmunicipi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        c_2dmunicipi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_2dmunicipiActionPerformed(evt);
-            }
-        });
-        c_2dmunicipi.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                c_2dmunicipiFocusLost(evt);
-            }
-        });
-        jPanel7.add(c_2dmunicipi, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 299, 150, -1));
-
-        c_2dparroquia.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        c_2dparroquia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        c_2dparroquia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_2dparroquiaActionPerformed(evt);
-            }
-        });
-        jPanel7.add(c_2dparroquia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 170, -1));
-
-        jLabel34.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel34.setText("Parroquia");
-        jPanel7.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 94, -1));
-
-        jLabel35.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel35.setText("Llogaret");
-        jPanel7.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 94, -1));
-
-        c_2dllogaret.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        c_2dllogaret.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        c_2dllogaret.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_2dllogaretActionPerformed(evt);
-            }
-        });
-        jPanel7.add(c_2dllogaret, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 148, -1));
-
-        jLabel36.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel36.setText("Dia");
-        jPanel7.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 270, 94, -1));
-
-        c_2ddia.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel7.add(c_2ddia, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, 90, -1));
-
-        jLabel37.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel37.setText("Mes");
-        jPanel7.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 270, 94, -1));
-
-        c_2dmes.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        c_2dmes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_2dmesActionPerformed(evt);
-            }
-        });
-        jPanel7.add(c_2dmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 300, 100, -1));
-
-        jLabel38.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel38.setText("Any");
-        jPanel7.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 270, 94, -1));
-
-        t_2dany.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel7.add(t_2dany, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, 120, -1));
-
-        jLabel39.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel39.setText("Sexe");
-        jPanel7.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 344, -1, -1));
-
-        c_2sexe.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        c_2sexe.setModel(cbsexe2);
-        c_2sexe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_2sexeActionPerformed(evt);
-            }
-        });
-        jPanel7.add(c_2sexe, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 379, 120, -1));
-
-        b_2pares.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        b_2pares.setText("Fitxa pares");
-        b_2pares.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_2paresActionPerformed(evt);
-            }
-        });
-        jPanel7.add(b_2pares, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 424, 160, -1));
-
-        t_2comentaris.setColumns(20);
-        t_2comentaris.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        t_2comentaris.setRows(5);
-        jScrollPane2.setViewportView(t_2comentaris);
-
-        jPanel7.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 379, 670, 86));
-
-        jLabel40.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel40.setText("Comentaris");
-        jPanel7.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 344, -1, -1));
-
-        jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel43.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel43.setFont(normalFont);
         jLabel43.setText("Unió");
-        jPanel3.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        topleft.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 60, 20));
 
-        c_casament.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        c_casament.setFont(normalFont);
         c_casament.setText("Casament");
         c_casament.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 c_casamentActionPerformed(evt);
             }
         });
-        jPanel3.add(c_casament, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
+        topleft.add(c_casament, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
 
-        jLabel44.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel44.setFont(normalFont);
         jLabel44.setText("Comentaris");
-        jPanel3.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+        topleft.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         t_ucomentaris.setColumns(20);
-        t_ucomentaris.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        t_ucomentaris.setFont(normalFont);
         t_ucomentaris.setRows(5);
         jScrollPane3.setViewportView(t_ucomentaris);
 
-        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 700, 72));
+        topleft.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 380, 50));
 
-        jLabel51.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel51.setFont(normalFont);
         jLabel51.setText("Fills");
-        jPanel3.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+        topleft.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
         jButton4.setText("Afegir fill");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -826,14 +305,14 @@ public class App extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1056, 333, -1, -1));
+        topleft.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1056, 333, -1, -1));
 
-        jLabel41.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel41.setFont(smallFont);
         jLabel41.setText("Municipi");
-        jPanel3.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        topleft.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         c_umunicipi.setEditable(true);
-        c_umunicipi.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        c_umunicipi.setFont(normalFont);
         c_umunicipi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 c_umunicipiActionPerformed(evt);
@@ -849,60 +328,61 @@ public class App extends javax.swing.JFrame {
                 c_umunicipiKeyPressed(evt);
             }
         });
-        jPanel3.add(c_umunicipi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 150, -1));
+        topleft.add(c_umunicipi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 100, -1));
 
-        jLabel42.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel42.setFont(smallFont);
         jLabel42.setText("Parroquia");
-        jPanel3.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 94, -1));
+        topleft.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 94, -1));
 
-        c_uparroquia.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        c_uparroquia.setFont(normalFont);
         c_uparroquia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 c_uparroquiaActionPerformed(evt);
             }
         });
-        jPanel3.add(c_uparroquia, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 165, -1));
+        topleft.add(c_uparroquia, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 100, -1));
 
-        jLabel45.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel45.setFont(smallFont);
         jLabel45.setText("Llogaret");
-        jPanel3.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 94, -1));
+        topleft.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 94, -1));
 
-        c_ullogaret.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        c_ullogaret.setFont(normalFont);
         c_ullogaret.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         c_ullogaret.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 c_ullogaretActionPerformed(evt);
             }
         });
-        jPanel3.add(c_ullogaret, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 148, -1));
+        topleft.add(c_ullogaret, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 90, -1));
 
-        jLabel46.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel46.setFont(smallFont);
         jLabel46.setText("Dia");
-        jPanel3.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 94, -1));
+        topleft.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 94, -1));
 
-        c_udia.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel3.add(c_udia, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, 90, -1));
+        c_udia.setFont(normalFont);
+        topleft.add(c_udia, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 70, -1));
 
-        c_umes.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        c_umes.setFont(normalFont);
         c_umes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 c_umesActionPerformed(evt);
             }
         });
-        jPanel3.add(c_umes, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, 100, -1));
+        topleft.add(c_umes, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 60, -1));
 
-        jLabel47.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel47.setFont(smallFont);
         jLabel47.setText("Mes");
-        jPanel3.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 90, 94, -1));
+        topleft.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 94, -1));
 
-        jLabel48.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabel48.setFont(smallFont);
         jLabel48.setText("Any");
-        jPanel3.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 90, 94, -1));
+        topleft.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 94, -1));
 
-        c_uany.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel3.add(c_uany, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 120, 110, -1));
+        c_uany.setFont(normalFont);
+        topleft.add(c_uany, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 40, -1));
 
-        ll_ufills.setFont(new java.awt.Font("Ubuntu", 0, 22)); // NOI18N
+        ll_ufills.setFont(smallFont);
+        ll_ufills.setVisibleRowCount(10);
         ll_ufills.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ll_ufillsMouseClicked(evt);
@@ -910,67 +390,141 @@ public class App extends javax.swing.JFrame {
         });
         jScrollPane7.setViewportView(ll_ufills);
 
-        jPanel3.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 700, 130));
+        topleft.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 520, 50));
 
-        b_afegirfill.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        b_afegirfill.setFont(normalFont);
         b_afegirfill.setText("Afegir fill");
         b_afegirfill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_afegirfillActionPerformed(evt);
             }
         });
-        jPanel3.add(b_afegirfill, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 350, -1, -1));
+        topleft.add(b_afegirfill, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, 80, 20));
 
-        jLabel49.setFont(new java.awt.Font("Ubuntu", 0, 30)); // NOI18N
+        jLabel49.setFont(boldFont);
         jLabel49.setText("Fitxa");
-        jPanel3.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        topleft.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        t_fitxa.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel3.add(t_fitxa, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 110, -1));
+        t_fitxa.setFont(normalFont);
+        topleft.add(t_fitxa, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 50, 20));
 
-        l_generacio.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        l_generacio.setFont(normalFont);
         l_generacio.setText("Generació");
-        jPanel3.add(l_generacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, -1, -1));
+        topleft.add(l_generacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, -1, -1));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cercador de persones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 0, 18))); // NOI18N
-        jPanel2.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        b_eafegir.setFont(normalFont);
+        b_eafegir.setText("Afegir fitxa");
+        b_eafegir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_eafegirActionPerformed(evt);
+            }
+        });
+        topleft.add(b_eafegir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 90, 20));
 
-        jLabel52.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        b_eborrar.setFont(normalFont);
+        b_eborrar.setText("Esborrar");
+        topleft.add(b_eborrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 73, 20));
+
+        jPanel1.add(topleft);
+
+        treepanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        treepanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        l_pare.setFont(normalFont);
+        l_pare.setText("jLabel1");
+        treepanel.add(l_pare, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        l_ppare.setFont(smallFont);
+        l_ppare.setText("jLabel3");
+        treepanel.add(l_ppare, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+
+        l_pppare.setFont(tinyFont);
+        l_pppare.setText("jLabel3");
+        treepanel.add(l_pppare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        l_mppare.setFont(tinyFont);
+        l_mppare.setText("jLabel3");
+        treepanel.add(l_mppare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        l_mpare.setFont(smallFont);
+        l_mpare.setText("jLabel3");
+        treepanel.add(l_mpare, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+
+        l_pmpare.setFont(tinyFont);
+        l_pmpare.setText("jLabel3");
+        treepanel.add(l_pmpare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+
+        l_mmpare.setFont(tinyFont);
+        l_mmpare.setText("jLabel3");
+        treepanel.add(l_mmpare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+
+        l_mare.setFont(normalFont);
+        l_mare.setText("jLabel1");
+        treepanel.add(l_mare, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+
+        l_pmare.setFont(smallFont);
+        l_pmare.setText("jLabel3");
+        treepanel.add(l_pmare, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+
+        l_ppmare.setFont(tinyFont);
+        l_ppmare.setText("jLabel3");
+        treepanel.add(l_ppmare, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+
+        l_mpmare.setFont(tinyFont);
+        l_mpmare.setText("jLabel3");
+        treepanel.add(l_mpmare, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+
+        l_mmare.setFont(smallFont);
+        l_mmare.setText("jLabel3");
+        treepanel.add(l_mmare, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+
+        l_pmmare.setFont(tinyFont);
+        l_pmmare.setText("jLabel3");
+        treepanel.add(l_pmmare, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
+
+        l_mmmare.setFont(tinyFont);
+        l_mmmare.setText("jLabel3");
+        treepanel.add(l_mmmare, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
+
+        jScrollPane16.setViewportView(treepanel);
+
+        searchpanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        searchpanel.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        searchpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel52.setFont(normalFont);
         jLabel52.setText("Nom");
-        jPanel2.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 47, -1, -1));
+        searchpanel.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
-        find_nom.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel2.add(find_nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 36, 280, -1));
+        find_nom.setFont(normalFont);
+        searchpanel.add(find_nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 160, 20));
 
-        find_llinatge1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel2.add(find_llinatge1, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 88, 320, -1));
+        find_llinatge1.setFont(normalFont);
+        searchpanel.add(find_llinatge1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 200, 20));
 
-        jLabel53.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel53.setFont(normalFont);
         jLabel53.setText("Llinatge 1");
-        jPanel2.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 98, -1, -1));
+        searchpanel.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 80, -1));
 
-        find_llinatge2.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jPanel2.add(find_llinatge2, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 145, 320, -1));
+        find_llinatge2.setFont(normalFont);
+        searchpanel.add(find_llinatge2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 200, 20));
 
-        jLabel54.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel54.setFont(normalFont);
         jLabel54.setText("Llinatge 2");
-        jPanel2.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 155, -1, -1));
+        searchpanel.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 80, -1));
 
-        b_cerca.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        b_cerca.setFont(normalFont);
         b_cerca.setText("Cercar");
         b_cerca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 b_cercaActionPerformed(evt);
             }
         });
-        jPanel2.add(b_cerca, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, -1, -1));
-
-        jScrollPane17.setMaximumSize(new java.awt.Dimension(440, 178));
+        searchpanel.add(b_cerca, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 60, 20));
 
         jScrollPane8.setMaximumSize(new java.awt.Dimension(440, 175));
 
-        find_list.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
+        find_list.setFont(smallFont);
         find_list.setMaximumSize(new java.awt.Dimension(435, 173));
         find_list.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -979,821 +533,458 @@ public class App extends javax.swing.JFrame {
         });
         jScrollPane8.setViewportView(find_list);
 
-        jScrollPane17.setViewportView(jScrollPane8);
+        searchpanel.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 280, 210));
 
-        jPanel2.add(jScrollPane17, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 202, 450, 177));
+        javax.swing.GroupLayout toprightLayout = new javax.swing.GroupLayout(topright);
+        topright.setLayout(toprightLayout);
+        toprightLayout.setHorizontalGroup(
+            toprightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, toprightLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(searchpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3521, 3521, 3521))
+        );
+        toprightLayout.setVerticalGroup(
+            toprightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+            .addComponent(searchpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
-        b_eafegir.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        b_eafegir.setText("Afegir fitxa");
-        b_eafegir.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.add(topright);
+
+        bottolleft.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        bottolleft.setPreferredSize(new java.awt.Dimension(500, 320));
+        bottolleft.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        l_e_conjuge1.setFont(boldFont);
+        l_e_conjuge1.setText("Conjuge1");
+        bottolleft.add(l_e_conjuge1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jLabel2.setFont(normalFont);
+        jLabel2.setText("Nom");
+        bottolleft.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+
+        t_e_1nom.setFont(normalFont);
+        bottolleft.add(t_e_1nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 140, -1));
+
+        t_e_1llinatge1.setFont(normalFont);
+        bottolleft.add(t_e_1llinatge1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 150, -1));
+
+        t_e_1llinatge2.setFont(normalFont);
+        bottolleft.add(t_e_1llinatge2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 210, -1));
+
+        jLabel4.setFont(normalFont);
+        jLabel4.setText("Primer llinatge");
+        bottolleft.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, -1, -1));
+
+        jLabel5.setFont(normalFont);
+        jLabel5.setText("Segon llinatge");
+        bottolleft.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, -1, -1));
+
+        jLabel6.setFont(normalFont);
+        jLabel6.setText("Naixement:");
+        bottolleft.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+
+        jLabel7.setFont(smallFont);
+        jLabel7.setText("Municipi");
+        bottolleft.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+
+        c_1municipi.setFont(normalFont);
+        c_1municipi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        c_1municipi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_eafegirActionPerformed(evt);
+                c_1municipiActionPerformed(evt);
             }
         });
-
-        b_eborrar.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        b_eborrar.setText("Esborrar");
-
-        l_pare.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        l_pare.setText("jLabel1");
-
-        l_ppare.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        l_ppare.setText("jLabel3");
-
-        l_pppare.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        l_pppare.setText("jLabel3");
-
-        l_mppare.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        l_mppare.setText("jLabel3");
-
-        l_mpare.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        l_mpare.setText("jLabel3");
-
-        l_pmpare.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        l_pmpare.setText("jLabel3");
-
-        l_mmpare.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        l_mmpare.setText("jLabel3");
-
-        l_mare.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        l_mare.setText("jLabel1");
-
-        l_pmare.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        l_pmare.setText("jLabel3");
-
-        l_ppmare.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        l_ppmare.setText("jLabel3");
-
-        l_mpmare.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        l_mpmare.setText("jLabel3");
-
-        l_mmare.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        l_mmare.setText("jLabel3");
-
-        l_pmmare.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        l_pmmare.setText("jLabel3");
-
-        l_mmmare.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        l_mmmare.setText("jLabel3");
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(l_pare)
-                    .addComponent(l_mare)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(l_pmare)
-                            .addComponent(l_mmare)
-                            .addComponent(l_ppare)
-                            .addComponent(l_mpare)
-                            .addGroup(jPanel9Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(l_mpmare)
-                                    .addComponent(l_ppmare)
-                                    .addComponent(l_pmmare)
-                                    .addComponent(l_mmmare)
-                                    .addComponent(l_mppare)
-                                    .addComponent(l_pppare)
-                                    .addComponent(l_pmpare)
-                                    .addComponent(l_mmpare))))))
-                .addContainerGap(299, Short.MAX_VALUE))
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(l_pare)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(l_ppare)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(l_pppare)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(l_mppare)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(l_mpare)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(l_pmpare)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(l_mmpare)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(l_mare)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(l_pmare)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(l_ppmare)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(l_mpmare)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(l_mmare)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(l_pmmare)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(l_mmmare)
-                .addGap(5, 5, 5))
-        );
-
-        jScrollPane16.setViewportView(jPanel9);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(20, 20, 20))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(b_eafegir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(b_eborrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(b_eafegir)
-                    .addComponent(b_eborrar)))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        jTabbedPane1.addTab("Editor", jPanel1);
-
-        jLabel55.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
-        jLabel55.setText("Fitxa");
-
-        jLabel56.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel56.setText("Generació");
-
-        jPanel10.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel58.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel58.setText("Naixement");
-        jPanel10.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
-
-        jList6.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane11.setViewportView(jList6);
-
-        jPanel10.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -120, -1, 100));
-
-        jList7.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane12.setViewportView(jList7);
-
-        jPanel10.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -120, 550, 100));
-
-        jLabel59.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel59.setText("Pares");
-        jPanel10.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
-
-        jLabel61.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel61.setText("Defunció");
-        jPanel10.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
-
-        jButton7.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jButton7.setText("Fitxa pares");
-        jPanel10.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, -1, -1));
-
-        jLabel62.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel62.setText("Nom complet");
-        jPanel10.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
-
-        jPanel11.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel65.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel65.setText("Nom complet");
-
-        jLabel66.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel66.setText("Defunció");
-
-        jLabel67.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel67.setText("Naixement");
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel65)
-                    .addComponent(jLabel66)
-                    .addComponent(jLabel67))
-                .addGap(0, 283, Short.MAX_VALUE))
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addComponent(jLabel65)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel67)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel66)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel10.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, -1, -1));
-
-        jPanel12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel68.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel68.setText("Nom complet");
-
-        jLabel69.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel69.setText("Defunció");
-
-        jLabel70.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel70.setText("Naixement");
-
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel68)
-                    .addComponent(jLabel69)
-                    .addComponent(jLabel70))
-                .addGap(0, 279, Short.MAX_VALUE))
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addComponent(jLabel68)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel70)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel69)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel10.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
-
-        jPanel14.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel74.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel74.setText("Nom complet");
-
-        jLabel75.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel75.setText("Defunció");
-
-        jLabel76.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel76.setText("Naixement");
-
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel74)
-                    .addComponent(jLabel75)
-                    .addComponent(jLabel76))
-                .addGap(0, 283, Short.MAX_VALUE))
-        );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addComponent(jLabel74)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel76)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel75)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel10.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, -1, -1));
-
-        jLabel63.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel63.setText("Padrins paterns");
-        jPanel10.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
-
-        jButton8.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jButton8.setText("Fitxa pares");
-        jPanel10.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, -1));
-
-        jPanel13.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel71.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel71.setText("Nom complet");
-
-        jLabel72.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel72.setText("Defunció");
-
-        jLabel73.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel73.setText("Naixement");
-
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel71)
-                    .addComponent(jLabel72)
-                    .addComponent(jLabel73))
-                .addGap(0, 279, Short.MAX_VALUE))
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addComponent(jLabel71)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel73)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel72)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel10.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
-
-        jPanel15.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel77.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel77.setText("Nom complet");
-
-        jLabel78.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel78.setText("Defunció");
-
-        jLabel79.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel79.setText("Naixement");
-
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel77)
-                    .addComponent(jLabel78)
-                    .addComponent(jLabel79))
-                .addGap(0, 279, Short.MAX_VALUE))
-        );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addComponent(jLabel77)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel79)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel78)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel10.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
-
-        jPanel16.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel80.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel80.setText("Nom complet");
-
-        jLabel81.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel81.setText("Defunció");
-
-        jLabel82.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel82.setText("Naixement");
-
-        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
-        jPanel16.setLayout(jPanel16Layout);
-        jPanel16Layout.setHorizontalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel80)
-                    .addComponent(jLabel81)
-                    .addComponent(jLabel82))
-                .addGap(0, 283, Short.MAX_VALUE))
-        );
-        jPanel16Layout.setVerticalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addComponent(jLabel80)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel82)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel81)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel10.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, -1));
-
-        jButton9.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jButton9.setText("Fitxa pares");
-        jPanel10.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, -1, -1));
-
-        jLabel64.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel64.setText("Padrins paterns");
-        jPanel10.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
-
-        jLabel60.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel60.setText("Conjuge1");
-        jPanel10.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 15, -1, -1));
-
-        jPanel17.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel17.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel83.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel83.setText("Conjuge1");
-        jPanel17.add(jLabel83, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 15, -1, -1));
-
-        jLabel84.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel84.setText("Naixement");
-        jPanel17.add(jLabel84, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
-
-        jList8.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane13.setViewportView(jList8);
-
-        jPanel17.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -120, -1, 100));
-
-        jList9.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane14.setViewportView(jList9);
-
-        jPanel17.add(jScrollPane14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -120, 550, 100));
-
-        jLabel85.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel85.setText("Pares");
-        jPanel17.add(jLabel85, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
-
-        jLabel86.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel86.setText("Defunció");
-        jPanel17.add(jLabel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
-
-        jButton10.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jButton10.setText("Fitxa pares");
-        jPanel17.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, -1, -1));
-
-        jLabel87.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel87.setText("Nom complet");
-        jPanel17.add(jLabel87, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
-
-        jPanel18.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel88.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel88.setText("Nom complet");
-
-        jLabel89.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel89.setText("Defunció");
-
-        jLabel90.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel90.setText("Naixement");
-
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel88)
-                    .addComponent(jLabel89)
-                    .addComponent(jLabel90))
-                .addGap(0, 283, Short.MAX_VALUE))
-        );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addComponent(jLabel88)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel90)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel89)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel17.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, -1, -1));
-
-        jPanel19.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel91.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel91.setText("Nom complet");
-
-        jLabel92.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel92.setText("Defunció");
-
-        jLabel93.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel93.setText("Naixement");
-
-        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
-        jPanel19.setLayout(jPanel19Layout);
-        jPanel19Layout.setHorizontalGroup(
-            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel19Layout.createSequentialGroup()
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel91)
-                    .addComponent(jLabel92)
-                    .addComponent(jLabel93))
-                .addGap(0, 279, Short.MAX_VALUE))
-        );
-        jPanel19Layout.setVerticalGroup(
-            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel19Layout.createSequentialGroup()
-                .addComponent(jLabel91)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel93)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel92)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel17.add(jPanel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
-
-        jPanel20.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel94.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel94.setText("Nom complet");
-
-        jLabel95.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel95.setText("Defunció");
-
-        jLabel96.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel96.setText("Naixement");
-
-        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
-        jPanel20.setLayout(jPanel20Layout);
-        jPanel20Layout.setHorizontalGroup(
-            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel20Layout.createSequentialGroup()
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel94)
-                    .addComponent(jLabel95)
-                    .addComponent(jLabel96))
-                .addGap(0, 283, Short.MAX_VALUE))
-        );
-        jPanel20Layout.setVerticalGroup(
-            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel20Layout.createSequentialGroup()
-                .addComponent(jLabel94)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel96)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel95)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel17.add(jPanel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, -1, -1));
-
-        jLabel97.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel97.setText("Padrins paterns");
-        jPanel17.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
-
-        jButton11.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jButton11.setText("Fitxa pares");
-        jPanel17.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, -1));
-
-        jPanel21.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel98.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel98.setText("Nom complet");
-
-        jLabel99.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel99.setText("Defunció");
-
-        jLabel100.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel100.setText("Naixement");
-
-        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
-        jPanel21.setLayout(jPanel21Layout);
-        jPanel21Layout.setHorizontalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel98)
-                    .addComponent(jLabel99)
-                    .addComponent(jLabel100))
-                .addGap(0, 279, Short.MAX_VALUE))
-        );
-        jPanel21Layout.setVerticalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
-                .addComponent(jLabel98)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel100)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel99)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel17.add(jPanel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
-
-        jPanel22.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel101.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel101.setText("Nom complet");
-
-        jLabel102.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel102.setText("Defunció");
-
-        jLabel103.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel103.setText("Naixement");
-
-        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
-        jPanel22.setLayout(jPanel22Layout);
-        jPanel22Layout.setHorizontalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel22Layout.createSequentialGroup()
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel101)
-                    .addComponent(jLabel102)
-                    .addComponent(jLabel103))
-                .addGap(0, 279, Short.MAX_VALUE))
-        );
-        jPanel22Layout.setVerticalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel22Layout.createSequentialGroup()
-                .addComponent(jLabel101)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel103)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel102)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel17.add(jPanel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
-
-        jPanel23.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel104.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel104.setText("Nom complet");
-
-        jLabel105.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel105.setText("Defunció");
-
-        jLabel106.setFont(new java.awt.Font("Ubuntu", 0, 20)); // NOI18N
-        jLabel106.setText("Naixement");
-
-        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
-        jPanel23.setLayout(jPanel23Layout);
-        jPanel23Layout.setHorizontalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel23Layout.createSequentialGroup()
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel104)
-                    .addComponent(jLabel105)
-                    .addComponent(jLabel106))
-                .addGap(0, 283, Short.MAX_VALUE))
-        );
-        jPanel23Layout.setVerticalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel23Layout.createSequentialGroup()
-                .addComponent(jLabel104)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel106)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel105)
-                .addGap(0, 0, 0))
-        );
-
-        jPanel17.add(jPanel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, -1));
-
-        jButton12.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jButton12.setText("Fitxa pares");
-        jPanel17.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, -1, -1));
-
-        jLabel107.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel107.setText("Padrins paterns");
-        jPanel17.add(jLabel107, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
-
-        jPanel24.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jLabel57.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel57.setText("Fills");
-
-        jScrollPane10.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-
-        jTable1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        c_1municipi.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                c_1municipiFocusLost(evt);
             }
-        ));
-        jTable1.setRowHeight(27);
-        jScrollPane10.setViewportView(jTable1);
+        });
+        bottolleft.add(c_1municipi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 80, -1));
 
-        javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
-        jPanel24.setLayout(jPanel24Layout);
-        jPanel24Layout.setHorizontalGroup(
-            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel24Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
-                    .addGroup(jPanel24Layout.createSequentialGroup()
-                        .addComponent(jLabel57)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel24Layout.setVerticalGroup(
-            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel24Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel57)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        c_1parroquia.setFont(normalFont);
+        c_1parroquia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        c_1parroquia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_1parroquiaActionPerformed(evt);
+            }
+        });
+        bottolleft.add(c_1parroquia, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 90, -1));
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane15.setViewportView(jTextArea4);
+        jLabel8.setFont(smallFont);
+        jLabel8.setText("Parroquia");
+        bottolleft.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 94, -1));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 871, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, 866, Short.MAX_VALUE)
-                            .addComponent(jScrollPane15)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel55)
-                            .addComponent(jLabel56))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel55)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel56)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
-                    .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        c_1llogaret.setFont(normalFont);
+        c_1llogaret.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        c_1llogaret.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_1llogaretActionPerformed(evt);
+            }
+        });
+        bottolleft.add(c_1llogaret, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 80, -1));
 
-        jTabbedPane1.addTab("Visor", jPanel5);
+        jLabel9.setFont(smallFont);
+        jLabel9.setText("Llogaret");
+        bottolleft.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 94, -1));
+
+        c_1dia.setFont(normalFont);
+        bottolleft.add(c_1dia, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 60, -1));
+
+        c_1mes.setFont(normalFont);
+        c_1mes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_1mesActionPerformed(evt);
+            }
+        });
+        bottolleft.add(c_1mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 70, -1));
+
+        jLabel10.setFont(smallFont);
+        jLabel10.setText("Dia");
+        bottolleft.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 94, -1));
+
+        jLabel11.setFont(smallFont);
+        jLabel11.setText("Mes");
+        bottolleft.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 94, -1));
+
+        jLabel12.setFont(smallFont);
+        jLabel12.setText("Any");
+        bottolleft.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 94, -1));
+
+        t_1any.setFont(normalFont);
+        bottolleft.add(t_1any, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, 70, -1));
+
+        jLabel13.setFont(normalFont);
+        jLabel13.setText("Defunció");
+        bottolleft.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+
+        jLabel14.setFont(smallFont);
+        jLabel14.setText("Municipi");
+        bottolleft.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+
+        c_1dmunicipi.setFont(normalFont);
+        c_1dmunicipi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        c_1dmunicipi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_1dmunicipiActionPerformed(evt);
+            }
+        });
+        c_1dmunicipi.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                c_1dmunicipiFocusLost(evt);
+            }
+        });
+        bottolleft.add(c_1dmunicipi, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 80, -1));
+
+        c_1dparroquia.setFont(normalFont);
+        c_1dparroquia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        c_1dparroquia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_1dparroquiaActionPerformed(evt);
+            }
+        });
+        bottolleft.add(c_1dparroquia, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 90, -1));
+
+        jLabel15.setFont(smallFont);
+        jLabel15.setText("Parroquia");
+        bottolleft.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 94, -1));
+
+        jLabel16.setFont(smallFont);
+        jLabel16.setText("Llogaret");
+        bottolleft.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 94, -1));
+
+        c_1dllogaret.setFont(normalFont);
+        c_1dllogaret.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        c_1dllogaret.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_1dllogaretActionPerformed(evt);
+            }
+        });
+        bottolleft.add(c_1dllogaret, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 80, -1));
+
+        jLabel17.setFont(smallFont);
+        jLabel17.setText("Dia");
+        bottolleft.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 94, -1));
+
+        c_1ddia.setFont(normalFont);
+        bottolleft.add(c_1ddia, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 60, -1));
+
+        jLabel18.setFont(smallFont);
+        jLabel18.setText("Mes");
+        bottolleft.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 94, -1));
+
+        c_1dmes.setFont(normalFont);
+        c_1dmes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_1dmesActionPerformed(evt);
+            }
+        });
+        bottolleft.add(c_1dmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 70, -1));
+
+        t_1dany.setFont(normalFont);
+        bottolleft.add(t_1dany, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, 70, -1));
+
+        jLabel19.setFont(smallFont);
+        jLabel19.setText("Any");
+        bottolleft.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, 94, -1));
+
+        jLabel21.setFont(normalFont);
+        jLabel21.setText("Sexe");
+        bottolleft.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+
+        c_1sexe.setFont(normalFont);
+        c_1sexe.setModel(cbsexe);
+        c_1sexe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_1sexeActionPerformed(evt);
+            }
+        });
+        bottolleft.add(c_1sexe, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 90, 20));
+
+        b_1pares.setFont(normalFont);
+        b_1pares.setText("Fitxa pares");
+        b_1pares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_1paresActionPerformed(evt);
+            }
+        });
+        bottolleft.add(b_1pares, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 90, 20));
+
+        t_1comentaris.setColumns(20);
+        t_1comentaris.setFont(normalFont);
+        t_1comentaris.setRows(5);
+        jScrollPane1.setViewportView(t_1comentaris);
+
+        bottolleft.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 400, 40));
+
+        jLabel22.setFont(normalFont);
+        jLabel22.setText("Comentaris");
+        bottolleft.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, -1));
+
+        jList1.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(jList1);
+
+        bottolleft.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -120, -1, 100));
+
+        jPanel1.add(bottolleft);
+
+        bottomright.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        bottomright.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        l_e_conjuge2.setFont(boldFont);
+        l_e_conjuge2.setText("Conjuge1");
+        bottomright.add(l_e_conjuge2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 15, -1, -1));
+
+        jLabel20.setFont(normalFont);
+        jLabel20.setText("Nom");
+        bottomright.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+
+        t_2nom.setFont(normalFont);
+        bottomright.add(t_2nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 140, -1));
+
+        t_2llinatge1.setFont(normalFont);
+        bottomright.add(t_2llinatge1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 160, -1));
+
+        t_2llinatge2.setFont(normalFont);
+        bottomright.add(t_2llinatge2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 160, -1));
+
+        jLabel23.setFont(normalFont);
+        jLabel23.setText("Primer llinatge");
+        bottomright.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, -1, -1));
+
+        jLabel24.setFont(normalFont);
+        jLabel24.setText("Segon llinatge");
+        bottomright.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 130, -1));
+
+        jLabel25.setFont(normalFont);
+        jLabel25.setText("Naixement:");
+        bottomright.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+
+        jLabel26.setFont(smallFont);
+        jLabel26.setText("Municipi");
+        bottomright.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+
+        c_2nmunicipi.setFont(normalFont);
+        c_2nmunicipi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        c_2nmunicipi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_2nmunicipiActionPerformed(evt);
+            }
+        });
+        c_2nmunicipi.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                c_2nmunicipiFocusLost(evt);
+            }
+        });
+        bottomright.add(c_2nmunicipi, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 80, -1));
+
+        c_2nparroquia.setFont(normalFont);
+        c_2nparroquia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        c_2nparroquia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_2nparroquiaActionPerformed(evt);
+            }
+        });
+        bottomright.add(c_2nparroquia, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 80, -1));
+
+        jLabel27.setFont(smallFont);
+        jLabel27.setText("Parroquia");
+        bottomright.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 94, -1));
+
+        c_2nllogaret.setFont(normalFont);
+        c_2nllogaret.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        c_2nllogaret.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_2nllogaretActionPerformed(evt);
+            }
+        });
+        bottomright.add(c_2nllogaret, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 90, -1));
+
+        jLabel28.setFont(smallFont);
+        jLabel28.setText("Llogaret");
+        bottomright.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 94, -1));
+
+        c_2ndia.setFont(normalFont);
+        bottomright.add(c_2ndia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 70, -1));
+
+        c_2nmes.setFont(normalFont);
+        c_2nmes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_2nmesActionPerformed(evt);
+            }
+        });
+        bottomright.add(c_2nmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 60, -1));
+
+        jLabel29.setFont(smallFont);
+        jLabel29.setText("Dia");
+        bottomright.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 50, -1));
+
+        jLabel30.setFont(smallFont);
+        jLabel30.setText("Mes");
+        bottomright.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 94, -1));
+
+        jLabel31.setFont(smallFont);
+        jLabel31.setText("Any");
+        bottomright.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 40, -1));
+
+        t_2nany.setFont(normalFont);
+        bottomright.add(t_2nany, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 40, -1));
+
+        jLabel32.setFont(normalFont);
+        jLabel32.setText("Defunció");
+        bottomright.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+
+        jLabel33.setFont(smallFont);
+        jLabel33.setText("Municipi");
+        bottomright.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+
+        c_2dmunicipi.setFont(normalFont);
+        c_2dmunicipi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        c_2dmunicipi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_2dmunicipiActionPerformed(evt);
+            }
+        });
+        c_2dmunicipi.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                c_2dmunicipiFocusLost(evt);
+            }
+        });
+        bottomright.add(c_2dmunicipi, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 80, -1));
+
+        c_2dparroquia.setFont(normalFont);
+        c_2dparroquia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        c_2dparroquia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_2dparroquiaActionPerformed(evt);
+            }
+        });
+        bottomright.add(c_2dparroquia, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 80, -1));
+
+        jLabel34.setFont(smallFont);
+        jLabel34.setText("Parroquia");
+        bottomright.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 94, -1));
+
+        jLabel35.setFont(smallFont);
+        jLabel35.setText("Llogaret");
+        bottomright.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 94, -1));
+
+        c_2dllogaret.setFont(normalFont);
+        c_2dllogaret.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        c_2dllogaret.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_2dllogaretActionPerformed(evt);
+            }
+        });
+        bottomright.add(c_2dllogaret, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 90, -1));
+
+        jLabel36.setFont(smallFont);
+        jLabel36.setText("Dia");
+        bottomright.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 94, -1));
+
+        c_2ddia.setFont(normalFont);
+        bottomright.add(c_2ddia, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 70, -1));
+
+        jLabel37.setFont(smallFont);
+        jLabel37.setText("Mes");
+        bottomright.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 94, -1));
+
+        c_2dmes.setFont(normalFont);
+        c_2dmes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_2dmesActionPerformed(evt);
+            }
+        });
+        bottomright.add(c_2dmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 60, -1));
+
+        jLabel38.setFont(smallFont);
+        jLabel38.setText("Any");
+        bottomright.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 50, -1));
+
+        t_2dany.setFont(normalFont);
+        bottomright.add(t_2dany, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 40, -1));
+
+        jLabel39.setFont(normalFont);
+        jLabel39.setText("Sexe");
+        bottomright.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+
+        c_2sexe.setFont(normalFont);
+        c_2sexe.setModel(cbsexe2);
+        c_2sexe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_2sexeActionPerformed(evt);
+            }
+        });
+        bottomright.add(c_2sexe, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 120, 20));
+
+        b_2pares.setFont(normalFont);
+        b_2pares.setText("Fitxa pares");
+        b_2pares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_2paresActionPerformed(evt);
+            }
+        });
+        bottomright.add(b_2pares, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 120, 20));
+
+        t_2comentaris.setColumns(20);
+        t_2comentaris.setFont(normalFont);
+        t_2comentaris.setRows(5);
+        jScrollPane2.setViewportView(t_2comentaris);
+
+        bottomright.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 340, 40));
+
+        jLabel40.setFont(normalFont);
+        jLabel40.setText("Comentaris");
+        bottomright.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
+
+        jPanel1.add(bottomright);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Fitxa");
@@ -1864,13 +1055,11 @@ public class App extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1087, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1)
-                .addGap(0, 0, 0))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
         );
 
         pack();
@@ -1879,152 +1068,6 @@ public class App extends javax.swing.JFrame {
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
         tancar();
     }//GEN-LAST:event_exitMenuItemActionPerformed
-
-    private void c_1sexeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1sexeActionPerformed
-        this.l_e_conjuge1.setText(String.valueOf(this.c_1sexe.getSelectedItem()));
-    }//GEN-LAST:event_c_1sexeActionPerformed
-
-    private void b_1paresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_1paresActionPerformed
-        f.loadPares(formFitxa.home);
-    }//GEN-LAST:event_b_1paresActionPerformed
-
-    private void c_1mesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1mesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_c_1mesActionPerformed
-
-    private void c_1dparroquiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1dparroquiaActionPerformed
-        this.fdmarit.selectedParroquia();
-    }//GEN-LAST:event_c_1dparroquiaActionPerformed
-
-    private void c_1dmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1dmesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_c_1dmesActionPerformed
-
-    private void c_2nmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2nmesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_c_2nmesActionPerformed
-
-    private void c_2dparroquiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2dparroquiaActionPerformed
-        this.fdmuller.selectedParroquia();
-    }//GEN-LAST:event_c_2dparroquiaActionPerformed
-
-    private void c_2dmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2dmesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_c_2dmesActionPerformed
-
-    private void c_2sexeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2sexeActionPerformed
-        this.l_e_conjuge2.setText(String.valueOf(this.c_2sexe.getSelectedItem()));
-    }//GEN-LAST:event_c_2sexeActionPerformed
-
-    private void b_2paresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_2paresActionPerformed
-        f.loadPares(formFitxa.dona);
-    }//GEN-LAST:event_b_2paresActionPerformed
-
-    private void c_umesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_umesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_c_umesActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void b_eafegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_eafegirActionPerformed
-        f.committ();
-    }//GEN-LAST:event_b_eafegirActionPerformed
-
-    private void c_umunicipiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_umunicipiActionPerformed
-        this.fmatrimoni.selectedMunicipi();
-    }//GEN-LAST:event_c_umunicipiActionPerformed
-
-    private void c_umunicipiFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_c_umunicipiFocusLost
-        this.fmatrimoni.selectedMunicipi();
-    }//GEN-LAST:event_c_umunicipiFocusLost
-
-    private void c_1municipiFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_c_1municipiFocusLost
-        this.fnmarit.selectedMunicipi();
-    }//GEN-LAST:event_c_1municipiFocusLost
-
-    private void c_1dmunicipiFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_c_1dmunicipiFocusLost
-        this.fdmarit.selectedMunicipi();
-    }//GEN-LAST:event_c_1dmunicipiFocusLost
-
-    private void c_2nmunicipiFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_c_2nmunicipiFocusLost
-        this.fnmuller.selectedMunicipi();
-    }//GEN-LAST:event_c_2nmunicipiFocusLost
-
-    private void c_2dmunicipiFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_c_2dmunicipiFocusLost
-        this.fdmuller.selectedMunicipi();
-    }//GEN-LAST:event_c_2dmunicipiFocusLost
-
-    private void c_umunicipiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_c_umunicipiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_c_umunicipiKeyPressed
-
-    private void c_1municipiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1municipiActionPerformed
-        this.fnmarit.selectedMunicipi();
-    }//GEN-LAST:event_c_1municipiActionPerformed
-
-    private void c_2nmunicipiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2nmunicipiActionPerformed
-        this.fnmuller.selectedMunicipi();
-    }//GEN-LAST:event_c_2nmunicipiActionPerformed
-
-    private void c_2dmunicipiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2dmunicipiActionPerformed
-        this.fdmuller.selectedMunicipi();
-    }//GEN-LAST:event_c_2dmunicipiActionPerformed
-
-    private void b_cercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_cercaActionPerformed
-        db.persona[] ps = db.persona.getPeopleLike(find_nom.getText(), 
-                find_llinatge1.getText(), find_llinatge2.getText());
-        cerca.fillList(ps);
-    }//GEN-LAST:event_b_cercaActionPerformed
-
-    private void b_afegirfillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_afegirfillActionPerformed
-        new NewFill(fills,f.getUnio()).setVisible(true);
-    }//GEN-LAST:event_b_afegirfillActionPerformed
-
-    private void c_1dmunicipiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1dmunicipiActionPerformed
-        this.fdmarit.selectedMunicipi();
-    }//GEN-LAST:event_c_1dmunicipiActionPerformed
-
-    private void c_uparroquiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_uparroquiaActionPerformed
-        this.fmatrimoni.selectedParroquia();
-    }//GEN-LAST:event_c_uparroquiaActionPerformed
-
-    private void c_ullogaretActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_ullogaretActionPerformed
-        this.fmatrimoni.selectedLlogaret();
-    }//GEN-LAST:event_c_ullogaretActionPerformed
-
-    private void c_1parroquiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1parroquiaActionPerformed
-        this.fnmarit.selectedParroquia();
-    }//GEN-LAST:event_c_1parroquiaActionPerformed
-
-    private void c_1llogaretActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1llogaretActionPerformed
-        this.fnmarit.selectedLlogaret();
-    }//GEN-LAST:event_c_1llogaretActionPerformed
-
-    private void c_1dllogaretActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1dllogaretActionPerformed
-        this.fdmarit.selectedLlogaret();
-    }//GEN-LAST:event_c_1dllogaretActionPerformed
-
-    private void c_2nparroquiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2nparroquiaActionPerformed
-        this.fnmuller.selectedParroquia();
-    }//GEN-LAST:event_c_2nparroquiaActionPerformed
-
-    private void c_2nllogaretActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2nllogaretActionPerformed
-        this.fnmuller.selectedLlogaret();
-    }//GEN-LAST:event_c_2nllogaretActionPerformed
-
-    private void c_2dllogaretActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2dllogaretActionPerformed
-        this.fdmuller.selectedLlogaret();
-    }//GEN-LAST:event_c_2dllogaretActionPerformed
-
-    private void find_listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_find_listMouseClicked
-        if ( SwingUtilities.isRightMouseButton(evt)){
-            this.find_list.setSelectedIndex(getRow(this.find_list, evt.getPoint()));
-            popuplist.show(this.find_list, evt.getX(), evt.getY());
-            popuplist.setLabel("Cerca");
-        }
-    }//GEN-LAST:event_find_listMouseClicked
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
         if(null != popuplist.getLabel())switch (popuplist.getLabel()) {
@@ -2038,21 +1081,9 @@ public class App extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_EliminarActionPerformed
 
-    private void ll_ufillsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ll_ufillsMouseClicked
-        if ( SwingUtilities.isRightMouseButton(evt)){
-            this.ll_ufills.setSelectedIndex(getRow(this.ll_ufills, evt.getPoint()));
-            popuplist.show(this.ll_ufills, evt.getX(), evt.getY());
-            popuplist.setLabel("Fills");
-        }
-    }//GEN-LAST:event_ll_ufillsMouseClicked
-
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
         novaFitxa();
     }//GEN-LAST:event_openMenuItemActionPerformed
-
-    private void c_casamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_casamentActionPerformed
-        f.ActionPerformedCasament();
-    }//GEN-LAST:event_c_casamentActionPerformed
 
     private void mu_taulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mu_taulaActionPerformed
         new taula(f).setVisible(true);
@@ -2069,6 +1100,164 @@ public class App extends javax.swing.JFrame {
     private void mu_csvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mu_csvActionPerformed
         new CSVgenerate.formCSV().setVisible(true);
     }//GEN-LAST:event_mu_csvActionPerformed
+
+    private void b_1paresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_1paresActionPerformed
+        f.loadPares(formFitxa.home);
+    }//GEN-LAST:event_b_1paresActionPerformed
+
+    private void c_1sexeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1sexeActionPerformed
+        this.l_e_conjuge1.setText(String.valueOf(this.c_1sexe.getSelectedItem()));
+    }//GEN-LAST:event_c_1sexeActionPerformed
+
+    private void c_1dmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1dmesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_c_1dmesActionPerformed
+
+    private void c_1dllogaretActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1dllogaretActionPerformed
+        this.fdmarit.selectedLlogaret();
+    }//GEN-LAST:event_c_1dllogaretActionPerformed
+
+    private void c_1dparroquiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1dparroquiaActionPerformed
+        this.fdmarit.selectedParroquia();
+    }//GEN-LAST:event_c_1dparroquiaActionPerformed
+
+    private void c_1dmunicipiFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_c_1dmunicipiFocusLost
+        this.fdmarit.selectedMunicipi();
+    }//GEN-LAST:event_c_1dmunicipiFocusLost
+
+    private void c_1dmunicipiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1dmunicipiActionPerformed
+        this.fdmarit.selectedMunicipi();
+    }//GEN-LAST:event_c_1dmunicipiActionPerformed
+
+    private void c_1mesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1mesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_c_1mesActionPerformed
+
+    private void c_1llogaretActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1llogaretActionPerformed
+        this.fnmarit.selectedLlogaret();
+    }//GEN-LAST:event_c_1llogaretActionPerformed
+
+    private void c_1parroquiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1parroquiaActionPerformed
+        this.fnmarit.selectedParroquia();
+    }//GEN-LAST:event_c_1parroquiaActionPerformed
+
+    private void c_1municipiFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_c_1municipiFocusLost
+        this.fnmarit.selectedMunicipi();
+    }//GEN-LAST:event_c_1municipiFocusLost
+
+    private void c_1municipiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1municipiActionPerformed
+        this.fnmarit.selectedMunicipi();
+    }//GEN-LAST:event_c_1municipiActionPerformed
+
+    private void b_2paresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_2paresActionPerformed
+        f.loadPares(formFitxa.dona);
+    }//GEN-LAST:event_b_2paresActionPerformed
+
+    private void c_2sexeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2sexeActionPerformed
+        this.l_e_conjuge2.setText(String.valueOf(this.c_2sexe.getSelectedItem()));
+    }//GEN-LAST:event_c_2sexeActionPerformed
+
+    private void c_2dmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2dmesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_c_2dmesActionPerformed
+
+    private void c_2dllogaretActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2dllogaretActionPerformed
+        this.fdmuller.selectedLlogaret();
+    }//GEN-LAST:event_c_2dllogaretActionPerformed
+
+    private void c_2dparroquiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2dparroquiaActionPerformed
+        this.fdmuller.selectedParroquia();
+    }//GEN-LAST:event_c_2dparroquiaActionPerformed
+
+    private void c_2dmunicipiFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_c_2dmunicipiFocusLost
+        this.fdmuller.selectedMunicipi();
+    }//GEN-LAST:event_c_2dmunicipiFocusLost
+
+    private void c_2dmunicipiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2dmunicipiActionPerformed
+        this.fdmuller.selectedMunicipi();
+    }//GEN-LAST:event_c_2dmunicipiActionPerformed
+
+    private void c_2nmesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2nmesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_c_2nmesActionPerformed
+
+    private void c_2nllogaretActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2nllogaretActionPerformed
+        this.fnmuller.selectedLlogaret();
+    }//GEN-LAST:event_c_2nllogaretActionPerformed
+
+    private void c_2nparroquiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2nparroquiaActionPerformed
+        this.fnmuller.selectedParroquia();
+    }//GEN-LAST:event_c_2nparroquiaActionPerformed
+
+    private void c_2nmunicipiFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_c_2nmunicipiFocusLost
+        this.fnmuller.selectedMunicipi();
+    }//GEN-LAST:event_c_2nmunicipiFocusLost
+
+    private void c_2nmunicipiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2nmunicipiActionPerformed
+        this.fnmuller.selectedMunicipi();
+    }//GEN-LAST:event_c_2nmunicipiActionPerformed
+
+    private void find_listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_find_listMouseClicked
+        if ( SwingUtilities.isRightMouseButton(evt)){
+            this.find_list.setSelectedIndex(getRow(this.find_list, evt.getPoint()));
+            popuplist.show(this.find_list, evt.getX(), evt.getY());
+            popuplist.setLabel("Cerca");
+        }
+    }//GEN-LAST:event_find_listMouseClicked
+
+    private void b_cercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_cercaActionPerformed
+        db.persona[] ps = db.persona.getPeopleLike(find_nom.getText(),
+            find_llinatge1.getText(), find_llinatge2.getText());
+        cerca.fillList(ps);
+    }//GEN-LAST:event_b_cercaActionPerformed
+
+    private void b_eafegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_eafegirActionPerformed
+        f.committ();
+    }//GEN-LAST:event_b_eafegirActionPerformed
+
+    private void b_afegirfillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_afegirfillActionPerformed
+        new NewFill(fills,f.getUnio()).setVisible(true);
+    }//GEN-LAST:event_b_afegirfillActionPerformed
+
+    private void ll_ufillsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ll_ufillsMouseClicked
+        if ( SwingUtilities.isRightMouseButton(evt)){
+            this.ll_ufills.setSelectedIndex(getRow(this.ll_ufills, evt.getPoint()));
+            popuplist.show(this.ll_ufills, evt.getX(), evt.getY());
+            popuplist.setLabel("Fills");
+        }
+    }//GEN-LAST:event_ll_ufillsMouseClicked
+
+    private void c_umesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_umesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_c_umesActionPerformed
+
+    private void c_ullogaretActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_ullogaretActionPerformed
+        this.fmatrimoni.selectedLlogaret();
+    }//GEN-LAST:event_c_ullogaretActionPerformed
+
+    private void c_uparroquiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_uparroquiaActionPerformed
+        this.fmatrimoni.selectedParroquia();
+    }//GEN-LAST:event_c_uparroquiaActionPerformed
+
+    private void c_umunicipiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_c_umunicipiKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_c_umunicipiKeyPressed
+
+    private void c_umunicipiFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_c_umunicipiFocusLost
+        this.fmatrimoni.selectedMunicipi();
+    }//GEN-LAST:event_c_umunicipiFocusLost
+
+    private void c_umunicipiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_umunicipiActionPerformed
+        this.fmatrimoni.selectedMunicipi();
+    }//GEN-LAST:event_c_umunicipiActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void c_casamentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_casamentActionPerformed
+        f.ActionPerformedCasament();
+    }//GEN-LAST:event_c_casamentActionPerformed
     
     
     private void initialize(){
@@ -2173,6 +1362,8 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JButton b_cerca;
     private javax.swing.JButton b_eafegir;
     private javax.swing.JButton b_eborrar;
+    private javax.swing.JPanel bottolleft;
+    private javax.swing.JPanel bottomright;
     private javax.swing.JComboBox c_1ddia;
     private javax.swing.JComboBox c_1dia;
     private javax.swing.JComboBox c_1dllogaret;
@@ -2210,22 +1401,8 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JTextField find_llinatge2;
     private javax.swing.JTextField find_nom;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel100;
-    private javax.swing.JLabel jLabel101;
-    private javax.swing.JLabel jLabel102;
-    private javax.swing.JLabel jLabel103;
-    private javax.swing.JLabel jLabel104;
-    private javax.swing.JLabel jLabel105;
-    private javax.swing.JLabel jLabel106;
-    private javax.swing.JLabel jLabel107;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -2272,104 +1449,21 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
-    private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
-    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel61;
-    private javax.swing.JLabel jLabel62;
-    private javax.swing.JLabel jLabel63;
-    private javax.swing.JLabel jLabel64;
-    private javax.swing.JLabel jLabel65;
-    private javax.swing.JLabel jLabel66;
-    private javax.swing.JLabel jLabel67;
-    private javax.swing.JLabel jLabel68;
-    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel70;
-    private javax.swing.JLabel jLabel71;
-    private javax.swing.JLabel jLabel72;
-    private javax.swing.JLabel jLabel73;
-    private javax.swing.JLabel jLabel74;
-    private javax.swing.JLabel jLabel75;
-    private javax.swing.JLabel jLabel76;
-    private javax.swing.JLabel jLabel77;
-    private javax.swing.JLabel jLabel78;
-    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel80;
-    private javax.swing.JLabel jLabel81;
-    private javax.swing.JLabel jLabel82;
-    private javax.swing.JLabel jLabel83;
-    private javax.swing.JLabel jLabel84;
-    private javax.swing.JLabel jLabel85;
-    private javax.swing.JLabel jLabel86;
-    private javax.swing.JLabel jLabel87;
-    private javax.swing.JLabel jLabel88;
-    private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabel90;
-    private javax.swing.JLabel jLabel91;
-    private javax.swing.JLabel jLabel92;
-    private javax.swing.JLabel jLabel93;
-    private javax.swing.JLabel jLabel94;
-    private javax.swing.JLabel jLabel95;
-    private javax.swing.JLabel jLabel96;
-    private javax.swing.JLabel jLabel97;
-    private javax.swing.JLabel jLabel98;
-    private javax.swing.JLabel jLabel99;
     private javax.swing.JList jList1;
-    private javax.swing.JList jList2;
     private javax.swing.JList jList3;
-    private javax.swing.JList jList6;
-    private javax.swing.JList jList7;
-    private javax.swing.JList jList8;
-    private javax.swing.JList jList9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
-    private javax.swing.JPanel jPanel19;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel20;
-    private javax.swing.JPanel jPanel21;
-    private javax.swing.JPanel jPanel22;
-    private javax.swing.JPanel jPanel23;
-    private javax.swing.JPanel jPanel24;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane12;
-    private javax.swing.JScrollPane jScrollPane13;
-    private javax.swing.JScrollPane jScrollPane14;
-    private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
-    private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea4;
     private javax.swing.JLabel l_e_conjuge1;
     private javax.swing.JLabel l_e_conjuge2;
     private javax.swing.JLabel l_generacio;
@@ -2393,6 +1487,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JMenuItem mu_taula;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JPopupMenu popuplist;
+    private javax.swing.JPanel searchpanel;
     private javax.swing.JTextField t_1any;
     private javax.swing.JTextArea t_1comentaris;
     private javax.swing.JTextField t_1dany;
@@ -2407,6 +1502,9 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JTextField t_e_1nom;
     private javax.swing.JTextField t_fitxa;
     private javax.swing.JTextArea t_ucomentaris;
+    private javax.swing.JPanel topleft;
+    private javax.swing.JPanel topright;
+    private javax.swing.JPanel treepanel;
     // End of variables declaration//GEN-END:variables
 
     private void novaFitxa() {
