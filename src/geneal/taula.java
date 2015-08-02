@@ -111,7 +111,7 @@ public class taula extends javax.swing.JFrame {
         });
         scrollpane.setViewportView(table);
 
-        getContentPane().add(scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 870, 650));
+        getContentPane().add(scrollpane, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 870, 510));
 
         jLabel1.setFont(smallFont);
         jLabel1.setText("Lloc defunció");
@@ -129,7 +129,7 @@ public class taula extends javax.swing.JFrame {
         l_total.setFont(normalFont);
         l_total.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         l_total.setText("jLabel1");
-        getContentPane().add(l_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 780, 330, -1));
+        getContentPane().add(l_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 620, 330, -1));
 
         jLabel3.setFont(smallFont);
         jLabel3.setText("Nom");
@@ -149,7 +149,7 @@ public class taula extends javax.swing.JFrame {
 
         l_info.setFont(normalFont);
         l_info.setText("jLabel1");
-        getContentPane().add(l_info, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 780, -1, -1));
+        getContentPane().add(l_info, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, -1, -1));
 
         b_cerca.setFont(normalFont);
         b_cerca.setText("Cerca");
