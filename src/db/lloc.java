@@ -256,7 +256,7 @@ public class lloc extends conexio{
             PreparedStatement pst = con.prepareStatement(str);
             pst.setString(1, p);
             pst.setString(2, m);
-            ResultSet rs = pst.executeQuery(str);
+            ResultSet rs = pst.executeQuery();
             return rs.next();
         } catch (SQLException ex) {
             Logger.getLogger(lloc.class.getName()).log(Level.SEVERE, null, ex);

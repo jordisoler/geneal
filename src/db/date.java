@@ -18,7 +18,10 @@
 package db;
 
 import Exceptions.dateException;
+import java.io.IOException;
 import java.sql.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -56,6 +59,29 @@ public class date {
     
     public date (java.sql.Date d) throws dateException{
         fillDate(d.getYear(),d.getMonth(), d.getDay());
+    }
+    
+    public date (java.io.Reader r) throws dateException{
+        if (r == null){
+            setNull();
+        }else{
+            java.io.BufferedReader in = new java.io.BufferedReader(r);
+            String line = null;
+            StringBuilder rslt = new StringBuilder();
+            try {
+                while ((line = in.readLine()) != null) {
+                    rslt.append(line);
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(date.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            String mysqld = rslt.toString();
+        
+            int y = Integer.parseInt(mysqld.substring(0, 4));
+            int m = Integer.parseInt(mysqld.substring(5, 7));
+            int d = Integer.parseInt(mysqld.substring(8,10));
+            fillDate(y,m,d);
+        }
     }
     
     public void setYear(int y){

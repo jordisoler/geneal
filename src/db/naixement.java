@@ -22,7 +22,6 @@ import Exceptions.dateException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Types;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -57,7 +56,7 @@ public class naixement extends conexio{
                 this.idLloc = nullify(rs.getInt("id_lloc"));
                 this.idUnio = nullify(rs.getInt("id_unio"));
                 try {
-                    this.dataNaixement = new date(rs.getString("data_naixement"));
+                    this.dataNaixement = new date(rs.getCharacterStream("data_naixement"));
                 } catch (dateException ex) {
                     this.dataNaixement = new date();
                 }
