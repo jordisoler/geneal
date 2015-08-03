@@ -75,7 +75,6 @@ public class date {
             } catch (IOException ex) {
                 Logger.getLogger(date.class.getName()).log(Level.SEVERE, null, ex);
             }
-            System.out.println(rslt.toString());
             String mysqld = rslt.toString();
         
             int y = Integer.parseInt(mysqld.substring(0, 4));
