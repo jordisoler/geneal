@@ -57,7 +57,7 @@ public class naixement extends conexio{
                 this.idLloc = nullify(rs.getInt("id_lloc"));
                 this.idUnio = nullify(rs.getInt("id_unio"));
                 try {
-                    this.dataNaixement = new date(rs.getString("data_naixement"));
+                    this.dataNaixement = new date(rs.getCharacterStream("data_naixement"));
                 } catch (dateException ex) {
                     this.dataNaixement = new date();
                 }
