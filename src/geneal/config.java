@@ -29,9 +29,13 @@ public class config {
     private static final Font defaultBoldFont = new Font("Ubuntu", Font.BOLD, 14);
     private static final Font defaultSmallFont = new Font("Ubuntu", Font.PLAIN, 12);
     private static final Font defaultTinyFont = new Font("Ubuntu", Font.PLAIN, 10);
+    private static final Font defaultBigFont = new Font("Ubuntu", Font.PLAIN, 16);
+    private static final Font defaultBigBoldFont = new Font("Ubuntu", Font.BOLD, 16);
     
     public static Font normalFont = defaultNormalFont;
     public static Font smallFont = defaultSmallFont;
     public static Font boldFont = defaultBoldFont;
     public static Font tinyFont = defaultTinyFont;
+    public static Font bigFont = defaultBigFont;
+    public static Font bigBoldFont = defaultBigBoldFont;
 }

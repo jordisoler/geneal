@@ -18,10 +18,7 @@
 package geneal;
 
 import Exceptions.*;
-import static geneal.config.boldFont;
-import static geneal.config.normalFont;
-import static geneal.config.smallFont;
-import static geneal.config.tinyFont;
+import static geneal.config.*;
 import javax.swing.UIManager;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -90,7 +87,7 @@ public class App extends javax.swing.JFrame {
         Seleccionar = new javax.swing.JMenuItem();
         Eliminar = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        panelEditor = new javax.swing.JPanel();
         topleft = new javax.swing.JPanel();
         jLabel43 = new javax.swing.JLabel();
         c_casament = new javax.swing.JCheckBox();
@@ -227,6 +224,52 @@ public class App extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         t_2comentaris = new javax.swing.JTextArea();
         jLabel40 = new javax.swing.JLabel();
+        panelVisor = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        v_conj1 = new javax.swing.JLabel();
+        v_h_nom = new javax.swing.JLabel();
+        v_h_naixement = new javax.swing.JLabel();
+        v_h_defuncio = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        v_h_pares = new javax.swing.JLabel();
+        v_h_pare = new javax.swing.JLabel();
+        v_h_mare = new javax.swing.JLabel();
+        vb_h_pares = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        v_h_pares1 = new javax.swing.JLabel();
+        v_h_ppare = new javax.swing.JLabel();
+        v_h_mpare = new javax.swing.JLabel();
+        vb_h_ppares = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        v_h_pares2 = new javax.swing.JLabel();
+        v_h_pmare = new javax.swing.JLabel();
+        v_h_mmare = new javax.swing.JLabel();
+        vb_h_mpares = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        v_conj2 = new javax.swing.JLabel();
+        v_m_nom = new javax.swing.JLabel();
+        v_m_naixement = new javax.swing.JLabel();
+        v_m_defuncio = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        v_m_pares = new javax.swing.JLabel();
+        v_m_pare = new javax.swing.JLabel();
+        v_m_mare = new javax.swing.JLabel();
+        vb_m_pares = new javax.swing.JButton();
+        jPanel12 = new javax.swing.JPanel();
+        v_h_pares4 = new javax.swing.JLabel();
+        v_m_ppare = new javax.swing.JLabel();
+        v_m_mpare = new javax.swing.JLabel();
+        vb_m_ppares = new javax.swing.JButton();
+        jPanel13 = new javax.swing.JPanel();
+        v_h_pares5 = new javax.swing.JLabel();
+        v_m_pmare = new javax.swing.JLabel();
+        v_m_mmare = new javax.swing.JLabel();
+        vb_m_mpares = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -265,10 +308,10 @@ public class App extends javax.swing.JFrame {
 
         jTabbedPane1.setFont(normalFont);
 
-        jPanel1.setFont(normalFont);
-        jPanel1.setMinimumSize(new java.awt.Dimension(700, 550));
-        jPanel1.setPreferredSize(new java.awt.Dimension(780, 715));
-        jPanel1.setLayout(new java.awt.GridLayout(2, 2));
+        panelEditor.setFont(normalFont);
+        panelEditor.setMinimumSize(new java.awt.Dimension(700, 550));
+        panelEditor.setPreferredSize(new java.awt.Dimension(780, 715));
+        panelEditor.setLayout(new java.awt.GridLayout(2, 2));
 
         topleft.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         topleft.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -419,7 +462,7 @@ public class App extends javax.swing.JFrame {
         b_eborrar.setText("Esborrar");
         topleft.add(b_eborrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 70, 20));
 
-        jPanel1.add(topleft);
+        panelEditor.add(topleft);
 
         treepanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         treepanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -545,7 +588,7 @@ public class App extends javax.swing.JFrame {
             .addComponent(searchpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel1.add(topright);
+        panelEditor.add(topright);
 
         bottolleft.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         bottolleft.setPreferredSize(new java.awt.Dimension(500, 320));
@@ -771,7 +814,7 @@ public class App extends javax.swing.JFrame {
 
         bottolleft.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -120, -1, 100));
 
-        jPanel1.add(bottolleft);
+        panelEditor.add(bottolleft);
 
         bottomright.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         bottomright.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -982,9 +1025,218 @@ public class App extends javax.swing.JFrame {
         jLabel40.setText("Comentaris");
         bottomright.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
 
-        jPanel1.add(bottomright);
+        panelEditor.add(bottomright);
 
-        jTabbedPane1.addTab("Editor", jPanel1);
+        jTabbedPane1.addTab("Editor", panelEditor);
+
+        panelVisor.setFont(normalFont);
+
+        jLabel1.setText("Fitxa: ");
+
+        jPanel2.setLayout(new java.awt.GridLayout(1, 2));
+
+        jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setLayout(new java.awt.GridLayout(4, 1));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        v_conj1.setFont(bigBoldFont);
+        v_conj1.setText("Home");
+        jPanel1.add(v_conj1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        v_h_nom.setFont(bigFont);
+        v_h_nom.setText("nom");
+        jPanel1.add(v_h_nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        v_h_naixement.setFont(bigFont);
+        v_h_naixement.setText("naixement");
+        jPanel1.add(v_h_naixement, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        v_h_defuncio.setFont(bigFont);
+        v_h_defuncio.setText("defunció");
+        jPanel1.add(v_h_defuncio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        jPanel3.add(jPanel1);
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        v_h_pares.setFont(bigBoldFont);
+        v_h_pares.setText("Pares");
+        jPanel5.add(v_h_pares, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        v_h_pare.setFont(bigFont);
+        v_h_pare.setText("nomPare");
+        jPanel5.add(v_h_pare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        v_h_mare.setFont(bigFont);
+        v_h_mare.setText("nomMare");
+        jPanel5.add(v_h_mare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        vb_h_pares.setFont(bigFont);
+        vb_h_pares.setText("jButton1");
+        jPanel5.add(vb_h_pares, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
+
+        jPanel3.add(jPanel5);
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        v_h_pares1.setFont(bigBoldFont);
+        v_h_pares1.setText("Padrins paterns");
+        jPanel6.add(v_h_pares1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        v_h_ppare.setFont(bigFont);
+        v_h_ppare.setText("nomPare");
+        jPanel6.add(v_h_ppare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        v_h_mpare.setFont(bigFont);
+        v_h_mpare.setText("nomMare");
+        jPanel6.add(v_h_mpare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        vb_h_ppares.setFont(bigFont);
+        vb_h_ppares.setText("jButton1");
+        jPanel6.add(vb_h_ppares, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
+
+        jPanel3.add(jPanel6);
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        v_h_pares2.setFont(bigBoldFont);
+        v_h_pares2.setText("Padrins materns");
+        jPanel7.add(v_h_pares2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        v_h_pmare.setFont(bigFont);
+        v_h_pmare.setText("nomPare");
+        jPanel7.add(v_h_pmare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        v_h_mmare.setFont(bigFont);
+        v_h_mmare.setText("nomMare");
+        jPanel7.add(v_h_mmare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        vb_h_mpares.setFont(bigFont);
+        vb_h_mpares.setText("jButton1");
+        jPanel7.add(vb_h_mpares, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
+
+        jPanel3.add(jPanel7);
+
+        jPanel2.add(jPanel3);
+
+        jPanel8.setLayout(new java.awt.GridLayout(1, 2));
+
+        jPanel9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel9.setLayout(new java.awt.GridLayout(4, 1));
+
+        jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        v_conj2.setFont(bigBoldFont);
+        v_conj2.setText("Dona");
+        jPanel10.add(v_conj2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        v_m_nom.setFont(bigFont);
+        v_m_nom.setText("nom");
+        jPanel10.add(v_m_nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        v_m_naixement.setFont(bigFont);
+        v_m_naixement.setText("naixement");
+        jPanel10.add(v_m_naixement, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        v_m_defuncio.setFont(bigFont);
+        v_m_defuncio.setText("defunció");
+        jPanel10.add(v_m_defuncio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        jPanel9.add(jPanel10);
+
+        jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        v_m_pares.setFont(bigBoldFont);
+        v_m_pares.setText("Pares");
+        jPanel11.add(v_m_pares, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        v_m_pare.setFont(bigFont);
+        v_m_pare.setText("nomPare");
+        jPanel11.add(v_m_pare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        v_m_mare.setFont(bigFont);
+        v_m_mare.setText("nomMare");
+        jPanel11.add(v_m_mare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        vb_m_pares.setFont(bigFont);
+        vb_m_pares.setText("jButton1");
+        jPanel11.add(vb_m_pares, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
+
+        jPanel9.add(jPanel11);
+
+        jPanel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        v_h_pares4.setFont(bigBoldFont);
+        v_h_pares4.setText("Padrins paterns");
+        jPanel12.add(v_h_pares4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        v_m_ppare.setFont(bigFont);
+        v_m_ppare.setText("nomPare");
+        jPanel12.add(v_m_ppare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        v_m_mpare.setFont(bigFont);
+        v_m_mpare.setText("nomMare");
+        jPanel12.add(v_m_mpare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        vb_m_ppares.setFont(bigFont);
+        vb_m_ppares.setText("jButton1");
+        jPanel12.add(vb_m_ppares, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
+
+        jPanel9.add(jPanel12);
+
+        jPanel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        v_h_pares5.setFont(bigBoldFont);
+        v_h_pares5.setText("Padrins materns");
+        jPanel13.add(v_h_pares5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        v_m_pmare.setFont(bigFont);
+        v_m_pmare.setText("nomPare");
+        jPanel13.add(v_m_pmare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+
+        v_m_mmare.setFont(bigFont);
+        v_m_mmare.setText("nomMare");
+        jPanel13.add(v_m_mmare, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        vb_m_mpares.setFont(bigFont);
+        vb_m_mpares.setText("jButton1");
+        jPanel13.add(vb_m_mpares, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
+
+        jPanel9.add(jPanel13);
+
+        jPanel8.add(jPanel9);
+
+        jPanel2.add(jPanel8);
+
+        javax.swing.GroupLayout panelVisorLayout = new javax.swing.GroupLayout(panelVisor);
+        panelVisor.setLayout(panelVisorLayout);
+        panelVisorLayout.setHorizontalGroup(
+            panelVisorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVisorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panelVisorLayout.setVerticalGroup(
+            panelVisorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelVisorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Visor", panelVisor);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Fitxa");
@@ -1403,6 +1655,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JTextField find_llinatge2;
     private javax.swing.JTextField find_nom;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1457,6 +1710,17 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JList jList1;
     private javax.swing.JList jList3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane2;
@@ -1488,6 +1752,8 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JMenuItem mu_csv;
     private javax.swing.JMenuItem mu_taula;
     private javax.swing.JMenuItem openMenuItem;
+    private javax.swing.JPanel panelEditor;
+    private javax.swing.JPanel panelVisor;
     private javax.swing.JPopupMenu popuplist;
     private javax.swing.JPanel searchpanel;
     private javax.swing.JTextField t_1any;
@@ -1507,6 +1773,38 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JPanel topleft;
     private javax.swing.JPanel topright;
     private javax.swing.JPanel treepanel;
+    private javax.swing.JLabel v_conj1;
+    private javax.swing.JLabel v_conj2;
+    private javax.swing.JLabel v_h_defuncio;
+    private javax.swing.JLabel v_h_mare;
+    private javax.swing.JLabel v_h_mmare;
+    private javax.swing.JLabel v_h_mpare;
+    private javax.swing.JLabel v_h_naixement;
+    private javax.swing.JLabel v_h_nom;
+    private javax.swing.JLabel v_h_pare;
+    private javax.swing.JLabel v_h_pares;
+    private javax.swing.JLabel v_h_pares1;
+    private javax.swing.JLabel v_h_pares2;
+    private javax.swing.JLabel v_h_pares4;
+    private javax.swing.JLabel v_h_pares5;
+    private javax.swing.JLabel v_h_pmare;
+    private javax.swing.JLabel v_h_ppare;
+    private javax.swing.JLabel v_m_defuncio;
+    private javax.swing.JLabel v_m_mare;
+    private javax.swing.JLabel v_m_mmare;
+    private javax.swing.JLabel v_m_mpare;
+    private javax.swing.JLabel v_m_naixement;
+    private javax.swing.JLabel v_m_nom;
+    private javax.swing.JLabel v_m_pare;
+    private javax.swing.JLabel v_m_pares;
+    private javax.swing.JLabel v_m_pmare;
+    private javax.swing.JLabel v_m_ppare;
+    private javax.swing.JButton vb_h_mpares;
+    private javax.swing.JButton vb_h_pares;
+    private javax.swing.JButton vb_h_ppares;
+    private javax.swing.JButton vb_m_mpares;
+    private javax.swing.JButton vb_m_pares;
+    private javax.swing.JButton vb_m_ppares;
     // End of variables declaration//GEN-END:variables
 
     private void novaFitxa() {
