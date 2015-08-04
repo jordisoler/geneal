@@ -70,7 +70,7 @@ public class persona extends conexio{
                 this.llinatge1 = rs.getString("llinatge1");
                 this.llinatge2 = rs.getString("llinatge2");
                 try {
-                    this.dataDefuncio = new date(rs.getString("data_defuncio"));
+                    this.dataDefuncio = new date(rs.getCharacterStream("data_defuncio"));
                 } catch (dateException ex) {
                     this.dataDefuncio = new date();
                 }

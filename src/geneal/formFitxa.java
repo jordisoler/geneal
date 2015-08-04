@@ -203,6 +203,7 @@ public class formFitxa {
                     u.addUnio();
                     if (casament.isSelected()){
                         b = getBoda();
+                        System.out.println(b);
                         b.addBoda();
                     }else{
                         u.deleteBoda();

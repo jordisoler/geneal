@@ -139,14 +139,14 @@ public class date {
         return d+m+y;
     }
     
-    public Date tojDate(){
-        if (this.isNull()){
-            return null;
-        }else{
-            //java.sql.Date sdate = new java.sql.Date(year, month, day);
-            return java.sql.Date.valueOf(this.toQuery());
-        }
-    }
+//    public Date tojDate(){
+//        if (this.isNull()){
+//            return null;
+//        }else{
+//            //java.sql.Date sdate = new java.sql.Date(year, month, day);
+//            return java.sql.Date.valueOf(this.toQuery());
+//        }
+//    }
     
     public String toQuery(){
         if (this.year == -1){

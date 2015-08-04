@@ -66,7 +66,7 @@ public class familia extends unio{
             String str = "insert into naixement (data_naixement, id_fill, id_unio,"
                     + "id_lloc) values (?,?,?,?)";
             PreparedStatement pst=con.prepareStatement(str);
-            pst.setDate(1, d.tojDate());
+            pst.setString(1, d.toQuery());
             pst.setInt(2, fill);
             pst.setInt(3, this.getId());
             pst.setInt(4, lloc);

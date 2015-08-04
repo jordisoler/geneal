@@ -56,7 +56,7 @@ public class boda extends conexio{
                 this.idUnio  = unio;
                 this.idLloc = rs.getInt("id_lloc");
                 try {
-                    this.data = new date(rs.getString("data_boda"));
+                    this.data = new date(rs.getCharacterStream("data_boda"));
                 } catch (dateException ex) {
                     this.data = new date();
                 }
@@ -90,9 +90,9 @@ public class boda extends conexio{
         return this.data;
     }
     
-    public java.sql.Date getjData(){
-        return this.data.tojDate();
-    }
+//    public java.sql.Date getjData(){
+//        return this.data.tojDate();
+//    }
     
     public boolean isNull(){
         return this.idUnio == -1;
@@ -157,6 +157,11 @@ public class boda extends conexio{
                 this.data == in.data;
     }
     
+    public String toString(){
+        lloc ll = new lloc(idLloc);
+        return "Boda: lloc:"+ll+", data:"+data+", unio: "+idUnio;
+    }
+    
     private void addNewBoda(){
         try {
             String str = "insert into boda (id_unio, id_lloc, data_boda)"
@@ -185,12 +190,13 @@ public class boda extends conexio{
                     + " where id_unio=?";
             PreparedStatement pst=con.prepareStatement(str);
             if (this.idLloc == -1){
-                pst.setNull(2, Types.INTEGER);
+                pst.setNull(1, Types.INTEGER);
             }else{
-                pst.setInt(2, this.idLloc);
+                pst.setInt(1, this.idLloc);
             }
-            pst.setDate(3, this.data.tojDate());
-            pst.setInt(1, this.idUnio);
+            pst.setString(2, this.data.toQuery());
+            pst.setInt(3, this.idUnio);
+            System.out.println(pst);
             pst.execute();
         } catch (SQLException ex) {
             Logger.getLogger(municipi.class.getName()).log(Level.SEVERE, null, ex);
