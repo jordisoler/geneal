@@ -71,6 +71,7 @@ public class App extends javax.swing.JFrame {
     
     private formLloc fmatrimoni, fnmarit, fdmarit, fnmuller,  fdmuller;
     private formData fdmatrimoni, fdnmarit, fddmarit, fdnmuller, fddmuller;
+    private formPersonaVisor visor1,  visor2;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -225,7 +226,7 @@ public class App extends javax.swing.JFrame {
         t_2comentaris = new javax.swing.JTextArea();
         jLabel40 = new javax.swing.JLabel();
         panelVisor = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        v_fitxa = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -1031,14 +1032,14 @@ public class App extends javax.swing.JFrame {
 
         panelVisor.setFont(normalFont);
 
-        jLabel1.setText("Fitxa: ");
+        v_fitxa.setText("Fitxa: ");
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 2));
 
-        jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.setLayout(new java.awt.GridLayout(4, 1));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         v_conj1.setFont(bigBoldFont);
@@ -1059,7 +1060,7 @@ public class App extends javax.swing.JFrame {
 
         jPanel3.add(jPanel1);
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         v_h_pares.setFont(bigBoldFont);
@@ -1076,11 +1077,16 @@ public class App extends javax.swing.JFrame {
 
         vb_h_pares.setFont(bigFont);
         vb_h_pares.setText("jButton1");
+        vb_h_pares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vb_h_paresActionPerformed(evt);
+            }
+        });
         jPanel5.add(vb_h_pares, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
 
         jPanel3.add(jPanel5);
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         v_h_pares1.setFont(bigBoldFont);
@@ -1097,11 +1103,16 @@ public class App extends javax.swing.JFrame {
 
         vb_h_ppares.setFont(bigFont);
         vb_h_ppares.setText("jButton1");
+        vb_h_ppares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vb_h_pparesActionPerformed(evt);
+            }
+        });
         jPanel6.add(vb_h_ppares, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
 
         jPanel3.add(jPanel6);
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         v_h_pares2.setFont(bigBoldFont);
@@ -1118,18 +1129,24 @@ public class App extends javax.swing.JFrame {
 
         vb_h_mpares.setFont(bigFont);
         vb_h_mpares.setText("jButton1");
+        vb_h_mpares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vb_h_mparesActionPerformed(evt);
+            }
+        });
         jPanel7.add(vb_h_mpares, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
 
         jPanel3.add(jPanel7);
 
         jPanel2.add(jPanel3);
 
+        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel8.setLayout(new java.awt.GridLayout(1, 2));
 
         jPanel9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel9.setLayout(new java.awt.GridLayout(4, 1));
 
-        jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         v_conj2.setFont(bigBoldFont);
@@ -1150,7 +1167,7 @@ public class App extends javax.swing.JFrame {
 
         jPanel9.add(jPanel10);
 
-        jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel11.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         v_m_pares.setFont(bigBoldFont);
@@ -1167,11 +1184,16 @@ public class App extends javax.swing.JFrame {
 
         vb_m_pares.setFont(bigFont);
         vb_m_pares.setText("jButton1");
+        vb_m_pares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vb_m_paresActionPerformed(evt);
+            }
+        });
         jPanel11.add(vb_m_pares, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
 
         jPanel9.add(jPanel11);
 
-        jPanel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         v_h_pares4.setFont(bigBoldFont);
@@ -1188,11 +1210,16 @@ public class App extends javax.swing.JFrame {
 
         vb_m_ppares.setFont(bigFont);
         vb_m_ppares.setText("jButton1");
+        vb_m_ppares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vb_m_pparesActionPerformed(evt);
+            }
+        });
         jPanel12.add(vb_m_ppares, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
 
         jPanel9.add(jPanel12);
 
-        jPanel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel13.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         v_h_pares5.setFont(bigBoldFont);
@@ -1209,6 +1236,11 @@ public class App extends javax.swing.JFrame {
 
         vb_m_mpares.setFont(bigFont);
         vb_m_mpares.setText("jButton1");
+        vb_m_mpares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vb_m_mparesActionPerformed(evt);
+            }
+        });
         jPanel13.add(vb_m_mpares, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
 
         jPanel9.add(jPanel13);
@@ -1223,7 +1255,7 @@ public class App extends javax.swing.JFrame {
             panelVisorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelVisorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(v_fitxa)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -1231,7 +1263,7 @@ public class App extends javax.swing.JFrame {
             panelVisorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelVisorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(v_fitxa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1512,6 +1544,30 @@ public class App extends javax.swing.JFrame {
     private void t_1danyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t_1danyActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_t_1danyActionPerformed
+
+    private void vb_h_paresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vb_h_paresActionPerformed
+        f.fillFitxa(this.visor1.getFitxa(formPersonaVisor.pares));
+    }//GEN-LAST:event_vb_h_paresActionPerformed
+
+    private void vb_h_pparesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vb_h_pparesActionPerformed
+        f.fillFitxa(this.visor1.getFitxa(formPersonaVisor.padrinsPaterns));
+    }//GEN-LAST:event_vb_h_pparesActionPerformed
+
+    private void vb_h_mparesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vb_h_mparesActionPerformed
+        f.fillFitxa(this.visor1.getFitxa(formPersonaVisor.padrinsMaterns));
+    }//GEN-LAST:event_vb_h_mparesActionPerformed
+
+    private void vb_m_paresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vb_m_paresActionPerformed
+        f.fillFitxa(this.visor2.getFitxa(formPersonaVisor.pares));
+    }//GEN-LAST:event_vb_m_paresActionPerformed
+
+    private void vb_m_pparesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vb_m_pparesActionPerformed
+        f.fillFitxa(this.visor2.getFitxa(formPersonaVisor.padrinsPaterns));
+    }//GEN-LAST:event_vb_m_pparesActionPerformed
+
+    private void vb_m_mparesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vb_m_mparesActionPerformed
+        f.fillFitxa(this.visor2.getFitxa(formPersonaVisor.padrinsMaterns));
+    }//GEN-LAST:event_vb_m_mparesActionPerformed
     
     
     private void initialize(){
@@ -1582,18 +1638,29 @@ public class App extends javax.swing.JFrame {
         javax.swing.JLabel[] tree2 = {this.l_mare, this.l_pmare,  this.l_ppmare,
                 this.l_mpmare, this.l_mmare, this.l_pmmare, this.l_mmmare};
         
+        javax.swing.JLabel[] l_visor1 = {this.v_h_nom, this.v_h_pare, this.v_h_ppare,
+            this.v_h_mpare, this.v_h_mare, this.v_h_pmare,  this.v_h_mmare};
+        javax.swing.JLabel[] l_visor2 = {this.v_m_nom, this.v_m_pare, this.v_m_ppare,
+            this.v_m_mpare, this.v_m_mare, this.v_m_pmare,  this.v_m_mmare};
+        
+        javax.swing.JButton[] b_visor1={this.vb_h_pares, this.vb_h_ppares,  this.vb_h_mpares};
+        javax.swing.JButton[] b_visor2={this.vb_m_pares, this.vb_m_ppares,  this.vb_m_mpares};
+        
+        visor1=new formPersonaVisor(l_visor1, b_visor1, this.v_h_naixement, this.v_h_defuncio);
+        visor2=new formPersonaVisor(l_visor2, b_visor2, this.v_m_naixement, this.v_m_defuncio);
+        
         formPersonaFitxa c1 = new formPersonaFitxa(un.getConjuge1().getId(), fnmarit, 
                 fdmarit, fdnmarit, fddmarit, nomC1, t_1comentaris, c_1sexe,
-                l_e_conjuge1, tree1, geneal.formPersona.Conjuge1, b_1pares);
+                l_e_conjuge1, tree1, geneal.formPersona.Conjuge1, b_1pares, visor1);
         formPersonaFitxa c2 = new formPersonaFitxa(un.getConjuge2().getId(), fnmuller, 
                 fdmuller, fdnmuller, fddmuller, nomC2, t_2comentaris, c_2sexe,
-                l_e_conjuge2, tree2, geneal.formPersona.Conjuge2, b_2pares);
+                l_e_conjuge2, tree2, geneal.formPersona.Conjuge2, b_2pares, visor2);
         
         fills = new formLlista(this.ll_ufills);
         cerca = new formLlista(this.find_list);
         
         f = new formFitxa(un, c1, c2, t_fitxa,  t_ucomentaris, c_casament, fills,
-                fmatrimoni, fdmatrimoni);
+                fmatrimoni, fdmatrimoni, v_fitxa);
         
         novaFitxa();
     }
@@ -1655,7 +1722,6 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JTextField find_llinatge2;
     private javax.swing.JTextField find_nom;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1775,6 +1841,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JPanel treepanel;
     private javax.swing.JLabel v_conj1;
     private javax.swing.JLabel v_conj2;
+    private javax.swing.JLabel v_fitxa;
     private javax.swing.JLabel v_h_defuncio;
     private javax.swing.JLabel v_h_mare;
     private javax.swing.JLabel v_h_mmare;

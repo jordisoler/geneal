@@ -38,6 +38,21 @@ public class formPersona {
     private javax.swing.JComboBox sexe;
     private javax.swing.JLabel label;
     private String[] ancestors;
+            /* Order:
+                - Persona
+                - Pare
+                - Padri patern
+                - Padrina paterna
+                - Mare
+                - Padri matern
+                - Padrina materna
+            */
+    private db.unio[] ancestorUnions;
+            /* Order:
+                - Pares marit
+                - Padrins paterns
+                - Padrins materns
+            */
     private int conjuge;
     
     private final static int Cunknown = 0;
@@ -64,6 +79,7 @@ public class formPersona {
         sexe = sexe_;
         label =  label_;
         ancestors = new String [7];
+        ancestorUnions = new db.unio [3];
         if (conjuge_ == Conjuge1 || conjuge_==Conjuge2){
             conjuge = conjuge_;
         }else{
@@ -227,6 +243,9 @@ public class formPersona {
     public String[] getAncestors(){
         return this.ancestors;
     }
+    public db.unio[] getAncestorUnions(){
+        return this.ancestorUnions;
+    }
     
     private void setEmptyPrivate(){
         id = idNull;
@@ -291,6 +310,11 @@ public class formPersona {
         } catch (DBException ex) {
             cm = new db.persona();
         }
+        
+        ancestorUnions[0] = p.getUnioPares();
+        ancestorUnions[1] = cp.getUnioPares();
+        ancestorUnions[2] = cm.getUnioPares();
+        
         ancestors[0]=p.toString();
         ancestors[1]=cp.toString();
         ancestors[2]=cp.getPare().toString();

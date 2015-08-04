@@ -126,6 +126,18 @@ public class persona extends conexio{
     }
     
     //----------Additional gets----------
+    public unio getUnioPares(){
+        try {
+            if (this.isNull()){
+                return new unio();
+            }
+            naixement n = new naixement(this.idPersona);
+            return new unio(n.getIdUnio());
+        } catch (DBException ex) {
+            return new unio();
+        }
+    }
+    
     public persona getPare(){
         try {
             if (this.isNull()){

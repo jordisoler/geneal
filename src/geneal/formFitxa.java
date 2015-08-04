@@ -37,6 +37,7 @@ public class formFitxa {
     private formData data;
     private formLloc lloc;
     private formLlista fills;
+    private javax.swing.JLabel visorFitxa;
     private int estat, idfill;
     
     private db.unio un;
@@ -54,7 +55,7 @@ public class formFitxa {
     }
     public formFitxa(db.unio un_,formPersonaFitxa c1_, formPersonaFitxa c2_, javax.swing.JTextField fitxa_,
             javax.swing.JTextArea comentaris_, javax.swing.JCheckBox casament_,
-            formLlista fills_,formLloc lloc_, formData data_){
+            formLlista fills_,formLloc lloc_, formData data_, javax.swing.JLabel visorFitxa_){
         un = un_;
         c1 = c1_;
         c2 = c2_;
@@ -64,12 +65,13 @@ public class formFitxa {
         fills = fills_;
         lloc = lloc_;
         data = data_;
+        visorFitxa = visorFitxa_;
     }
     public formFitxa(formPersonaFitxa c1_, formPersonaFitxa c2_, javax.swing.JTextField fitxa_,
             javax.swing.JTextArea comentaris_, javax.swing.JCheckBox casament_,
-            formLlista fills_,formLloc lloc_, formData data_){
+            formLlista fills_,formLloc lloc_, formData data_, javax.swing.JLabel visorFitxa_){
         this(new db.unio(), c1_, c2_, fitxa_,  comentaris_, casament_, fills_,
-                lloc_, data_);
+                lloc_, data_, visorFitxa_);
     }
     
     public void fill(){
@@ -78,6 +80,7 @@ public class formFitxa {
                 estat = existent;
                 
                 fitxa.setText(String.valueOf(un.getFitxa()));
+                visorFitxa.setText("Fitxa: "+String.valueOf(un.getFitxa()));
                 fillText(comentaris,String.valueOf(un.getComentaris()));
                 if(un.isMarriage()){
                     toggleCasament(true);

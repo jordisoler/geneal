@@ -26,6 +26,7 @@ import Exceptions.DBException;
 public class formPersonaFitxa extends formPersona{
     private javax.swing.JButton bpares;
     private javax.swing.JLabel[] tree;
+    private formPersonaVisor visor;
     
     private final static String LoadPares = "Fitxa pares";
     private final static String NewPares = "Afegir pares";
@@ -37,18 +38,21 @@ public class formPersonaFitxa extends formPersona{
             formData dnaixement_, formData ddefuncio_, javax.swing.JTextField[] nom_,
             javax.swing.JTextArea comentaris_, javax.swing.JComboBox sexe_,
             javax.swing.JLabel label_, javax.swing.JLabel[] tree_, int conjuge_,
-            javax.swing.JButton bpares_){
+            javax.swing.JButton bpares_, formPersonaVisor visor_){
         super(id_, llnaixement_, lldefuncio_, dnaixement_, ddefuncio_, nom_, 
                 comentaris_, sexe_, label_, conjuge_);
         bpares = bpares_;
         tree = tree_;
+        visor = visor_;
         fillAncestors(this.getAncestors(), tree);
+        visor.fill(new db.persona(id_), this.getAncestors(), this.getAncestorUnions());
     }
     
     @Override
     public void fill(db.persona p) throws DBException{
         super.fill(p);
         fillAncestors(this.getAncestors(), tree);
+        visor.fill(p, this.getAncestors(), this.getAncestorUnions());
         bpares.setEnabled(true);
         try{
             db.naixement n = new db.naixement(p.getId());
