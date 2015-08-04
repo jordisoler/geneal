@@ -249,6 +249,12 @@ public class taula extends javax.swing.JFrame {
         }
         if (u.getFitxa()!=-1){
             values[0] = String.valueOf(u.getFitxa());
+        }else if (n.getIdUnio()!=-1){
+            try {
+                values[0] = "Fill de "+n.getUnio().getFitxa();
+            } catch (DBException ex) {
+                Logger.getLogger(taula.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         values[1] = p.getNom();
         values[2] = p.getLlinatge1();
