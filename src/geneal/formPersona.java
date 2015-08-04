@@ -37,7 +37,7 @@ public class formPersona {
     private javax.swing.JTextArea comentaris;
     private javax.swing.JComboBox sexe;
     private javax.swing.JLabel label;
-    private javax.swing.JLabel[] tree;
+    private String[] ancestors;
     private int conjuge;
     
     private final static int Cunknown = 0;
@@ -53,7 +53,7 @@ public class formPersona {
     public formPersona(int id_, formLloc llnaixement_, formLloc lldefuncio_,
             formData dnaixement_, formData ddefuncio_, javax.swing.JTextField[] nom_,
             javax.swing.JTextArea comentaris_, javax.swing.JComboBox sexe_,
-            javax.swing.JLabel label_, javax.swing.JLabel[] tree_, int conjuge_){
+            javax.swing.JLabel label_, int conjuge_){
         id = id_;
         llnaixement = llnaixement_;
         lldefuncio = lldefuncio_;
@@ -63,16 +63,15 @@ public class formPersona {
         comentaris = comentaris_;
         sexe = sexe_;
         label =  label_;
-        tree = tree_;
-        for (javax.swing.JLabel l : tree){
-            l.setText(unknown);
-        }
+        ancestors = new String [7];
         if (conjuge_ == Conjuge1 || conjuge_==Conjuge2){
             conjuge = conjuge_;
         }else{
             conjuge = Cunknown;
         }
         
+        db.persona p = new db.persona(id_);
+        getAncestorsFromDB(p);
         
         sexe.setModel(formutils.getModelSexe());
         this.setEmptyPrivate();
@@ -80,23 +79,23 @@ public class formPersona {
     public formPersona(formLloc llnaixement_, formLloc lldefuncio_,
             formData dnaixement_, formData ddefuncio_, javax.swing.JTextField[] nom_,
             javax.swing.JTextArea comentaris_, javax.swing.JComboBox sexe_,
-            javax.swing.JLabel label_, javax.swing.JLabel[] tree_, int conjuge_){
+            javax.swing.JLabel label_, int conjuge_){
         this(idNull, llnaixement_, lldefuncio_, dnaixement_, ddefuncio_, nom_, 
-                comentaris_, sexe_, label_, tree_, conjuge_);
+                comentaris_, sexe_, label_, conjuge_);
     }
     public formPersona(int id_, formLloc llnaixement_, formLloc lldefuncio_,
             formData dnaixement_, formData ddefuncio_, javax.swing.JTextField[] nom_,
             javax.swing.JTextArea comentaris_, javax.swing.JComboBox sexe_,
-            javax.swing.JLabel label_, javax.swing.JLabel[] tree_){
+            javax.swing.JLabel label_){
         this(id_, llnaixement_, lldefuncio_, dnaixement_, ddefuncio_, nom_, 
-                comentaris_, sexe_, label_, tree_, Cunknown);
+                comentaris_, sexe_, label_, Cunknown);
     }
     public formPersona(formLloc llnaixement_, formLloc lldefuncio_,
             formData dnaixement_, formData ddefuncio_, javax.swing.JTextField[] nom_,
             javax.swing.JTextArea comentaris_, javax.swing.JComboBox sexe_,
-            javax.swing.JLabel label_, javax.swing.JLabel[] tree_){
+            javax.swing.JLabel label_){
         this(idNull, llnaixement_, lldefuncio_, dnaixement_, ddefuncio_, nom_, 
-                comentaris_, sexe_, label_, tree_, Cunknown);
+                comentaris_, sexe_, label_, Cunknown);
     }
     
     public boolean isNew(){
@@ -123,16 +122,7 @@ public class formPersona {
             fillSexe(sexe,p);
             fillText(comentaris,  p.getComentaris());
             label.setText(sexe(p));
-
-            db.persona cp = p.getPare();
-            db.persona cm = p.getMare();
-            tree[0].setText(p.toString());
-            tree[1].setText(cp.toString());
-            tree[2].setText(cp.getPare().toString());
-            tree[3].setText(cp.getMare().toString());
-            tree[4].setText(cm.toString());
-            tree[5].setText(cm.getPare().toString());
-            tree[6].setText(cm.getMare().toString());
+            getAncestorsFromDB(p);
         }
     }
     
@@ -234,6 +224,10 @@ public class formPersona {
         return getNaixement(id);
     }
     
+    public String[] getAncestors(){
+        return this.ancestors;
+    }
+    
     private void setEmptyPrivate(){
         id = idNull;
         label.setText(unknown);
@@ -286,6 +280,31 @@ public class formPersona {
                 return "(conjuge 2)";
             default:
                 return "";
+        }
+    }
+
+    private void getAncestorsFromDB(db.persona p) {
+        db.persona cp = p.getPare();
+        db.persona cm;
+        try {
+            cm = p.getMare();
+        } catch (DBException ex) {
+            cm = new db.persona();
+        }
+        ancestors[0]=p.toString();
+        ancestors[1]=cp.toString();
+        ancestors[2]=cp.getPare().toString();
+        try {
+            ancestors[3]=cp.getMare().toString();
+        } catch (DBException ex) {
+            ancestors[3] = new db.persona().toString();
+        }
+        ancestors[4]=cm.toString();
+        ancestors[5]=cm.getPare().toString();
+        try {
+            ancestors[6]=cm.getMare().toString();
+        } catch (DBException ex) {
+            ancestors[6] = new db.persona().toString();
         }
     }
     

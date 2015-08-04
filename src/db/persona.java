@@ -58,7 +58,7 @@ public class persona extends conexio{
     }
     
     public persona(int id){
-        super();
+        this();
         try {
             String str = "select * from persona where id_persona=?";
             PreparedStatement pst = con.prepareStatement(str);
@@ -82,7 +82,7 @@ public class persona extends conexio{
                 this.comentaris = rs.getString("comentaris");
             }
         } catch (SQLException ex) {
-            System.err.println("Excepicó amb id_persona: "+id);
+            System.err.println("Excepció amb id_persona: "+id);
             Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
