@@ -10,5 +10,8 @@ package geneal;
  * @author jordi
  */
 public class formPersonaVisor {
+    private String[] labels;
+    private javax.swing.JButton[] butons;
+    
     
 }
