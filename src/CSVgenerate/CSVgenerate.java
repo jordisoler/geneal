@@ -90,6 +90,7 @@ public class CSVgenerate {
                 fout = new FileWriter(generat);
             }
             try (PrintWriter pr = new PrintWriter(fout)) {
+                pr.println(header);
                 for (String[] row : dades){
                     pr.println(formatRow(row));
                 }
