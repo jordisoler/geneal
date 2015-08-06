@@ -82,12 +82,12 @@ public class formFitxa {
                 fitxa.setText(String.valueOf(un.getFitxa()));
                 visorFitxa.setText("Fitxa: "+String.valueOf(un.getFitxa()));
                 fillText(comentaris,String.valueOf(un.getComentaris()));
+                db.persona[] pfills = un.getFills();
+                fills.fillList(pfills);
                 if(un.isMarriage()){
                     toggleCasament(true);
                     data.fill(un.getDataMatrimoni());
                     lloc.fill(un.getLlocMatrimoni());
-                    db.persona[] pfills = un.getFills();
-                    fills.fillList(pfills);
                 }else{
                     toggleCasament(false);
                     casament.setSelected(false);
@@ -216,7 +216,7 @@ public class formFitxa {
                 
             case nousPares:
                 try{
-                    System.out.println("S'intentarà afegir la persona amb id: "+idfill+
+                    System.out.println("S'intentarà afegir els pares de la persona amb id: "+idfill+
                             ", "+new db.persona(idfill));
                     int id1,  id2;
                     p1 = c1.getPerson();
