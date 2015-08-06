@@ -902,7 +902,7 @@ public class App extends javax.swing.JFrame {
                 c_2nmesActionPerformed(evt);
             }
         });
-        bottomright.add(c_2nmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 50, -1));
+        bottomright.add(c_2nmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 60, -1));
 
         jLabel29.setFont(smallFont);
         jLabel29.setText("Dia");
@@ -984,7 +984,7 @@ public class App extends javax.swing.JFrame {
                 c_2dmesActionPerformed(evt);
             }
         });
-        bottomright.add(c_2dmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 50, -1));
+        bottomright.add(c_2dmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 60, -1));
 
         jLabel38.setFont(smallFont);
         jLabel38.setText("Any");

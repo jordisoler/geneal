@@ -208,6 +208,9 @@ public class formFitxa {
                     }else{
                         u.deleteBoda();
                     }
+                    reload();
+                    JOptionPane.showMessageDialog(null, "S'ha modificat fitxa existent. Fitxa: "+u.getFitxa(),
+                    "Geneal - Fitxa modificada", JOptionPane.INFORMATION_MESSAGE);
                     System.out.println("S'ha modificat fitxa existent. Unió: "+u.getId());
                 }catch (LEException |dateException e){
                     e.show();
@@ -257,6 +260,10 @@ public class formFitxa {
                     n1.addNaixement();
                     n2.addNaixement();
                     
+                    reload();
+                    JOptionPane.showMessageDialog(null, "S'ha afegit una fitxa. Són els pares de: "
+                            + new db.persona(idfill),
+                    "Geneal - Fitxa nova", JOptionPane.INFORMATION_MESSAGE);
                     System.out.println("S'ha afegit el naixement del fill: "+new db.persona(idfill)+
                             " (id: "+idfill+") unió: "+u.getId());
                     System.out.println("S'ha afegit una fitxa. Són els pares de: "
@@ -284,6 +291,10 @@ public class formFitxa {
                         b.setUnio(u);
                         b.addBoda();
                     }
+                    
+                    reload();
+                    JOptionPane.showMessageDialog(null, "S'ha afegit la  fitxa de "+p1+" i "+p2,
+                    "Geneal - Fitxa nova", JOptionPane.INFORMATION_MESSAGE);
                     System.out.println("S'ha afegit la  fitxa de "+p1+" i "+p2);
 
                 }catch (GException e){
@@ -451,5 +462,9 @@ public class formFitxa {
             Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
         }
         return b;
+    }
+
+    private void reload() {
+        this.fill();
     }
 }
