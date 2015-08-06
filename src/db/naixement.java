@@ -177,6 +177,11 @@ public class naixement extends conexio{
         return exist(in.getIdFill());
     }
     
+    public String toString(){
+        return "Naixement: id_fill: "+this.idFill+", lloc: "+new lloc(this.idLloc)+
+                ", data: "+this.dataNaixement+", id_unio: "+this.idUnio;
+    }
+    
     //----------PRIVATE methods----------
     private void addNewNaixement(){
         try {

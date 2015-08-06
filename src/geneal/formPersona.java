@@ -214,9 +214,13 @@ public class formPersona {
     
     public db.naixement getNaixement(int idu) throws dateException, LEException {
         db.naixement n;
-        try {
-            n = new db.naixement(idu);
-        } catch (DBException ex) {
+        if (id!=-1){
+            try {
+                n = new db.naixement(idu);
+            } catch (DBException ex) {
+                n = new db.naixement();
+            }
+        }else{
             n = new db.naixement();
         }
         try {

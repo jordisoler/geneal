@@ -246,6 +246,17 @@ public class formFitxa {
                     n.setFill(idfill);
                     n.setUnio(u);
                     n.addNaixement();
+                    
+                    // Partners' 'naixement'
+                    n1 = c1.getNaixement();
+                    n2 = c2.getNaixement();
+                    n1.setFill(id1);
+                    n2.setFill(id2);
+                    System.out.println(n1);
+                    System.out.println(n2);
+                    n1.addNaixement();
+                    n2.addNaixement();
+                    
                     System.out.println("S'ha afegit el naixement del fill: "+new db.persona(idfill)+
                             " (id: "+idfill+") unió: "+u.getId());
                     System.out.println("S'ha afegit una fitxa. Són els pares de: "
