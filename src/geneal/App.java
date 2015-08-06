@@ -87,6 +87,7 @@ public class App extends javax.swing.JFrame {
         popuplist = new javax.swing.JPopupMenu();
         Seleccionar = new javax.swing.JMenuItem();
         Eliminar = new javax.swing.JMenuItem();
+        mi_afegirFill = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panelEditor = new javax.swing.JPanel();
         topleft = new javax.swing.JPanel();
@@ -303,6 +304,14 @@ public class App extends javax.swing.JFrame {
             }
         });
         popuplist.add(Eliminar);
+
+        mi_afegirFill.setText("Afegir Fill");
+        mi_afegirFill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_afegirFillActionPerformed(evt);
+            }
+        });
+        popuplist.add(mi_afegirFill);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Geneal");
@@ -1486,6 +1495,7 @@ public class App extends javax.swing.JFrame {
     private void find_listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_find_listMouseClicked
         if ( SwingUtilities.isRightMouseButton(evt)){
             this.find_list.setSelectedIndex(getRow(this.find_list, evt.getPoint()));
+            this.mi_afegirFill.setVisible(true);
             popuplist.show(this.find_list, evt.getX(), evt.getY());
             popuplist.setLabel("Cerca");
         }
@@ -1508,6 +1518,7 @@ public class App extends javax.swing.JFrame {
     private void ll_ufillsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ll_ufillsMouseClicked
         if ( SwingUtilities.isRightMouseButton(evt)){
             this.ll_ufills.setSelectedIndex(getRow(this.ll_ufills, evt.getPoint()));
+            this.mi_afegirFill.setVisible(false);
             popuplist.show(this.ll_ufills, evt.getX(), evt.getY());
             popuplist.setLabel("Fills");
         }
@@ -1568,6 +1579,11 @@ public class App extends javax.swing.JFrame {
     private void vb_m_mparesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vb_m_mparesActionPerformed
         f.fillFitxa(this.visor2.getFitxa(formPersonaVisor.padrinsMaterns));
     }//GEN-LAST:event_vb_m_mparesActionPerformed
+
+    private void mi_afegirFillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_afegirFillActionPerformed
+        db.persona p = cerca.getSelectedPerson();
+        f.addSonFromTree(p);
+    }//GEN-LAST:event_mi_afegirFillActionPerformed
     
     
     private void initialize(){
@@ -1815,6 +1831,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel l_pppare;
     private javax.swing.JList ll_ufills;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem mi_afegirFill;
     private javax.swing.JMenuItem mu_csv;
     private javax.swing.JMenuItem mu_taula;
     private javax.swing.JMenuItem openMenuItem;

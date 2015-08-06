@@ -462,7 +462,7 @@ public class persona extends conexio{
             PreparedStatement pst = con.prepareStatement(str);
             int counter = 0;
             for (String s : valors){
-                if (s!=null){
+                if (s!=null && !s.isEmpty()){
                     counter++;
                     pst.setString(counter, "%"+s+"%");
                 }
@@ -490,8 +490,18 @@ public class persona extends conexio{
         persona.connect();
         ArrayList<persona> people = new ArrayList<>();
         try {
-            String stm = "select * from persona where nom like ?"
-                    + " and (llinatge1 like ?) and (llinatge2 like ?)";
+            String nnom = "", nllin1 = "", nllin2="";
+            if (name==null || name.isEmpty()){
+                nnom = " or nom is null ";
+            }
+            if (l1==null || l1.isEmpty()){
+                nllin1 = " or llinatge1 is null ";
+            }
+            if (l2==null || l2.isEmpty()){
+                nllin2 = " or llinatge2 is null ";
+            }
+            String stm = "select * from persona where nom like ? "+nnom
+                    + " and ((llinatge1 like ?)"+nllin1+") and ((llinatge2 like ?)"+nllin2+")";
             PreparedStatement pst  =  con.prepareStatement(stm);
             pst.setString(1, "%"+name+"%");
             pst.setString(2, "%"+l1+"%");

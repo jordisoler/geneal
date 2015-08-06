@@ -18,6 +18,8 @@
 package geneal;
 
 import Exceptions.*;
+import db.naixement;
+import db.persona;
 import static geneal.formutils.fillText;
 import static geneal.formutils.s2q;
 import java.sql.SQLException;
@@ -466,5 +468,33 @@ public class formFitxa {
 
     private void reload() {
         this.fill();
+    }
+
+    public void addSonFromTree(persona p) {
+        try {
+            int reply = JOptionPane.showConfirmDialog(null, "Vols afegir "+p+" com a "
+                    + "fill de "+c1.getPerson()+" i "+c2.getPerson()+"?","Unió nova",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(reply==JOptionPane.YES_OPTION){
+                db.naixement n;
+                if (naixement.exist(p.getId())){
+                    n = new db.naixement(p.getId());
+                    if(n.getIdUnio()!=-1){
+                        new GException("La persona "+p+" ja consta com a fill/filla d'un matrimoni."
+                                + " Fitxa: "+n.getUnio().getFitxa()).show();
+                        return;
+                    }
+                }else{
+                    n = new db.naixement();
+                    n.setFill(p.getId());
+                }
+                n.setUnio(un);
+                n.addNaixement();
+                reload();
+            }
+        } catch (LEException | dateException | DBException ex) {
+            ex.show();
+            Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
