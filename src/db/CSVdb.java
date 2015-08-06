@@ -136,7 +136,6 @@ public class CSVdb extends conexio{
         ArrayList<String[]> result = new ArrayList<>();
         int elements=8;
         try {
-            String[] row = new String[elements];
             PreparedStatement pst = con.prepareStatement(query);
             pst.setInt(1, edatBodaMinima);
             pst.setInt(2, edatPrimerFillMinima);
@@ -144,6 +143,7 @@ public class CSVdb extends conexio{
             pst.setString(4, municipi);
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
+                String[] row = new String[elements];
                 row[0] = String.valueOf(rs.getInt("fitxa"));
                 row[1] = rs.getString("nom");
                 row[2] = rs.getString("llin1");
@@ -193,7 +193,6 @@ public class CSVdb extends conexio{
         ArrayList<String[]> result = new ArrayList<>();
         int elements=8;
         try {
-            String[] row = new String[elements];
             PreparedStatement pst = con.prepareStatement(query);
             pst.setInt(1, edatDefuncioMaxima);
             pst.setInt(2, edatBodaMaxima);
@@ -203,6 +202,7 @@ public class CSVdb extends conexio{
             System.out.println(pst);
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
+                String[] row = new String[elements];
                 row[0] = String.valueOf(rs.getInt("fitxa"));
                 row[1] = rs.getString("nom");
                 row[2] = rs.getString("llin1");
