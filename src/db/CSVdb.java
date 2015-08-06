@@ -161,31 +161,35 @@ public class CSVdb extends conexio{
     }
     
     public static String[][] generateCSVdefuncions(String municipi){
-        String query = "select u_propia.fitxa as  fitxa, p.nom as nom, p.llinatge1 as llin1, "
-                + "p.llinatge2 as llin2, conjuge.nom as parella, conjuge.llinatge1 as parellallin, " +
-                "if(naixement.data_naixement is not null,min(year(naixement.data_naixement)+ ? ), " +
-                "if (b.data_boda is not null, year(b.data_boda)+ ?  ,  " +
-                "year(max(nfill.data_naixement))+ ? )) as data_approx, " +
-                "if(naixement.data_naixement is not null,'Naixement', " +
-                "if (b.data_boda is not null, 'Matrimoni', 'Naixement fill')) as calculat_amb, " +
-                "lloc.id_municipi, naixement.data_naixement from persona as p  " +
-                "inner join naixement on " +
-                "naixement.id_fill = p.id_persona " +
-                "inner join lloc on " +
-                "lloc.id_lloc =  naixement.id_lloc " +
-                "left join unio as u on " +
-                "naixement.id_unio = u.id_unio  " +
-                "left join unio as u_propia on " +
-                "p.id_persona = if(p.sexe='m',u_propia.id_conjuge1,u_propia.id_conjuge2) " +
-                "left join persona as conjuge on " +
-                "if(p.sexe='m',u_propia.id_conjuge2,u_propia.id_conjuge1) = conjuge.id_persona " +
-                "left join boda as b on " +
-                "u_propia.id_unio = b.id_unio " +
-                "left join naixement as nfill on " +
-                "u_propia.id_unio = nfill.id_unio " +
-                "group by p.id_persona " +
-                "having lloc.id_municipi = ? and naixement.data_naixement is null " +
-                "and u_propia.fitxa is not null and data_approx is not null;";
+        String query = "select u_propia.fitxa as fitxa, p.nom as nom, p.llinatge1 as llin1, p.llinatge2 as llin2, \n" +
+                        "conjuge.nom as parella, conjuge.llinatge1 as parellallin,\n" +
+                        "if(naixement.data_naixement is not null,min(year(naixement.data_naixement)+?),\n" +
+                        "if (b.data_boda is not null, year(b.data_boda)+?, \n" +
+                        "year(max(nfill.data_naixement))+?)) as data_approx,\n" +
+                        "if(naixement.data_naixement is not null,'Naixement',\n" +
+                        "if (b.data_boda is not null, 'Matrimoni', 'Naixement fill')) as calculat_amb,\n" +
+                        "lloc.id_municipi, p.data_defuncio, lloc_neix.id_municipi\n" +
+                        "from persona as p \n" +
+                        "inner join naixement on\n" +
+                        "naixement.id_fill = p.id_persona\n" +
+                        "inner join lloc on\n" +
+                        "lloc.id_lloc =  p.lloc_defuncio\n" +
+                        "inner join lloc as lloc_neix on\n" +
+                        "lloc_neix.id_lloc = naixement.id_lloc\n" +
+                        "left join unio as u on\n" +
+                        "naixement.id_unio = u.id_unio \n" +
+                        "left join unio as u_propia on\n" +
+                        "p.id_persona = if(p.sexe='m',u_propia.id_conjuge1,u_propia.id_conjuge2)\n" +
+                        "left join persona as conjuge on\n" +
+                        "if(p.sexe='m',u_propia.id_conjuge2,u_propia.id_conjuge1) = conjuge.id_persona\n" +
+                        "left join boda as b on\n" +
+                        "u_propia.id_unio = b.id_unio\n" +
+                        "left join naixement as nfill on\n" +
+                        "u_propia.id_unio = nfill.id_unio\n" +
+                        "group by p.id_persona\n" +
+                        "having (lloc.id_municipi = ? or (lloc.id_municipi is null and\n" +
+                        "lloc_neix.id_municipi = ?)) and p.data_defuncio is null\n" +
+                        "and u_propia.fitxa is not null and data_approx is not null";
         ArrayList<String[]> result = new ArrayList<>();
         int elements=8;
         try {
@@ -195,6 +199,8 @@ public class CSVdb extends conexio{
             pst.setInt(2, edatBodaMaxima);
             pst.setInt(3, anysDefuncioDespresDarrerFillMaxim);
             pst.setString(4, municipi);
+            pst.setString(5, municipi);
+            System.out.println(pst);
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
                 row[0] = String.valueOf(rs.getInt("fitxa"));
