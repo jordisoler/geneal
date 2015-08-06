@@ -129,12 +129,13 @@ public class formFitxa {
     }
     public void fill(int id_fill){
         setEmpty();
-        db.persona[] ps = {new db.persona(id_fill)};
+        db.persona p = new db.persona(id_fill);
+        db.persona[] ps = {p};
         fills.fillList(ps);
         estat = nousPares;
         un = new db.unio();
-        c1.setEmpty();
-        c2.setEmpty();
+        c1.setEmpty(p.getLlinatge1());
+        c2.setEmpty(p.getLlinatge2());
         idfill = id_fill;
     }
     public void fillFitxa(int ifitxa){

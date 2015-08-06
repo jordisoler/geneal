@@ -202,6 +202,11 @@ public class formPersona {
         this.setEmptyPrivate();
     }
     
+    public void setEmpty(String s){
+        this.setEmptyPrivate();
+        nom[1].setText(s);
+    }
+    
     public boolean isEmpty(){
         for(javax.swing.JTextField t: nom){
             if(!isEmptyTF(t)){
