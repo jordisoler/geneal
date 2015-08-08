@@ -36,6 +36,9 @@ public class naixement extends conexio{
     private int idUnio;
     private int idLloc;
     
+    private static int LLOC = 0;
+    private static int DATA = 1;
+    
     public naixement(){
         super();
         this.dataNaixement = new date();
@@ -124,6 +127,28 @@ public class naixement extends conexio{
     
     public void setDate(date in){
         this.dataNaixement = in;
+    }
+    
+    public static void setNullUnio(int idu){
+        String msg = "update naixement set id_unio=? where id_unio = ?";
+        try {
+            PreparedStatement pst = con.prepareStatement(msg);
+            pst.setNull(1, Types.INTEGER);
+            pst.setInt(2, idu);
+            System.out.println(pst);
+            pst.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(naixement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    public void setNullLloc(){
+        this.setNull(LLOC);
+    }
+    
+    public void setNullData(){
+        this.setNull(DATA);
     }
     
     public void addNaixement(){
@@ -244,6 +269,21 @@ public class naixement extends conexio{
         }else{
             return in;
         }
+    }
+
+    private void setNull(int id) {
+        String[] fields = {"idLloc", "dataNaixement"};
+        int[] types = {Types.INTEGER, Types.DATE};
+        String msg = "update naixement set "+fields[id]+"=? where id_fill = ?";
+        try {
+            PreparedStatement pst = con.prepareStatement(msg);
+            pst.setNull(1, types[id]);
+            pst.setInt(2, this.idFill);
+            pst.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(naixement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
 }

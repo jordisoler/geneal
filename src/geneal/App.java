@@ -470,6 +470,11 @@ public class App extends javax.swing.JFrame {
 
         b_eborrar.setFont(normalFont);
         b_eborrar.setText("Esborrar");
+        b_eborrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_eborrarActionPerformed(evt);
+            }
+        });
         topleft.add(b_eborrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 70, 20));
 
         panelEditor.add(topleft);
@@ -1584,6 +1589,10 @@ public class App extends javax.swing.JFrame {
         db.persona p = cerca.getSelectedPerson();
         f.addSonFromTree(p);
     }//GEN-LAST:event_mi_afegirFillActionPerformed
+
+    private void b_eborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_eborrarActionPerformed
+        f.delete();
+    }//GEN-LAST:event_b_eborrarActionPerformed
     
     
     private void initialize(){

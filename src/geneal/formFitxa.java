@@ -498,4 +498,15 @@ public class formFitxa {
             Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    public void delete() {
+        int reply = JOptionPane.showConfirmDialog(null, "Segur que vols eliminar "
+                + "la unio que estas vegent?\n \t Aixo no eliminara cap persona, "
+                + "nomes les relacions entre elles.","Eliminar fitxa",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(reply==JOptionPane.YES_OPTION){
+            un.delete();
+            setEmpty();
+        }
+    }
 }

@@ -405,6 +405,20 @@ public class unio extends conexio{
         return new boda(this.idUnio);
     }
     
+    
+    public void delete(){
+        try{
+            this.deleteBoda();
+            naixement.setNullUnio(idUnio);
+            String msg = "delete from unio where id_unio = ?";
+            PreparedStatement pst = con.prepareStatement(msg);
+            pst.setInt(1, this.idUnio);
+            pst.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(unio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      *  Deletes the 'boda' associated with the 'unio'
      */
