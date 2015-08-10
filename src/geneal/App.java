@@ -285,7 +285,7 @@ public class App extends javax.swing.JFrame {
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
-        Seleccionar.setText("Veure");
+        Seleccionar.setText("Modifica");
         Seleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SeleccionarActionPerformed(evt);
@@ -1411,7 +1411,23 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     private void SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarActionPerformed
-        new GException("Aquesta opció encara no la he programat. \n\t:(","Opció no suportada").show();
+        db.persona p;
+        if(null != popuplist.getLabel()) {
+            switch (popuplist.getLabel()) {
+                case "Cerca":
+                    p = cerca.getSelectedPerson();
+                    break;
+                case "Fills":
+                    p = fills.getSelectedPerson();
+                    break;
+                default:
+                    new GException("No se sap quina llista es la seleccionada.","Error").show();
+                    return;
+            }
+            new ModifyPerson(p,f).setVisible(true);
+        }
+        
+        //new GException("Aquesta opció encara no la he programat. \n\t:(","Opció no suportada").show();
     }//GEN-LAST:event_SeleccionarActionPerformed
 
     private void mu_csvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mu_csvActionPerformed

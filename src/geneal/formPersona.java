@@ -159,10 +159,11 @@ public class formPersona {
         } catch (LEException ex) {
             Logger.getLogger(formPersona.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (checkSexe()){
+        if (!checkSexe()){
             return;
         }
         if (!anterior.equals(p)){
+            System.out.println("S'afegirà la persona "+p);
             id = p.addPersona();
             n.setFill(id);
         }        

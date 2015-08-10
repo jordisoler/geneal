@@ -467,7 +467,7 @@ public class formFitxa {
         return b;
     }
 
-    private void reload() {
+    public void reload() {
         this.fill();
     }
 
