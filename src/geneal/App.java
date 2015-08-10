@@ -1424,7 +1424,7 @@ public class App extends javax.swing.JFrame {
                     new GException("No se sap quina llista es la seleccionada.","Error").show();
                     return;
             }
-            new ModifyPerson(p,f).setVisible(true);
+            new ModifyPersonFitxa(p,f).setVisible(true);
         }
         
         //new GException("Aquesta opció encara no la he programat. \n\t:(","Opció no suportada").show();

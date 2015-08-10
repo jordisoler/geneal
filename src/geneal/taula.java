@@ -22,6 +22,7 @@ import Exceptions.MUException;
 import db.persona;
 import static geneal.config.normalFont;
 import static geneal.config.smallFont;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
@@ -34,9 +35,11 @@ import javax.swing.table.DefaultTableModel;
 public class taula extends javax.swing.JFrame {
 
     private DefaultTableModel model;
-    private int fitxa;
+    private int fitxa, index;
     private final formFitxa f;
+    private ArrayList<Integer> ids;
     
+    private final String fillPrefix = "Fill de ";
     /**
      * Creates new form taula
      * @param f_
@@ -65,6 +68,7 @@ public class taula extends javax.swing.JFrame {
 
         popup = new javax.swing.JPopupMenu();
         mi_carregar = new javax.swing.JMenuItem();
+        mi_modificar = new javax.swing.JMenuItem();
         scrollpane = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -88,6 +92,14 @@ public class taula extends javax.swing.JFrame {
             }
         });
         popup.add(mi_carregar);
+
+        mi_modificar.setText("Modificar");
+        mi_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_modificarActionPerformed(evt);
+            }
+        });
+        popup.add(mi_modificar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -187,7 +199,13 @@ public class taula extends javax.swing.JFrame {
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         if ( SwingUtilities.isRightMouseButton(evt)){
-            fitxa = Integer.parseInt((String) model.getValueAt(table.rowAtPoint(evt.getPoint()), 0));
+            index = table.rowAtPoint(evt.getPoint());
+            String sfitxa = (String) model.getValueAt(index, 0);
+            try{
+                fitxa = Integer.parseInt(sfitxa);
+            }catch(NumberFormatException e){
+                fitxa = Integer.parseInt(sfitxa.substring(fillPrefix.length()));
+            }
             popup.show(table, evt.getX(), evt.getY());
         }
     }//GEN-LAST:event_tableMouseClicked
@@ -196,6 +214,11 @@ public class taula extends javax.swing.JFrame {
         f.fillFitxa(fitxa);
         this.dispose();
     }//GEN-LAST:event_mi_carregarActionPerformed
+
+    private void mi_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_modificarActionPerformed
+        persona p = new db.persona(ids.get(index));
+        new ModifyPersonTaula(p, this, index).setVisible(true);
+    }//GEN-LAST:event_mi_modificarActionPerformed
 
     private static String nullify(String in){
         if (in==null || in.isEmpty()){
@@ -223,6 +246,7 @@ public class taula extends javax.swing.JFrame {
     private javax.swing.JLabel l_info;
     private javax.swing.JLabel l_total;
     private javax.swing.JMenuItem mi_carregar;
+    private javax.swing.JMenuItem mi_modificar;
     private javax.swing.JPopupMenu popup;
     private javax.swing.JScrollPane scrollpane;
     private javax.swing.JTextField t_llin1;
@@ -232,6 +256,47 @@ public class taula extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void Add(persona p) {
+        String[] values = getData(p);
+        model.addRow(values);
+    }
+    
+    public void updateRow(persona p, int idx){
+        String[] values = getData(p);
+        for (int col = 0; col<values.length; col++){
+            model.setValueAt(values[col], idx, col);
+        }
+    }
+
+    private void find() {
+        String[] columns = {"Fitxa", "Nom", "Primer Llin.", "Segon Llin.", 
+            "Data Naix.", "Lloc Naix.", "Data Def.", "Lloc Def.", "Sexe"},
+                dades = new String [columns.length];
+        db.persona[] people;
+        ids = new ArrayList<>();
+        javax.swing.JTextField[] nom = {t_nom, t_llin1, t_llin2};
+        
+        model = new DefaultTableModel(null, columns);
+        
+        int idx = 0;
+        for (javax.swing.JTextField t : nom){
+            dades[idx] = nullify(t.getText());
+            idx++;
+        }
+        dades[3] = nullify(c_llocn);
+        dades[4] = nullify(c_llocd);
+        people = db.persona.search(dades);
+        for (db.persona p : people){
+            Add(p);
+            ids.add(p.getId());
+        }
+        table.setModel(model);
+        table.setCellSelectionEnabled(false);
+        table.setColumnSelectionAllowed(false);
+        table.setEnabled(false);
+        l_info.setText("S'han trobat "+table.getRowCount()+" persones.");
+    }
+    
+    private String[] getData(persona p){
         String[] values = new String [9];
         db.unio u;
         db.naixement n;
@@ -252,7 +317,7 @@ public class taula extends javax.swing.JFrame {
             values[0] = String.valueOf(u.getFitxa());
         }else if (n.getIdUnio()!=-1){
             try {
-                values[0] = "Fill de "+n.getUnio().getFitxa();
+                values[0] = fillPrefix+n.getUnio().getFitxa();
             } catch (DBException ex) {
                 Logger.getLogger(taula.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -273,31 +338,6 @@ public class taula extends javax.swing.JFrame {
         }
         values[7] = p.getLlocDefuncio().getMunicipi();
         values[8] = p.getSexe();
-        model.addRow(values);
+        return values;
     }
-
-    private void find() {
-        String[] columns = {"Fitxa", "Nom", "Primer Llin.", "Segon Llin.", 
-            "Data Naix.", "Lloc Naix.", "Data Def.", "Lloc Def.", "Sexe"},
-                dades = new String [columns.length];
-        db.persona[] people;
-        javax.swing.JTextField[] nom = {t_nom, t_llin1, t_llin2};
-        
-        model = new DefaultTableModel(null, columns);
-        
-        int idx = 0;
-        for (javax.swing.JTextField t : nom){
-            dades[idx] = nullify(t.getText());
-            idx++;
-        }
-        dades[3] = nullify(c_llocn);
-        dades[4] = nullify(c_llocd);
-        people = db.persona.search(dades);
-        for (db.persona p : people){
-            Add(p);
-        }
-        table.setModel(model);
-        l_info.setText("S'han trobat "+table.getRowCount()+" persones.");
-    }
-    
 }

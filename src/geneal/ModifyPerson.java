@@ -21,14 +21,12 @@ public class ModifyPerson extends javax.swing.JFrame {
     private final formData dnaixement, ddef;
     private final formPersona person;
     private final javax.swing.ComboBoxModel cbsexe = getModelSexe();
-    private final formFitxa f;
     
     /**
      * Creates new form ModifyPerson
      * @param p
-     * @param f_
      */
-    public ModifyPerson(db.persona p, formFitxa f_) {
+    public ModifyPerson(db.persona p) {
         initComponents();
         
         fnaixement = new formLloc(this.c_municipi, this.c_parroquia, this.c_llogaret);
@@ -40,7 +38,6 @@ public class ModifyPerson extends javax.swing.JFrame {
         
         person = new formPersona(fnaixement, fdef, dnaixement, ddef, nom, this.t_comentaris,
                 this.c_sexe, this.l_);
-        f = f_;
         
         try {
             person.fill(p);
@@ -50,6 +47,9 @@ public class ModifyPerson extends javax.swing.JFrame {
         }
     }
 
+    public formPersona getFormPerson(){
+        return this.person;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -396,9 +396,7 @@ public class ModifyPerson extends javax.swing.JFrame {
     }//GEN-LAST:event_c_sexeActionPerformed
 
     private void b_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_guardarActionPerformed
-        person.add();
-        f.reload();
-        this.dispose();
+        end();
     }//GEN-LAST:event_b_guardarActionPerformed
 
 
@@ -446,4 +444,9 @@ public class ModifyPerson extends javax.swing.JFrame {
     private javax.swing.JTextField t_llinatge2;
     private javax.swing.JTextField t_nom;
     // End of variables declaration//GEN-END:variables
+
+    public void end() {
+        person.add();
+        this.dispose();
+    }
 }
