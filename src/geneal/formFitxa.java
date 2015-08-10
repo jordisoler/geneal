@@ -206,7 +206,6 @@ public class formFitxa {
                     u.addUnio();
                     if (casament.isSelected()){
                         b = getBoda();
-                        System.out.println(b);
                         b.addBoda();
                     }else{
                         u.deleteBoda();
@@ -258,8 +257,6 @@ public class formFitxa {
                     n2 = c2.getNaixement();
                     n1.setFill(id1);
                     n2.setFill(id2);
-                    System.out.println(n1);
-                    System.out.println(n2);
                     n1.addNaixement();
                     n2.addNaixement();
                     

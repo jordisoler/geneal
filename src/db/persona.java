@@ -442,13 +442,17 @@ public class persona extends conexio{
         String[] camps = {"persona.nom", "persona.llinatge1", "persona.llinatge2",
             llocn+".id_municipi",llocd+".id_municipi"};
         try{
-            String str = "select persona.id_persona as "+id_p+" from  persona\n" +
+            String str = "select persona.id_persona as "+id_p+" , un.fitxa as f, un2.fitxa as f2 from  persona\n" +
                 "left join naixement on\n" +
                 "persona.id_persona = naixement.id_fill\n" +
                 "left join lloc as "+llocn+" on\n" +
                 "naixement.id_lloc = "+llocn+".id_lloc\n" +
                 "left join lloc as "+llocd+" on\n" +
                 "persona.lloc_defuncio = "+llocd+".id_lloc\n" +
+                "left join unio as un on\n" +
+                "persona.id_persona = un.id_conjuge1 or persona.id_persona = un.id_conjuge2\n" +
+                "left join unio as un2 on\n" +
+                "naixement.id_unio = un2.id_unio\n" +
                 "where true ";
             
             int idx = 0;
@@ -458,7 +462,7 @@ public class persona extends conexio{
                 }
                 idx ++;
             }
-            
+            str = str+" having f is not null or f2 is not null order by f, f2 asc";
             PreparedStatement pst = con.prepareStatement(str);
             int counter = 0;
             for (String s : valors){

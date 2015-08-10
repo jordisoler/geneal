@@ -35,10 +35,11 @@ public class taula extends javax.swing.JFrame {
 
     private DefaultTableModel model;
     private int fitxa;
-    private formFitxa f;
+    private final formFitxa f;
     
     /**
      * Creates new form taula
+     * @param f_
      */
     public taula(formFitxa f_) {
         initComponents();
