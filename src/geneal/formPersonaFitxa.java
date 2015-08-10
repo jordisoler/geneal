@@ -18,6 +18,11 @@
 package geneal;
 
 import Exceptions.DBException;
+import Exceptions.LEException;
+import Exceptions.dateException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -67,6 +72,29 @@ public class formPersonaFitxa extends formPersona{
     public void setEmpty(){
         super.setEmpty();
         bpares.setEnabled(false);
+    }
+    
+    public void replace(db.persona p){
+        if (this.isKnown()){
+            try {
+                int reply = JOptionPane.showConfirmDialog(null, "La persona "+this.getPerson()+
+                        " serà reemplaçada per "+p+".\n\t Vols procedir?", "Geneal -"
+                                + " Reemplaçar persona?", JOptionPane.YES_NO_CANCEL_OPTION,
+                                JOptionPane.QUESTION_MESSAGE);
+                if (reply != JOptionPane.YES_OPTION){
+                    return;
+                }
+            } catch (LEException | dateException ex) {
+                ex.show();
+                Logger.getLogger(formPersonaFitxa.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        }
+        try {
+            fill(p);
+        } catch (DBException ex) {
+            ex.show();
+            Logger.getLogger(formPersonaFitxa.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public boolean newPares(){

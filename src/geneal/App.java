@@ -72,6 +72,8 @@ public class App extends javax.swing.JFrame {
     private formLloc fmatrimoni, fnmarit, fdmarit, fnmuller,  fdmuller;
     private formData fdmatrimoni, fdnmarit, fddmarit, fdnmuller, fddmuller;
     private formPersonaVisor visor1,  visor2;
+    private formPersonaFitxa c1;
+    private formPersonaFitxa c2;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -82,12 +84,13 @@ public class App extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jList3 = new javax.swing.JList();
         popuplist = new javax.swing.JPopupMenu();
         Seleccionar = new javax.swing.JMenuItem();
         Eliminar = new javax.swing.JMenuItem();
+        m_afegir = new javax.swing.JMenu();
         mi_afegirFill = new javax.swing.JMenuItem();
+        mi_afegirc1 = new javax.swing.JMenuItem();
+        mi_afegirc2 = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panelEditor = new javax.swing.JPanel();
         topleft = new javax.swing.JPanel();
@@ -282,13 +285,6 @@ public class App extends javax.swing.JFrame {
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
-        jList3.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane6.setViewportView(jList3);
-
         Seleccionar.setText("Veure");
         Seleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -305,13 +301,34 @@ public class App extends javax.swing.JFrame {
         });
         popuplist.add(Eliminar);
 
-        mi_afegirFill.setText("Afegir Fill");
+        m_afegir.setText("Afegir...");
+        m_afegir.setActionCommand("Afegir com...");
+
+        mi_afegirFill.setText("Fill");
         mi_afegirFill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mi_afegirFillActionPerformed(evt);
             }
         });
-        popuplist.add(mi_afegirFill);
+        m_afegir.add(mi_afegirFill);
+
+        mi_afegirc1.setText("Conjuge 1 (home)");
+        mi_afegirc1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_afegirc1ActionPerformed(evt);
+            }
+        });
+        m_afegir.add(mi_afegirc1);
+
+        mi_afegirc2.setText("Conjuge 2 (dona)");
+        mi_afegirc2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_afegirc2ActionPerformed(evt);
+            }
+        });
+        m_afegir.add(mi_afegirc2);
+
+        popuplist.add(m_afegir);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Geneal");
@@ -1500,7 +1517,7 @@ public class App extends javax.swing.JFrame {
     private void find_listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_find_listMouseClicked
         if ( SwingUtilities.isRightMouseButton(evt)){
             this.find_list.setSelectedIndex(getRow(this.find_list, evt.getPoint()));
-            this.mi_afegirFill.setVisible(true);
+            this.m_afegir.setVisible(true);
             popuplist.show(this.find_list, evt.getX(), evt.getY());
             popuplist.setLabel("Cerca");
         }
@@ -1523,7 +1540,7 @@ public class App extends javax.swing.JFrame {
     private void ll_ufillsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ll_ufillsMouseClicked
         if ( SwingUtilities.isRightMouseButton(evt)){
             this.ll_ufills.setSelectedIndex(getRow(this.ll_ufills, evt.getPoint()));
-            this.mi_afegirFill.setVisible(false);
+            this.m_afegir.setVisible(false);
             popuplist.show(this.ll_ufills, evt.getX(), evt.getY());
             popuplist.setLabel("Fills");
         }
@@ -1593,6 +1610,14 @@ public class App extends javax.swing.JFrame {
     private void b_eborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_eborrarActionPerformed
         f.delete();
     }//GEN-LAST:event_b_eborrarActionPerformed
+
+    private void mi_afegirc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_afegirc1ActionPerformed
+        c1.replace(this.cerca.getSelectedPerson());
+    }//GEN-LAST:event_mi_afegirc1ActionPerformed
+
+    private void mi_afegirc2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_afegirc2ActionPerformed
+        c2.replace(this.cerca.getSelectedPerson());
+    }//GEN-LAST:event_mi_afegirc2ActionPerformed
     
     
     private void initialize(){
@@ -1674,10 +1699,10 @@ public class App extends javax.swing.JFrame {
         visor1=new formPersonaVisor(l_visor1, b_visor1, this.v_h_naixement, this.v_h_defuncio);
         visor2=new formPersonaVisor(l_visor2, b_visor2, this.v_m_naixement, this.v_m_defuncio);
         
-        formPersonaFitxa c1 = new formPersonaFitxa(un.getConjuge1().getId(), fnmarit, 
+        c1 = new formPersonaFitxa(un.getConjuge1().getId(), fnmarit, 
                 fdmarit, fdnmarit, fddmarit, nomC1, t_1comentaris, c_1sexe,
                 l_e_conjuge1, tree1, geneal.formPersona.Conjuge1, b_1pares, visor1);
-        formPersonaFitxa c2 = new formPersonaFitxa(un.getConjuge2().getId(), fnmuller, 
+        c2 = new formPersonaFitxa(un.getConjuge2().getId(), fnmuller, 
                 fdmuller, fdnmuller, fddmuller, nomC2, t_2comentaris, c_2sexe,
                 l_e_conjuge2, tree2, geneal.formPersona.Conjuge2, b_2pares, visor2);
         
@@ -1799,7 +1824,6 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList jList1;
-    private javax.swing.JList jList3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -1817,7 +1841,6 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -1839,8 +1862,11 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel l_ppmare;
     private javax.swing.JLabel l_pppare;
     private javax.swing.JList ll_ufills;
+    private javax.swing.JMenu m_afegir;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem mi_afegirFill;
+    private javax.swing.JMenuItem mi_afegirc1;
+    private javax.swing.JMenuItem mi_afegirc2;
     private javax.swing.JMenuItem mu_csv;
     private javax.swing.JMenuItem mu_taula;
     private javax.swing.JMenuItem openMenuItem;

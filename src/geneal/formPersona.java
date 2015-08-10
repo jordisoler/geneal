@@ -256,6 +256,10 @@ public class formPersona {
         return this.ancestorUnions;
     }
     
+    public boolean isKnown(){
+        return this.id != -1;
+    }
+    
     private void setEmptyPrivate(){
         id = idNull;
         label.setText(unknown);
