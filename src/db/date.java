@@ -19,7 +19,6 @@ package db;
 
 import Exceptions.dateException;
 import java.io.IOException;
-import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -139,14 +138,11 @@ public class date {
         return d+m+y;
     }
     
-//    public Date tojDate(){
-//        if (this.isNull()){
-//            return null;
-//        }else{
-//            //java.sql.Date sdate = new java.sql.Date(year, month, day);
-//            return java.sql.Date.valueOf(this.toQuery());
-//        }
-//    }
+    public boolean equals(date in){
+        return this.year == in.getYear() &&
+                this.month == in.getMonth() &&
+                this.day == in.getDay();
+    }
     
     public String toQuery(){
         if (this.year == -1){

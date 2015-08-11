@@ -281,6 +281,10 @@ public class lloc extends conexio{
         return this.idLloc == -1;
     }
     
+    public boolean equals(lloc in){
+        return this.idLloc == in.getId();
+    }
+    
     public boolean fromLlogaret2(String in){
         boolean hihes = false;
         try {

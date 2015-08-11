@@ -48,10 +48,13 @@ public class formFitxa {
     private final static int nousPares = 1;
     private final static int fromConjuge1 = 2;
     private final static int fromConjuge2 = 3;
+    private final static String warnChanges = "La fitxa actual ha estat "
+                    + "modificada i té canvis  no guardats.\n\t Vols continuar i "
+                    + "perdre els canvis?";
     
     public static final boolean home = true;
     public static final boolean dona = false;
-    
+        
     public formFitxa(){
         un = new db.unio();
     }
@@ -149,6 +152,14 @@ public class formFitxa {
      */
     public void clickLlista(db.persona p){
         System.out.println("persona clicada: "+p);
+        boolean b = checkChanges();
+        if (b){
+            int reply = JOptionPane.showConfirmDialog(null, warnChanges, "Geneal - Canvis no  guardats",
+                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (reply!= JOptionPane.YES_OPTION){
+                return;
+            }
+        }
         try{                                    // Es vol introduir una  persona  amb unió
             un=db.unio.fromConjuge(p.getId());
             fill();
@@ -340,6 +351,14 @@ public class formFitxa {
     }
     
     public void loadPares(boolean esHome){
+        boolean b = checkChanges();
+        if (b){
+            int reply = JOptionPane.showConfirmDialog(null, warnChanges, "Geneal - Canvis no  guardats",
+                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (reply!= JOptionPane.YES_OPTION){
+                return;
+            }
+        }
         db.persona p;
         if (esHome){
             p = new db.persona(c1.getId());
@@ -505,5 +524,27 @@ public class formFitxa {
             un.delete();
             setEmpty();
         }
+    }
+
+    private boolean checkChanges() {
+        boolean b = true;
+        try {
+            b = c1.hasChanged() || c2.hasChanged() ||
+                    Integer.parseInt(fitxa.getText()) != un.getFitxa() ||
+                    !lloc.getLloc().equals(un.getLlocMatrimoni()) ||
+                    !data.getDate().equals(un.getDataMatrimoni()) ||
+                    !comentaris.getText().equals(formutils.null2Void(un.getComentaris()));
+        } catch (GException ex) {
+            ex.show();
+            Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (b){
+            System.out.println("Hi ha hagut canvis en les persones");            
+        }else{
+            System.out.println("No hi ha hagut canvis");
+        }
+        return b;
     }
 }

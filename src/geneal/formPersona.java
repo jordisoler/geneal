@@ -261,6 +261,28 @@ public class formPersona {
         return this.id != -1;
     }
     
+    
+    public boolean hasChanged(){
+        db.persona p = new db.persona(id);
+        boolean isEqual = false;
+        try {
+            isEqual = nom[0].getText().equals(p.getNom()) &&
+                    nom[1].getText().equals(p.getLlinatge1()) &&
+                    nom[2].getText().equals(p.getLlinatge2()) &&
+                    llnaixement.getLloc().equals(p.getLlocNaixement()) &&
+                    lldefuncio.getLloc().equals(p.getLlocDefuncio()) &&
+                    dnaixement.getDate().equals(p.getDateNaixement()) &&
+                    ddefuncio.getDate().equals(p.getDataDefuncio()) &&
+                    sexe.getSelectedItem().equals(formutils.sexe(p));
+        } catch (LEException | dateException ex) {
+            ex.show();
+            Logger.getLogger(formPersona.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(formPersona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return !isEqual;
+    }
+    
     private void setEmptyPrivate(){
         id = idNull;
         label.setText(unknown);

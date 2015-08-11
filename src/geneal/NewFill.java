@@ -32,10 +32,11 @@ import javax.swing.JOptionPane;
 public class NewFill extends javax.swing.JFrame {
 
     private String stitol = "";
-    private db.unio unio;
-    private formLlista list;
+    private final db.unio unio;
+    private final formLlista list;
     /**
      * Creates new form NewFill
+     * @param list_
      * @param un
      */
     public NewFill(formLlista list_, db.unio un) {

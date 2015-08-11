@@ -179,4 +179,12 @@ public class formutils {
             default: return null;
         }
     }
+
+    static String null2Void(String s) {
+        if (s == null){
+            return "";
+        }else{
+            return s;
+        }
+    }
 }
