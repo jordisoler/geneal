@@ -111,7 +111,7 @@ public class lloc extends conexio{
         
         ResultSet rs = pst.executeQuery();
         if (rs.next()){
-            l.idLloc = rs.getInt("id_lloc");
+            l.idLloc = getInt(rs,"id_lloc");
             l.nomMunicipi = rs.getString("id_municipi");
             l.llogaret = rs.getString("llogaret");
             l.parroquia = rs.getString("parroquia");
@@ -186,7 +186,7 @@ public class lloc extends conexio{
             pst.setString(1, in);
             ResultSet rs = pst.executeQuery();
             if(rs.next()){
-                out = new lloc(rs.getInt("id_lloc"));
+                out = new lloc(getInt(rs,"id_lloc"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(lloc.class.getName()).log(Level.SEVERE, null, ex);
@@ -202,7 +202,7 @@ public class lloc extends conexio{
             pst.setString(1, in);
             ResultSet rs = pst.executeQuery();
             if(rs.next()){
-                out = new lloc(rs.getInt("id_lloc"));
+                out = new lloc(getInt(rs,"id_lloc"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(lloc.class.getName()).log(Level.SEVERE, null, ex);
@@ -294,7 +294,7 @@ public class lloc extends conexio{
             ResultSet rs = pst.executeQuery();
             if (rs.next()){
                 hihes = true;
-                int id = rs.getInt("id_lloc");
+                int id = getInt(rs,"id_lloc");
                 loadLloc(id);
             }            
         } catch (SQLException ex) {
@@ -312,7 +312,7 @@ public class lloc extends conexio{
             ResultSet rs = pst.executeQuery();
             if (rs.next()){
                 hihes = true;
-                int id = rs.getInt("id_lloc");
+                int id = getInt(rs,"id_lloc");
                 loadLloc(id);
             }            
         } catch (SQLException ex) {
@@ -354,7 +354,7 @@ public class lloc extends conexio{
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(str);
             while (rs.next()){
-                lloc l = new lloc(rs.getInt("id_lloc"));
+                lloc l = new lloc(getInt(rs,"id_lloc"));
                 llocs.add(l);
             }
         }catch (SQLException ex) {

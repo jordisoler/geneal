@@ -541,7 +541,21 @@ public class formFitxa {
             Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (b){
-            System.out.println("Hi ha hagut canvis en les persones");            
+            System.out.println("Hi ha hagut canvis en les persones");
+            try {
+                System.out.println("C1: "+c1.hasChanged()+", C2: "+c2.hasChanged()+
+                        " fitxa: "+(Integer.parseInt(fitxa.getText()) != un.getFitxa())+
+                        ", Comentaris: "+!comentaris.getText().equals(formutils.null2Void(un.getComentaris()))+
+                        ", lloc: "+(!lloc.getLloc().equals(un.getLlocMatrimoni()))+
+                        ", data: "+(!data.getDate().equals(un.getDataMatrimoni())));
+                System.out.println("Lloc: "+lloc.getLloc().getId()+", guardat: "+un.getLlocMatrimoni().getId());
+            } catch (LEException ex) {
+                Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (dateException ex) {
+                Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }else{
             System.out.println("No hi ha hagut canvis");
         }

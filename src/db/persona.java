@@ -74,7 +74,7 @@ public class persona extends conexio{
                 } catch (dateException ex) {
                     this.dataDefuncio = new date();
                 }
-                this.idLlocDefuncio = rs.getInt("lloc_defuncio");
+                this.idLlocDefuncio = getInt(rs,"lloc_defuncio");
                 if (rs.wasNull()){
                     this.idLlocDefuncio = -1;
                 }
@@ -179,7 +179,7 @@ public class persona extends conexio{
             ResultSet rs = pst.executeQuery();
             while (rs.next()){
                 try {
-                    families.add(new familia(rs.getInt("id_unio")));
+                    families.add(new familia(getInt(rs,"id_unio")));
                 } catch (DBException ex) {ex.show();}
             }
         } catch (SQLException ex) {
@@ -425,7 +425,7 @@ public class persona extends conexio{
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(str);
             if (rs.next()){
-                return rs.getInt("num");
+                return getInt(rs,"num");
             }else{
                 throw new SQLException();
             }
@@ -473,7 +473,7 @@ public class persona extends conexio{
             }
             ResultSet rs = pst.executeQuery();
             while (rs.next()){
-                people.add(new persona(rs.getInt(id_p)));
+                people.add(new persona(getInt(rs,id_p)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
@@ -512,7 +512,7 @@ public class persona extends conexio{
             pst.setString(3, "%"+l2+"%");
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
-                people.add(new persona(rs.getInt("id_persona")));
+                people.add(new persona(getInt(rs,"id_persona")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
@@ -542,7 +542,7 @@ public class persona extends conexio{
             pst.execute();
             ResultSet rs = pst.getGeneratedKeys();
             if (rs.next()){
-                return rs.getInt(1);
+                return getInt(rs,1);
             }
         } catch (SQLException ex) {
             Logger.getLogger(municipi.class.getName()).log(Level.SEVERE, null, ex);

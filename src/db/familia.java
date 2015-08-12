@@ -48,7 +48,7 @@ public class familia extends unio{
             pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
             while (rs.next()){
-                int fill = rs.getInt("id_fill");
+                int fill = getInt(rs,"id_fill");
                 this.fills.add(fill);
             }
         } catch (SQLException ex) {

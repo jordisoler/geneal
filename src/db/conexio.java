@@ -65,6 +65,22 @@ public class conexio {
         }
     }
     
+    public static int getInt(ResultSet rs, String field) throws SQLException{
+        int out = rs.getInt(field);
+        if(rs.wasNull()){
+            out = -1;
+        }
+        return out;
+    }
+    
+    public static int getInt(ResultSet rs, int field) throws SQLException{
+        int out = rs.getInt(field);
+        if(rs.wasNull()){
+            out = -1;
+        }
+        return out;
+    }
+    
     public static void setString(PreparedStatement stm, int position, String in) throws SQLException{
         if (in == null || in.equals(geneal.formutils.unknown) || in.isEmpty()){
             stm.setNull(position, Types.VARCHAR);

@@ -54,7 +54,7 @@ public class boda extends conexio{
             ResultSet rs = pst.executeQuery();
             if (rs.next()){
                 this.idUnio  = unio;
-                this.idLloc = rs.getInt("id_lloc");
+                this.idLloc = getInt(rs,"id_lloc");
                 try {
                     this.data = new date(rs.getCharacterStream("data_boda"));
                 } catch (dateException ex) {

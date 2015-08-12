@@ -56,8 +56,8 @@ public class naixement extends conexio{
             ResultSet rs = pst.executeQuery();
             if (rs.next()){
                 this.idFill = fill;
-                this.idLloc = nullify(rs.getInt("id_lloc"));
-                this.idUnio = nullify(rs.getInt("id_unio"));
+                this.idLloc = nullify(getInt(rs,"id_lloc"));
+                this.idUnio = nullify(getInt(rs,"id_unio"));
                 try {
                     this.dataNaixement = new date(rs.getCharacterStream("data_naixement"));
                 } catch (dateException ex) {

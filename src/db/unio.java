@@ -57,15 +57,15 @@ public class unio extends conexio{
             ResultSet rs = pst.executeQuery();
             if (rs.next()){
                 this.idUnio = id;
-                this.fitxa = rs.getInt("fitxa");
+                this.fitxa = getInt(rs,"fitxa");
                 if (rs.wasNull()){
                     this.fitxa = -1;
                 }
-                this.idConjuge1 = rs.getInt("id_conjuge1");
+                this.idConjuge1 = getInt(rs,"id_conjuge1");
                 if (rs.wasNull()){
                     this.idConjuge1 = -1;
                 }
-                this.idConjuge2 = rs.getInt("id_conjuge2");
+                this.idConjuge2 = getInt(rs,"id_conjuge2");
                 if (rs.wasNull()){
                     this.idConjuge2 = -1;
                 }
@@ -87,19 +87,19 @@ public class unio extends conexio{
             pst.setInt(1, fitxa);
             ResultSet rs = pst.executeQuery();
             if (rs.next()){
-                u.idUnio = rs.getInt("id_unio");
+                u.idUnio = getInt(rs,"id_unio");
                 if (rs.wasNull()){
                     u.fitxa = -1;
                 }
-                u.fitxa = rs.getInt("fitxa");
+                u.fitxa = getInt(rs,"fitxa");
                 if (rs.wasNull()){
                     u.fitxa = -1;
                 }
-                u.idConjuge1 = rs.getInt("id_conjuge1");
+                u.idConjuge1 = getInt(rs,"id_conjuge1");
                 if (rs.wasNull()){
                     u.idConjuge1 = -1;
                 }
-                u.idConjuge2 = rs.getInt("id_conjuge2");
+                u.idConjuge2 = getInt(rs,"id_conjuge2");
                 if (rs.wasNull()){
                     u.idConjuge2 = -1;
                 }
@@ -120,19 +120,19 @@ public class unio extends conexio{
             pst.setInt(2, id);
             ResultSet rs = pst.executeQuery();
             if (rs.next()){
-                u.idUnio = rs.getInt("id_unio");
+                u.idUnio = getInt(rs,"id_unio");
                 if (rs.wasNull()){
                     u.fitxa = -1;
                 }
-                u.fitxa = rs.getInt("fitxa");
+                u.fitxa = getInt(rs,"fitxa");
                 if (rs.wasNull()){
                     u.fitxa = -1;
                 }
-                u.idConjuge1 = rs.getInt("id_conjuge1");
+                u.idConjuge1 = getInt(rs,"id_conjuge1");
                 if (rs.wasNull()){
                     u.idConjuge1 = -1;
                 }
-                u.idConjuge2 = rs.getInt("id_conjuge2");
+                u.idConjuge2 = getInt(rs,"id_conjuge2");
                 if (rs.wasNull()){
                     u.idConjuge2 = -1;
                 }
@@ -310,7 +310,7 @@ public class unio extends conexio{
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(str);
             if (rs.next()){
-                return rs.getInt("num");
+                return getInt(rs,"num");
             }else{
                 throw new SQLException();
             }
@@ -360,7 +360,7 @@ public class unio extends conexio{
             pst.execute();
             ResultSet rs = pst.getGeneratedKeys();
             if (rs.next()){
-                return rs.getInt(1);
+                return getInt(rs,1);
             }else{
                 return -1;
             }

@@ -266,9 +266,10 @@ public class formPersona {
         db.persona p = new db.persona(id);
         boolean isEqual = false;
         try {
-            isEqual = nom[0].getText().equals(p.getNom()) &&
-                    nom[1].getText().equals(p.getLlinatge1()) &&
-                    nom[2].getText().equals(p.getLlinatge2()) &&
+            isEqual = nom[0].getText().equals(null2Void(p.getNom())) &&
+                    nom[1].getText().equals(null2Void(p.getLlinatge1())) &&
+                    nom[2].getText().equals(null2Void(p.getLlinatge2())) &&
+                    comentaris.getText().equals(null2Void(p.getComentaris())) &&
                     llnaixement.getLloc().equals(p.getLlocNaixement()) &&
                     lldefuncio.getLloc().equals(p.getLlocDefuncio()) &&
                     dnaixement.getDate().equals(p.getDateNaixement()) &&
