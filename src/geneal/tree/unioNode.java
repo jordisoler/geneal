@@ -32,9 +32,13 @@ public class unioNode extends JPanel{
     
     public void load(unio u_){
         un = u_;
-        fitxa.setText(String.valueOf(un.getFitxa()));
-        mi_boda.setText(un.getBoda().toString());
-        mi_boda.setVisible(true);
+        if (un.isNull()){
+            setEmpty();
+        }else {
+            fitxa.setText(String.valueOf(un.getFitxa()));
+            mi_boda.setText(un.getBoda().toString());
+            mi_boda.setVisible(true);
+        }
     }
     
     public void setEmpty(){

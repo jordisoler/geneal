@@ -31,6 +31,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.UnsupportedLookAndFeelException;
 import static geneal.sourceforms.formutils.*;
+import geneal.sourceforms.popupPersonaCerca;
+import geneal.sourceforms.popupPersonaFill;
 import geneal.tree.family;
 import geneal.tree.family.size;
 import geneal.tree.node;
@@ -96,13 +98,6 @@ public class App extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        popuplist = new javax.swing.JPopupMenu();
-        Seleccionar = new javax.swing.JMenuItem();
-        Eliminar = new javax.swing.JMenuItem();
-        m_afegir = new javax.swing.JMenu();
-        mi_afegirFill = new javax.swing.JMenuItem();
-        mi_afegirc1 = new javax.swing.JMenuItem();
-        mi_afegirc2 = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panelEditor = new javax.swing.JPanel();
         topleft = new javax.swing.JPanel();
@@ -297,51 +292,6 @@ public class App extends javax.swing.JFrame {
         mu_taula = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
-
-        Seleccionar.setText("Modifica");
-        Seleccionar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SeleccionarActionPerformed(evt);
-            }
-        });
-        popuplist.add(Seleccionar);
-
-        Eliminar.setText("Eliminar");
-        Eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EliminarActionPerformed(evt);
-            }
-        });
-        popuplist.add(Eliminar);
-
-        m_afegir.setText("Afegir...");
-        m_afegir.setActionCommand("Afegir com...");
-
-        mi_afegirFill.setText("Fill");
-        mi_afegirFill.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mi_afegirFillActionPerformed(evt);
-            }
-        });
-        m_afegir.add(mi_afegirFill);
-
-        mi_afegirc1.setText("Conjuge 1 (home)");
-        mi_afegirc1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mi_afegirc1ActionPerformed(evt);
-            }
-        });
-        m_afegir.add(mi_afegirc1);
-
-        mi_afegirc2.setText("Conjuge 2 (dona)");
-        mi_afegirc2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mi_afegirc2ActionPerformed(evt);
-            }
-        });
-        m_afegir.add(mi_afegirc2);
-
-        popuplist.add(m_afegir);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Geneal");
@@ -1412,18 +1362,6 @@ public class App extends javax.swing.JFrame {
         tancar();
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
-    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
-        if(null != popuplist.getLabel())switch (popuplist.getLabel()) {
-            case "Cerca":
-                cerca.dropPerson();                
-                break;
-            case "Fills":
-                f.deleteFill();
-                break;
-            
-        }
-    }//GEN-LAST:event_EliminarActionPerformed
-
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
         novaFitxa();
     }//GEN-LAST:event_openMenuItemActionPerformed
@@ -1435,26 +1373,6 @@ public class App extends javax.swing.JFrame {
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         new GException("Aquesta opció encara no la he programat. \n\t:(","Opció no suportada").show();
     }//GEN-LAST:event_aboutMenuItemActionPerformed
-
-    private void SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarActionPerformed
-        db.persona p;
-        if(null != popuplist.getLabel()) {
-            switch (popuplist.getLabel()) {
-                case "Cerca":
-                    p = cerca.getSelectedPerson();
-                    break;
-                case "Fills":
-                    p = fills.getSelectedPerson();
-                    break;
-                default:
-                    new GException("No se sap quina llista és la seleccionada.","Error").show();
-                    return;
-            }
-            new ModifyPersonFitxa(p,f).setVisible(true);
-        }
-        
-        //new GException("Aquesta opció encara no la he programat. \n\t:(","Opció no suportada").show();
-    }//GEN-LAST:event_SeleccionarActionPerformed
 
     private void mu_csvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mu_csvActionPerformed
         new CSVgenerate.formCSV().setVisible(true);
@@ -1559,9 +1477,8 @@ public class App extends javax.swing.JFrame {
     private void find_listMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_find_listMouseClicked
         if ( SwingUtilities.isRightMouseButton(evt)){
             this.find_list.setSelectedIndex(getRow(this.find_list, evt.getPoint()));
-            this.m_afegir.setVisible(true);
-            popuplist.show(this.find_list, evt.getX(), evt.getY());
-            popuplist.setLabel("Cerca");
+            db.persona p = cerca.getSelectedPerson();
+            ppc.show(find_list, evt.getX(), evt.getY(), p);
         }
     }//GEN-LAST:event_find_listMouseClicked
 
@@ -1582,9 +1499,8 @@ public class App extends javax.swing.JFrame {
     private void ll_ufillsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ll_ufillsMouseClicked
         if ( SwingUtilities.isRightMouseButton(evt)){
             this.ll_ufills.setSelectedIndex(getRow(this.ll_ufills, evt.getPoint()));
-            this.m_afegir.setVisible(false);
-            popuplist.show(this.ll_ufills, evt.getX(), evt.getY());
-            popuplist.setLabel("Fills");
+            db.persona p = fills.getSelectedPerson();
+            ppf.show(ll_ufills, evt.getX(), evt.getY(), p);
         }
     }//GEN-LAST:event_ll_ufillsMouseClicked
 
@@ -1644,22 +1560,9 @@ public class App extends javax.swing.JFrame {
         f.fillFitxa(this.visor2.getFitxa(formPersonaVisor.padrinsMaterns));
     }//GEN-LAST:event_vb_m_mparesActionPerformed
 
-    private void mi_afegirFillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_afegirFillActionPerformed
-        db.persona p = cerca.getSelectedPerson();
-        f.addSonFromTree(p);
-    }//GEN-LAST:event_mi_afegirFillActionPerformed
-
     private void b_eborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_eborrarActionPerformed
         f.delete();
     }//GEN-LAST:event_b_eborrarActionPerformed
-
-    private void mi_afegirc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_afegirc1ActionPerformed
-        c1.replace(this.cerca.getSelectedPerson());
-    }//GEN-LAST:event_mi_afegirc1ActionPerformed
-
-    private void mi_afegirc2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_afegirc2ActionPerformed
-        c2.replace(this.cerca.getSelectedPerson());
-    }//GEN-LAST:event_mi_afegirc2ActionPerformed
     
     
     private void initialize(){
@@ -1670,7 +1573,7 @@ public class App extends javax.swing.JFrame {
         initComponents();
         tree t = new tree(arbrePane);
         arbrePane.add(t);
-        
+             
         this.setVisible(true);
         
         db.unio un = new db.unio();
@@ -1756,6 +1659,9 @@ public class App extends javax.swing.JFrame {
         f = new formFitxa(un, c1, c2, t_fitxa,  t_ucomentaris, c_casament, fills,
                 fmatrimoni, fdmatrimoni, v_fitxa,  t);
         
+        ppc = new popupPersonaCerca(f, cerca);
+        ppf = new popupPersonaFill(f);
+        
         novaFitxa();
     }
     
@@ -1768,8 +1674,6 @@ public class App extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Eliminar;
-    private javax.swing.JMenuItem Seleccionar;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JPanel arbrePane;
     private javax.swing.JButton b_1pares;
@@ -1907,17 +1811,12 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel l_ppmare;
     private javax.swing.JLabel l_pppare;
     private javax.swing.JList ll_ufills;
-    private javax.swing.JMenu m_afegir;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem mi_afegirFill;
-    private javax.swing.JMenuItem mi_afegirc1;
-    private javax.swing.JMenuItem mi_afegirc2;
     private javax.swing.JMenuItem mu_csv;
     private javax.swing.JMenuItem mu_taula;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JPanel panelEditor;
     private javax.swing.JPanel panelVisor;
-    private javax.swing.JPopupMenu popuplist;
     private javax.swing.JPanel searchpanel;
     private javax.swing.JTextField t_1any;
     private javax.swing.JTextArea t_1comentaris;
@@ -1970,7 +1869,9 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JButton vb_m_pares;
     private javax.swing.JButton vb_m_ppares;
     // End of variables declaration//GEN-END:variables
-
+    private popupPersonaCerca ppc;
+    private popupPersonaFill ppf;
+    
     private void novaFitxa() {
         String sf = JOptionPane.showInputDialog(null, "Número de fitxa a carregar",
                 "Carregar fitxa", JOptionPane.OK_CANCEL_OPTION);

@@ -77,7 +77,6 @@ public class node extends JPanel{
             public void mouseClicked(MouseEvent evt) {
                 if (evt.getClickCount() == 2) {
                     unio u;
-                    System.out.println("Hola");
                     try {
                         u = unio.fromConjuge(p.getId());
                     } catch (GException ex) {
@@ -87,7 +86,6 @@ public class node extends JPanel{
                     f.fillUnio(id);
                 }else if (SwingUtilities.isRightMouseButton(evt)){
                     pop.show(n, evt.getX(), evt.getY(), p);
-                    System.out.println("G'morning!,  "+p);
                 }
             }
         });
