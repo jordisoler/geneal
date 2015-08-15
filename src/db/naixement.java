@@ -203,8 +203,7 @@ public class naixement extends conexio{
     }
     
     public String toString(){
-        return "Naixement: id_fill: "+this.idFill+", lloc: "+new lloc(this.idLloc)+
-                ", data: "+this.dataNaixement+", id_unio: "+this.idUnio;
+        return new lloc(this.idLloc)+", "+this.dataNaixement;
     }
     
     //----------PRIVATE methods----------

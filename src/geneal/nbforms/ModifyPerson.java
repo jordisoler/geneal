@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package geneal;
+package geneal.nbforms;
 
 import Exceptions.DBException;
+import geneal.sourceforms.formData;
+import geneal.sourceforms.formLloc;
+import geneal.sourceforms.formPersona;
 import static geneal.config.*;
-import static geneal.formutils.getModelSexe;
+import static geneal.sourceforms.formutils.getModelSexe;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

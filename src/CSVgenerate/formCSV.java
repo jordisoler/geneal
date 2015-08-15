@@ -34,7 +34,7 @@ public class formCSV extends javax.swing.JFrame {
         initComponents();
         
         String[] municipis = db.municipi.getAll();
-        geneal.formutils.fillCb(this.c_municipi, municipis);
+        geneal.sourceforms.formutils.fillCb(this.c_municipi, municipis);
         h = new CSVgenerate();
     }
 

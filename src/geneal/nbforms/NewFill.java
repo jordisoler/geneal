@@ -15,11 +15,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package geneal;
+package geneal.nbforms;
 import Exceptions.BYException;
 import Exceptions.LEException;
 import Exceptions.dateException;
-import static geneal.formutils.*;
+import geneal.sourceforms.formData;
+import geneal.sourceforms.formLlista;
+import geneal.sourceforms.formLloc;
+import static geneal.sourceforms.formutils.*;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

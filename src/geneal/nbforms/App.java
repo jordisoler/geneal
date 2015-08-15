@@ -15,15 +15,27 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package geneal;
+package geneal.nbforms;
 
 import Exceptions.*;
+import geneal.sourceforms.ModifyPersonFitxa;
+import geneal.sourceforms.formData;
+import geneal.sourceforms.formFitxa;
+import geneal.sourceforms.formLlista;
+import geneal.sourceforms.formLloc;
+import geneal.sourceforms.formPersonaFitxa;
+import geneal.sourceforms.formPersonaVisor;
 import static geneal.config.*;
 import javax.swing.UIManager;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.UnsupportedLookAndFeelException;
-import static geneal.formutils.*;
+import static geneal.sourceforms.formutils.*;
+import geneal.tree.family;
+import geneal.tree.family.size;
+import geneal.tree.node;
+import geneal.tree.tree;
+import geneal.tree.unioNode;
 import javax.swing.SwingUtilities;
 import java.awt.*;
 import javax.swing.JOptionPane;
@@ -45,8 +57,8 @@ public class App extends javax.swing.JFrame {
      * Creates new Geneal window
      */
     public App() {
-        initialize();
         System.out.println("Benvingut a l'aplicació geneològica Geneal!");
+        initialize();
     }
     
     
@@ -229,6 +241,7 @@ public class App extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         t_2comentaris = new javax.swing.JTextArea();
         jLabel40 = new javax.swing.JLabel();
+        arbrePane = new javax.swing.JPanel();
         panelVisor = new javax.swing.JPanel();
         v_fitxa = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -1061,6 +1074,19 @@ public class App extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Editor", panelEditor);
 
+        javax.swing.GroupLayout arbrePaneLayout = new javax.swing.GroupLayout(arbrePane);
+        arbrePane.setLayout(arbrePaneLayout);
+        arbrePaneLayout.setHorizontalGroup(
+            arbrePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 962, Short.MAX_VALUE)
+        );
+        arbrePaneLayout.setVerticalGroup(
+            arbrePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 577, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Arbre", arbrePane);
+
         panelVisor.setFont(normalFont);
 
         v_fitxa.setText("Fitxa: ");
@@ -1370,7 +1396,7 @@ public class App extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1421,7 +1447,7 @@ public class App extends javax.swing.JFrame {
                     p = fills.getSelectedPerson();
                     break;
                 default:
-                    new GException("No se sap quina llista es la seleccionada.","Error").show();
+                    new GException("No se sap quina llista és la seleccionada.","Error").show();
                     return;
             }
             new ModifyPersonFitxa(p,f).setVisible(true);
@@ -1642,6 +1668,8 @@ public class App extends javax.swing.JFrame {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
                 UnsupportedLookAndFeelException ex) {}
         initComponents();
+        tree t = new tree(arbrePane);
+        arbrePane.add(t);
         
         this.setVisible(true);
         
@@ -1717,16 +1745,16 @@ public class App extends javax.swing.JFrame {
         
         c1 = new formPersonaFitxa(un.getConjuge1().getId(), fnmarit, 
                 fdmarit, fdnmarit, fddmarit, nomC1, t_1comentaris, c_1sexe,
-                l_e_conjuge1, tree1, geneal.formPersona.Conjuge1, b_1pares, visor1);
+                l_e_conjuge1, tree1, geneal.sourceforms.formPersona.Conjuge1, b_1pares, visor1);
         c2 = new formPersonaFitxa(un.getConjuge2().getId(), fnmuller, 
                 fdmuller, fdnmuller, fddmuller, nomC2, t_2comentaris, c_2sexe,
-                l_e_conjuge2, tree2, geneal.formPersona.Conjuge2, b_2pares, visor2);
+                l_e_conjuge2, tree2, geneal.sourceforms.formPersona.Conjuge2, b_2pares, visor2);
         
         fills = new formLlista(this.ll_ufills);
         cerca = new formLlista(this.find_list);
         
         f = new formFitxa(un, c1, c2, t_fitxa,  t_ucomentaris, c_casament, fills,
-                fmatrimoni, fdmatrimoni, v_fitxa);
+                fmatrimoni, fdmatrimoni, v_fitxa,  t);
         
         novaFitxa();
     }
@@ -1743,6 +1771,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JMenuItem Eliminar;
     private javax.swing.JMenuItem Seleccionar;
     private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JPanel arbrePane;
     private javax.swing.JButton b_1pares;
     private javax.swing.JButton b_2pares;
     private javax.swing.JButton b_afegirfill;

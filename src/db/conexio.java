@@ -82,7 +82,7 @@ public class conexio {
     }
     
     public static void setString(PreparedStatement stm, int position, String in) throws SQLException{
-        if (in == null || in.equals(geneal.formutils.unknown) || in.isEmpty()){
+        if (in == null || in.equals(geneal.sourceforms.formutils.unknown) || in.isEmpty()){
             stm.setNull(position, Types.VARCHAR);
         }else{
             stm.setString(position, in);

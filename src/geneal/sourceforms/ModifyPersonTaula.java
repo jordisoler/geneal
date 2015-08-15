@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package geneal;
+package geneal.sourceforms;
 
+import geneal.nbforms.ModifyPerson;
+import geneal.nbforms.taula;
 import Exceptions.LEException;
 import Exceptions.dateException;
 import db.persona;

@@ -15,13 +15,14 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package geneal;
+package geneal.sourceforms;
 
 import Exceptions.*;
 import db.naixement;
 import db.persona;
-import static geneal.formutils.fillText;
-import static geneal.formutils.s2q;
+import static geneal.sourceforms.formutils.fillText;
+import static geneal.sourceforms.formutils.s2q;
+import geneal.tree.tree;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,6 +42,7 @@ public class formFitxa {
     private formLlista fills;
     private javax.swing.JLabel visorFitxa;
     private int estat, idfill;
+    private tree t;
     
     private db.unio un;
     
@@ -58,9 +60,11 @@ public class formFitxa {
     public formFitxa(){
         un = new db.unio();
     }
+    @SuppressWarnings("LeakingThisInConstructor")
     public formFitxa(db.unio un_,formPersonaFitxa c1_, formPersonaFitxa c2_, javax.swing.JTextField fitxa_,
             javax.swing.JTextArea comentaris_, javax.swing.JCheckBox casament_,
-            formLlista fills_,formLloc lloc_, formData data_, javax.swing.JLabel visorFitxa_){
+            formLlista fills_,formLloc lloc_, formData data_, javax.swing.JLabel visorFitxa_,
+            tree t_){
         un = un_;
         c1 = c1_;
         c2 = c2_;
@@ -71,12 +75,14 @@ public class formFitxa {
         lloc = lloc_;
         data = data_;
         visorFitxa = visorFitxa_;
+        t = t_;
+        t.setFormFitxaHandler(this);
     }
     public formFitxa(formPersonaFitxa c1_, formPersonaFitxa c2_, javax.swing.JTextField fitxa_,
             javax.swing.JTextArea comentaris_, javax.swing.JCheckBox casament_,
-            formLlista fills_,formLloc lloc_, formData data_, javax.swing.JLabel visorFitxa_){
+            formLlista fills_,formLloc lloc_, formData data_, javax.swing.JLabel visorFitxa_, tree t_){
         this(new db.unio(), c1_, c2_, fitxa_,  comentaris_, casament_, fills_,
-                lloc_, data_, visorFitxa_);
+                lloc_, data_, visorFitxa_, t_);
     }
     
     public void fill(){
@@ -101,6 +107,8 @@ public class formFitxa {
             
                 c1.fill(p1);
                 c2.fill(p2);
+                t.load(un);
+                
             } catch (DBException ex) {
                 Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
                 ex.show();
@@ -125,6 +133,7 @@ public class formFitxa {
                 c2.fill(p);
                 estat = fromConjuge2;
             }
+            t.setEmpty();
         } catch (DBException ex) {
             Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
             ex.show();
@@ -140,9 +149,18 @@ public class formFitxa {
         c1.setEmpty(p.getLlinatge1());
         c2.setEmpty(p.getLlinatge2());
         idfill = id_fill;
+        t.setEmpty();
     }
     public void fillFitxa(int ifitxa){
         un = db.unio.fromFitxa(ifitxa);
+        fill();
+    }
+    public void fillUnio(int u){
+        try {
+            un = new db.unio(u);
+        } catch (DBException ex) {
+            un = new db.unio();
+        }
         fill();
     }
     

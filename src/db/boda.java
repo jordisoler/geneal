@@ -157,9 +157,10 @@ public class boda extends conexio{
                 this.data == in.data;
     }
     
+    @Override
     public String toString(){
         lloc ll = new lloc(idLloc);
-        return "Boda: lloc:"+ll+", data:"+data+", unio: "+idUnio;
+        return ll+", "+data;
     }
     
     private void addNewBoda(){

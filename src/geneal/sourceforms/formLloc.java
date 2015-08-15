@@ -15,11 +15,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package geneal;
+package geneal.sourceforms;
 import Exceptions.LEException;
-import static geneal.formutils.fillCbEditable;
-import static geneal.formutils.isEmptyCB;
-import static geneal.formutils.select;
+import static geneal.sourceforms.formutils.fillCbEditable;
+import static geneal.sourceforms.formutils.isEmptyCB;
+import static geneal.sourceforms.formutils.select;
 import java.sql.SQLException;
 import java.util.Arrays;
 import javax.swing.JComboBox;

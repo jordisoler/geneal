@@ -15,11 +15,13 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package geneal;
+package geneal.nbforms;
 
 import Exceptions.DBException;
 import Exceptions.MUException;
 import db.persona;
+import geneal.sourceforms.ModifyPersonTaula;
+import geneal.sourceforms.formFitxa;
 import static geneal.config.normalFont;
 import static geneal.config.smallFont;
 import java.util.ArrayList;
@@ -49,8 +51,8 @@ public class taula extends javax.swing.JFrame {
         
         f = f_;
         String[] municipis = db.municipi.getAll();
-        geneal.formutils.fillCb(this.c_llocn, municipis);
-        geneal.formutils.fillCb(this.c_llocd, municipis);
+        geneal.sourceforms.formutils.fillCb(this.c_llocn, municipis);
+        geneal.sourceforms.formutils.fillCb(this.c_llocd, municipis);
         
         int npersones = db.persona.count(), nunions = db.unio.count();
         this.l_total.setText("Total: "+npersones+" persones, "+nunions+" unions.");

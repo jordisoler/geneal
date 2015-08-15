@@ -374,7 +374,7 @@ public class persona extends conexio{
     public String getGenerationsString(){
         ArrayList<Integer> generations = this.getGenerations();
         if (generations.isEmpty()){
-            return geneal.formutils.unknown;
+            return geneal.sourceforms.formutils.unknown;
         }else{
             String sout = "";
             for (int i : generations){
@@ -391,7 +391,7 @@ public class persona extends conexio{
     public String toString(){
         if ((this.nom == null && this.llinatge1 == null && this.llinatge2 == null) ||
                 this.isNull()){
-            return geneal.formutils.unknown;
+            return geneal.sourceforms.formutils.unknown;
         }else{
             String l1 ="",  l2="";
             if (this.llinatge1 != null){
@@ -402,6 +402,10 @@ public class persona extends conexio{
             }
             return this.nom+l1+l2;
         }
+    }
+    
+    public String defuncioToString(){
+        return new lloc(this.idLlocDefuncio)+", "+this.dataDefuncio;
     }
     
     // ----------STATIC methods (public)----------

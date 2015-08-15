@@ -17,6 +17,7 @@
  */
 package geneal;
 
+import java.awt.Color;
 import java.awt.Font;
 
 /**
@@ -24,13 +25,18 @@ import java.awt.Font;
  * @author jordi
  */
 public class config {
-    //private static final String
+    // Fonts
     private static final Font defaultNormalFont = new Font("Ubuntu", Font.PLAIN, 14);
     private static final Font defaultBoldFont = new Font("Ubuntu", Font.BOLD, 14);
     private static final Font defaultSmallFont = new Font("Ubuntu", Font.PLAIN, 12);
     private static final Font defaultTinyFont = new Font("Ubuntu", Font.PLAIN, 10);
     private static final Font defaultBigFont = new Font("Ubuntu", Font.PLAIN, 16);
     private static final Font defaultBigBoldFont = new Font("Ubuntu", Font.BOLD, 16);
+    
+    // Colours
+    public static final Color maleColour = new java.awt.Color(11190015); // Blue
+    public static final Color femaleColour = new Color(16757960); // Red
+    public static final Color defaultColour = new Color(15790320); // Grey
     
     public static Font normalFont = defaultNormalFont;
     public static Font smallFont = defaultSmallFont;
