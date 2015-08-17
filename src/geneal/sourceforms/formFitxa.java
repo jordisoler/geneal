@@ -53,6 +53,7 @@ public class formFitxa {
     private final static String warnChanges = "La fitxa actual ha estat "
                     + "modificada i té canvis  no guardats.\n\t Vols continuar i "
                     + "perdre els canvis?";
+    private final static String[] changesOptions = {"Cancela", "Guarda els canvis", "Continua sense guardar"};
     
     public static final boolean home = true;
     public static final boolean dona = false;
@@ -172,10 +173,13 @@ public class formFitxa {
         System.out.println("persona clicada: "+p);
         boolean b = checkChanges();
         if (b){
-            int reply = JOptionPane.showConfirmDialog(null, warnChanges, "Geneal - Canvis no  guardats",
-                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-            if (reply!= JOptionPane.YES_OPTION){
+            int reply = JOptionPane.showOptionDialog(null, warnChanges, "Geneal - Canvis no  guardats",
+                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
+                    null, changesOptions, changesOptions[0]);
+            if (reply == 0){
                 return;
+            }else if(reply == 1) {
+                this.committ();
             }
         }
         try{                                    // Es vol introduir una  persona  amb unió
@@ -371,10 +375,13 @@ public class formFitxa {
     public void loadPares(boolean esHome){
         boolean b = checkChanges();
         if (b){
-            int reply = JOptionPane.showConfirmDialog(null, warnChanges, "Geneal - Canvis no  guardats",
-                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-            if (reply!= JOptionPane.YES_OPTION){
+            int reply = JOptionPane.showOptionDialog(null, warnChanges, "Geneal - Canvis no  guardats",
+                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                    null, changesOptions, changesOptions[0]);
+            if (reply == 0){
                 return;
+            }else if(reply == 1) {
+                this.committ();
             }
         }
         db.persona p;
@@ -462,7 +469,7 @@ public class formFitxa {
     }
     
     private db.unio getUnioFromData(){
-        db.unio u = new db.unio();;
+        db.unio u = new db.unio();
         if (db.unio.exist(un)){
             u = un;
         }
@@ -574,11 +581,10 @@ public class formFitxa {
                         ", lloc: "+(!lloc.getLloc().equals(un.getLlocMatrimoni()))+
                         ", data: "+(!data.getDate().equals(un.getDataMatrimoni())));
                 System.out.println("Lloc: "+lloc.getLloc().getId()+", guardat: "+un.getLlocMatrimoni().getId());
-            } catch (LEException ex) {
+            } catch (LEException | dateException ex) {
+                ex.show();
                 Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
-                Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (dateException ex) {
                 Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else{
