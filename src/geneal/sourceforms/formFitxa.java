@@ -363,7 +363,7 @@ public class formFitxa {
     public void deleteFill(){
         fills.dropPerson();
     }
-    
+       
     public db.unio getUnio(){
         return this.un;
     }
@@ -503,6 +503,13 @@ public class formFitxa {
 
     public void reload() {
         this.fill();
+    }
+    
+    public formPersonaFitxa getC1(){
+        return this.c1;
+    }
+    public formPersonaFitxa getC2(){
+        return this.c2;
     }
 
     public void addSonFromTree(persona p) {

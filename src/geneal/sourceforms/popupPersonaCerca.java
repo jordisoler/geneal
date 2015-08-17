@@ -26,6 +26,27 @@ public class popupPersonaCerca extends popupPersona {
         aC1.setText("Conjuge 1 (home)");
         aC2 = new JMenuItem();
         aC2.setText("Conjuge 2 (dona)");
+        
+        // Add  actions:
+        aFill.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                afegirFill(evt);
+            }
+        });
+        aC1.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                afegirC1(evt);
+            }
+        });
+        aC2.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                afegirC2(evt);
+            }
+        });
+        
         Afegir.add(aFill);
         Afegir.add(aC1);
         Afegir.add(aC2);
@@ -39,8 +60,20 @@ public class popupPersonaCerca extends popupPersona {
     
     @Override
     public void show(Component c, int x, int y, persona p_){
-        System.out.println("Cerca ");
         super.show(c, x, y, p_);
+    }
+    
+    private void afegirFill(java.awt.event.ActionEvent evt){
+        persona p = list.getSelectedPerson();
+        f.addSonFromTree(p);
+    }
+    private void afegirC1(java.awt.event.ActionEvent evt){
+        persona p = list.getSelectedPerson();
+        f.getC1().replace(p);
+    }
+    private void afegirC2(java.awt.event.ActionEvent evt){
+        persona p = list.getSelectedPerson();
+        f.getC2().replace(p);
     }
     
     private final formLlista list;
