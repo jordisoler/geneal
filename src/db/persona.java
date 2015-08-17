@@ -339,12 +339,14 @@ public class persona extends conexio{
                 PreparedStatement pst = con.prepareStatement(str);
                 pst.setInt(1, this.getId());
                 pst.execute();
+                System.out.println("S'ha eliminat la persona "+this);
                 return true;
             }catch (Exception e){
                 Logger.getLogger(municipi.class.getName()).log(Level.SEVERE, null, e);
                 return false;
             }
         }else{
+            System.out.println("No eliminat: no existeix.");
             return false;
         }
     }
@@ -413,7 +415,7 @@ public class persona extends conexio{
         try {
             String str = "select * from  persona where id_persona = ?";
             PreparedStatement pst = con.prepareStatement(str);
-            pst.setInt(1, Types.INTEGER);
+            pst.setInt(1, p.getId());
             ResultSet rs = pst.executeQuery();
             return rs.next();
         } catch (SQLException ex) {

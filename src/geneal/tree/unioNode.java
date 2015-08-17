@@ -29,7 +29,7 @@ public class unioNode extends JPanel{
         initComponents();
         load(un_);
     }
-    
+       
     public void load(unio u_){
         un = u_;
         if (un.isNull()){
@@ -40,11 +40,15 @@ public class unioNode extends JPanel{
             mi_boda.setVisible(true);
         }
     }
-    
+        
     public void setEmpty(){
         un = new unio();
         fitxa.setText("");
         mi_boda.setVisible(false);
+    }
+    
+    public db.unio getUnio(){
+        return this.un;
     }
     
     private unio un;

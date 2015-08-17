@@ -56,6 +56,7 @@ public class popupPersonaCerca extends popupPersona {
     @Override
     public void eliminarPersona(java.awt.event.ActionEvent evt){
         list.dropPerson();
+        f.reloadTree();
     }
     
     @Override

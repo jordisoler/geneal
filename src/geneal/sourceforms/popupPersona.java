@@ -51,6 +51,7 @@ public class popupPersona extends JPopupMenu{
     
     public void eliminarPersona(java.awt.event.ActionEvent evt){
         p.delete();
+        f.reload();
     }
     
     public void modificarPersona(java.awt.event.ActionEvent evt){

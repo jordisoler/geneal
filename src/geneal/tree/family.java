@@ -7,7 +7,6 @@ package geneal.tree;
 
 import db.unio;
 import geneal.sourceforms.formFitxa;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import static java.lang.Math.round;
@@ -64,6 +63,10 @@ public class family  extends JPanel{
         n1.setEmpty();
         n2.setEmpty();
         un.setEmpty();
+    }
+    
+    public unio getUnio(){
+        return un.getUnio();
     }
     
     private static class vLinePane extends JPanel {

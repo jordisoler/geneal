@@ -366,6 +366,7 @@ public class formFitxa {
     
     public void deleteFill(){
         fills.dropPerson();
+        reloadTree();
     }
        
     public db.unio getUnio(){
@@ -510,6 +511,10 @@ public class formFitxa {
 
     public void reload() {
         this.fill();
+    }
+    
+    public void reloadTree(){
+        t.reload();
     }
     
     public formPersonaFitxa getC1(){

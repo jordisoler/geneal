@@ -18,7 +18,6 @@
 package geneal.nbforms;
 
 import Exceptions.*;
-import geneal.sourceforms.ModifyPersonFitxa;
 import geneal.sourceforms.formData;
 import geneal.sourceforms.formFitxa;
 import geneal.sourceforms.formLlista;
@@ -33,11 +32,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import static geneal.sourceforms.formutils.*;
 import geneal.sourceforms.popupPersonaCerca;
 import geneal.sourceforms.popupPersonaFill;
-import geneal.tree.family;
-import geneal.tree.family.size;
-import geneal.tree.node;
 import geneal.tree.tree;
-import geneal.tree.unioNode;
 import javax.swing.SwingUtilities;
 import java.awt.*;
 import javax.swing.JOptionPane;

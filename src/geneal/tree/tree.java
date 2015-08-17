@@ -12,7 +12,6 @@ import geneal.tree.family.size;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
-import static java.lang.StrictMath.floor;
 import javax.swing.JPanel;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
@@ -72,6 +71,10 @@ public class tree extends JPanel{
         persona[] pfills = u.getFills();
         fills.update(pfills);
         fills.setLocation((Width-fills.getWidth())/2,Ys[7]);
+    }
+    
+    public void reload(){
+        load(families[6].getUnio());
     }
     
     public void setEmpty(){

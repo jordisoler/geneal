@@ -24,7 +24,7 @@ public class fillPane extends JPanel{
     
     public void update(persona[] ps){
         this.removeAll();
-        
+                
         number = ps.length;
         int Width = min(maxW, number*width);
         boolean small = Width == maxW;
