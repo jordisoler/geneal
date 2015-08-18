@@ -14,6 +14,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -81,6 +82,8 @@ public class unioNode extends JPanel{
             public void mouseClicked(MouseEvent evt) {
                 if (evt.getClickCount() == 2) {
                     popup.show(fitxa, getX()-getWidth(), getY());
+                }else if (SwingUtilities.isRightMouseButton(evt)){
+                    
                 }
             }
         });

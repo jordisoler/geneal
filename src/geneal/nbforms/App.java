@@ -1582,11 +1582,7 @@ public class App extends javax.swing.JFrame {
                     // Double-click detected
                     int index = list.locationToIndex(evt.getPoint());
                     fillClicat(index);
-                } else if (evt.getClickCount() == 3) {
-
-                    // Triple-click detected
-                    int index = list.locationToIndex(evt.getPoint());
-                }
+                } 
             }
         });
         
@@ -1599,10 +1595,6 @@ public class App extends javax.swing.JFrame {
                     // Double-click detected
                     int index = list.locationToIndex(evt.getPoint());
                     cercaFillClicat(index);
-                } else if (evt.getClickCount() == 3) {
-
-                    // Triple-click detected
-                    int index = list.locationToIndex(evt.getPoint());
                 }
             }
         });

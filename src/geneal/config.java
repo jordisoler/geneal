@@ -37,6 +37,7 @@ public class config {
     public static final Color maleColour = new java.awt.Color(11190015); // Blue
     public static final Color femaleColour = new Color(16757960); // Red
     public static final Color defaultColour = new Color(15790320); // Grey
+    public static final Color darkGray = new Color(9868950); // Grey
     
     public static Font normalFont = defaultNormalFont;
     public static Font smallFont = defaultSmallFont;

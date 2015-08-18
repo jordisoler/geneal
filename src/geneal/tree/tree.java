@@ -12,6 +12,7 @@ import geneal.tree.family.size;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.util.Arrays;
 import javax.swing.JPanel;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
@@ -26,7 +27,6 @@ public class tree extends JPanel{
     
     public tree(JPanel parent){
         super();
-        u = new unio();
         families = new family[7];
                
         Width = parent.getWidth();
@@ -66,6 +66,13 @@ public class tree extends JPanel{
         
         for (int i = 0; i<families.length;  i++){
             families[i].load(us[i]);
+            if (i==4 || i == 5){
+                if (us[i].isNull()){
+                    int idx = (i-4)*2;
+                    families[idx].disable();
+                    families[idx+1].disable();
+                }
+            }
         }
         
         persona[] pfills = u.getFills();
@@ -78,8 +85,8 @@ public class tree extends JPanel{
     }
     
     public void setEmpty(){
-        for (family f : families){
-            f.setEmpty();
+        for (family fam : families){
+            fam.setEmpty();
         }
         fills.setEmpty();
     }
@@ -90,6 +97,20 @@ public class tree extends JPanel{
             familie.addFf(f);
         }
         fills.addFf(f);
+    }
+    
+    public void newFitxaFromC1(persona p){
+        Integer[] idxs = {0,1,4};
+        boolean male = true;
+        
+        newFitxa(p, idxs, male);
+    }
+    
+    public void newFitxaFromC2(persona p){
+        Integer[] idxs = {2,3,5};
+        boolean male = false;
+        
+        newFitxa(p, idxs, male);
     }
     
     @Override
@@ -171,7 +192,6 @@ public class tree extends JPanel{
     
     private final size[] ss;
     private final int[] Xs, Ys;
-    private final unio u;
     private formFitxa f;
     private final family[] families;
     private final fillPane fills;
@@ -183,5 +203,31 @@ public class tree extends JPanel{
         int y2 = fills.getY();
         int[] points = {x1, y1, x2, y2};
         rectLine(points, g);
+    }
+
+    private void newFitxa(persona p, Integer[] idxs, boolean male) {
+        unio pares = p.getUnioPares();
+        unio[] unions = {pares.getConjuge1().getUnioPares(), pares.getConjuge2().getUnioPares(),pares};
+        this.setLayout(new AbsoluteLayout());
+        int c = 0;
+        for (int i = 0; i<families.length; i++){
+            if (Arrays.asList(idxs).contains(i)){
+                families[i].load(unions[c]);
+                c++;
+            }else if (i==6){
+                families[i].load(p, male);
+            }else{
+                families[i].setEmpty();
+            }
+        }
+        fills.setEmpty();
+        fills.setLocation((Width-fills.getWidth())/2,Ys[7]);
+    }
+
+    public void newFitxaFromFill(persona p) {
+        setEmpty();
+        persona [] pfills = {p};
+        fills.update(pfills);
+        fills.setLocation((Width-fills.getWidth())/2,Ys[7]);
     }
 }

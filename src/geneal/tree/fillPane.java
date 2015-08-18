@@ -25,6 +25,7 @@ public class fillPane extends JPanel{
     public void update(persona[] ps){
         this.removeAll();
                 
+        this.setVisible(true);
         number = ps.length;
         int Width = min(maxW, number*width);
         boolean small = Width == maxW;
@@ -64,11 +65,13 @@ public class fillPane extends JPanel{
     private formFitxa f;
 
     public void setEmpty() {
-        number = 0;
+        number = 1;
         boolean small = false;
         this.removeAll();
         this.setSize(width, height);
         this.setPreferredSize(new Dimension(width, height));
         this.add(new node(small));
+        
+        //this.setVisible(false);
     }
 }

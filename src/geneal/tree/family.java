@@ -5,6 +5,7 @@
  */
 package geneal.tree;
 
+import db.persona;
 import db.unio;
 import geneal.sourceforms.formFitxa;
 import java.awt.Dimension;
@@ -58,11 +59,26 @@ public class family  extends JPanel{
         n2.update(u.getConjuge2());
         un.load(u);
     }
+    public void load(persona p, boolean male){
+        if(male){
+            n1.update(p);
+            n2.setEmpty();
+        }else{
+            n1.setEmpty();
+            n2.update(p);
+        }
+        un.setEmpty();
+    }
 
     public void setEmpty(){
         n1.setEmpty();
         n2.setEmpty();
         un.setEmpty();
+    }
+    
+    public void disable(){
+        n1.setDark();
+        n2.setDark();
     }
     
     public unio getUnio(){
@@ -119,7 +135,7 @@ public class family  extends JPanel{
         int height() {return height; }
     }
     
-    private final  size s;
+    private final size s;
     private final unioNode un;
     private final node n1, n2;
     private final JPanel central;

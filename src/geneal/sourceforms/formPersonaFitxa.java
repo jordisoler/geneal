@@ -72,6 +72,10 @@ public class formPersonaFitxa extends formPersona{
     public void setEmpty(){
         super.setEmpty();
         bpares.setEnabled(false);
+        db.persona nullP = new db.persona();
+        for (javax.swing.JLabel l : tree){
+            l.setText(nullP.toString());
+        }
     }
     
     public void replace(db.persona p){

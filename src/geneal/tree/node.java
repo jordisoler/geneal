@@ -71,21 +71,25 @@ public class node extends JPanel{
             labels[i] = new JLabel("");
         }
         
+        isEnabled = true;
         final node n = this;
         scPane.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent evt) {
-                if (evt.getClickCount() == 2) {
-                    unio u;
-                    try {
-                        u = unio.fromConjuge(p.getId());
-                    } catch (GException ex) {
-                        u = new unio();
+                if (isEnabled){
+                    if (evt.getClickCount() == 2) {
+                        unio u;
+                        try {
+                            u = unio.fromConjuge(p.getId());
+                            int id = u.getId();
+                            f.fillUnio(id);
+                        } catch (GException ex) {
+                            System.out.println("Unio desconeguda, de la persona "+p);
+                            u = new unio();
+                        }
+                    }else if (SwingUtilities.isRightMouseButton(evt)){
+                        pop.show(n, evt.getX(), evt.getY(), p);
                     }
-                    int id = u.getId();
-                    f.fillUnio(id);
-                }else if (SwingUtilities.isRightMouseButton(evt)){
-                    pop.show(n, evt.getX(), evt.getY(), p);
                 }
             }
         });
@@ -154,6 +158,7 @@ public class node extends JPanel{
     private JScrollPane scPane;
     private JPanel content;
     private popupPersona pop;
+    private boolean isEnabled;
 
     public String getLastValue(boolean comentaris, boolean fitxa) {
         String def;
@@ -204,11 +209,17 @@ public class node extends JPanel{
         labels[0].setText(unknown);
         content.setBackground(defaultColour);
     }
+    
+    public void setDark(){
+        content.setBackground(darkGray);
+        isEnabled = false;
+    }
 
     private void load() {
         if (p.isNull()){
             setEmpty();
         }else{
+            isEnabled = true;
             if (small){
                 fillSmallNode();
             }else{

@@ -126,15 +126,16 @@ public class formFitxa {
             if (conj){
                 p.setSexe("m");
                 c1.fill(p);
-                c2.fill(new db.persona());
+                c2.setEmpty();
                 estat = fromConjuge1;
+                t.newFitxaFromC1(p);
             }else{
                 p.setSexe("f");
-                c1.fill(new db.persona());
+                c1.setEmpty();
                 c2.fill(p);
                 estat = fromConjuge2;
+                t.newFitxaFromC2(p);
             }
-            t.setEmpty();
         } catch (DBException ex) {
             Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
             ex.show();
@@ -150,7 +151,7 @@ public class formFitxa {
         c1.setEmpty(p.getLlinatge1());
         c2.setEmpty(p.getLlinatge2());
         idfill = id_fill;
-        t.setEmpty();
+        t.newFitxaFromFill(p);
     }
     public void fillFitxa(int ifitxa){
         un = db.unio.fromFitxa(ifitxa);
@@ -186,35 +187,7 @@ public class formFitxa {
             un=db.unio.fromConjuge(p.getId());
             fill();
         }catch (MUException e){} catch (DBException ex) {
-            int reply = JOptionPane.showConfirmDialog(null, "La persona "+p+" no "
-                    + "està a cap unió. \nVols crear-ne una de nova?","Unió nova",
-                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            if(reply==JOptionPane.YES_OPTION){  // Es vol introduir una persona sense unió
-                
-                if (checkSexe(p)){
-                    if (p.getSexe().equals("m")){   // La persona té gènere
-                        fill(p.getId(), home);
-                    }else{
-                        fill(p.getId(), dona);
-                    }
-                }else{                              // La persona no té gènere
-                    String[] options = {"Home", "Dona", "Cancelar"};
-                    int response = JOptionPane.showOptionDialog(null, "La persona "
-                            +p+" no té sexe. \nElegeix-ne un abans de  continuar",
-                            "Introduïr sexe", JOptionPane.DEFAULT_OPTION, 
-                            JOptionPane.PLAIN_MESSAGE, null, options, options[2]);
-                    switch(response){
-                        case 0:
-                            fill(p.getId(), home);
-                            break;
-                        case 1:
-                            fill(p.getId(), dona);
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
+            newFitxaFromPersona(p);
         }
     }
     
@@ -565,9 +538,16 @@ public class formFitxa {
 
     private boolean checkChanges() {
         boolean b = true;
+        int nfitxa;
+        if (!fitxa.getText().isEmpty()){
+            nfitxa = Integer.parseInt(fitxa.getText());
+        }else{
+            nfitxa = -1;
+        }
+        
         try {
             b = c1.hasChanged() || c2.hasChanged() ||
-                    Integer.parseInt(fitxa.getText()) != un.getFitxa() ||
+                    nfitxa != un.getFitxa() ||
                     !lloc.getLloc().equals(un.getLlocMatrimoni()) ||
                     !data.getDate().equals(un.getDataMatrimoni()) ||
                     !comentaris.getText().equals(formutils.null2Void(un.getComentaris()));
@@ -581,7 +561,7 @@ public class formFitxa {
             System.out.println("Hi ha hagut canvis en les persones");
             try {
                 System.out.println("C1: "+c1.hasChanged()+", C2: "+c2.hasChanged()+
-                        " fitxa: "+(Integer.parseInt(fitxa.getText()) != un.getFitxa())+
+                        " fitxa: "+(nfitxa != un.getFitxa())+
                         ", Comentaris: "+!comentaris.getText().equals(formutils.null2Void(un.getComentaris()))+
                         ", lloc: "+(!lloc.getLloc().equals(un.getLlocMatrimoni()))+
                         ", data: "+(!data.getDate().equals(un.getDataMatrimoni())));
@@ -596,5 +576,37 @@ public class formFitxa {
             System.out.println("No hi ha hagut canvis");
         }
         return b;
+    }
+
+    public void newFitxaFromPersona(persona p) {
+        int reply = JOptionPane.showConfirmDialog(null, "La persona "+p+" no "
+                    + "està a cap unió. \nVols crear-ne una de nova?","Unió nova",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(reply==JOptionPane.YES_OPTION){  // Es vol introduir una persona sense unió
+                
+                if (checkSexe(p)){
+                    if (p.getSexe().equals("m")){   // La persona té gènere
+                        fill(p.getId(), home);
+                    }else{
+                        fill(p.getId(), dona);
+                    }
+                }else{                              // La persona no té gènere
+                    String[] options = {"Home", "Dona", "Cancelar"};
+                    int response = JOptionPane.showOptionDialog(null, "La persona "
+                            +p+" no té sexe. \nElegeix-ne un abans de  continuar",
+                            "Introduïr sexe", JOptionPane.DEFAULT_OPTION, 
+                            JOptionPane.PLAIN_MESSAGE, null, options, options[2]);
+                    switch(response){
+                        case 0:
+                            fill(p.getId(), home);
+                            break;
+                        case 1:
+                            fill(p.getId(), dona);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
     }
 }
