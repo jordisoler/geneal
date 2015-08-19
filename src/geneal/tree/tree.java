@@ -44,7 +44,7 @@ public class tree extends JPanel{
         Xs = getXs();
         Ys  = getYs();
         for (int i =0; i<families.length; i++){
-            families[i] = new family(ss[i]);
+            families[i] = new family(i);
             this.add(families[i], new AbsoluteConstraints(Xs[i], Ys[i], -1, -1));
         }
         

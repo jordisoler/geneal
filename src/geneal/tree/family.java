@@ -19,19 +19,28 @@ import javax.swing.JPanel;
  */
 public class family  extends JPanel{
     
-    public family(size s_){
-        s = s_;
-        boolean small = s == size.SMALL;
+    public family(int position_){
+        position = position_;
+        size s_;
+        if (position < 4){
+            s_ = size.SMALL;
+        }else if (position == 6){
+            s_ = size.BIG;
+        }else{
+            s_ = size.MEDIUM;
+        }
+        
+        boolean small = s_ == size.SMALL;
         n1 = new node(small);
         n2 = new node(small);
         un = new unioNode();
         central = new JPanel();
         
         this.setLayout(new java.awt.GridLayout(1, 3));
-        this.setSize(s.width(), s.height());
-        this.setPreferredSize(new Dimension(s.width(), s.height()));
+        this.setSize(s_.width(), s_.height());
+        this.setPreferredSize(new Dimension(s_.width(), s_.height()));
         
-        if (s == size.BIG){
+        if (s_ == size.BIG){
             //this.setBorder(new javax.swing.border.LineBorder(Color.gray, 2));
         }
         
@@ -135,7 +144,7 @@ public class family  extends JPanel{
         int height() {return height; }
     }
     
-    private final size s;
+    private final int position;
     private final unioNode un;
     private final node n1, n2;
     private final JPanel central;

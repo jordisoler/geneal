@@ -5,7 +5,6 @@
  */
 package geneal.tree;
 
-import db.persona;
 import geneal.sourceforms.formFitxa;
 
 /**

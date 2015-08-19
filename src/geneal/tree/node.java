@@ -73,7 +73,7 @@ public class node extends JPanel{
         
         isEnabled = true;
         final node n = this;
-        scPane.addMouseListener(new MouseAdapter(){
+        content.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent evt) {
                 if (isEnabled){
@@ -85,8 +85,8 @@ public class node extends JPanel{
                             f.fillUnio(id);
                         } catch (GException ex) {
                             System.out.println("Unio desconeguda, de la persona "+p);
-                            u = new unio();
                         }
+                        System.out.println("Source "+evt.getSource());
                     }else if (SwingUtilities.isRightMouseButton(evt)){
                         pop.show(n, evt.getX(), evt.getY(), p);
                     }
