@@ -342,11 +342,7 @@ public class formPersona {
     private void getAncestorsFromDB(db.persona p) {
         db.persona cp = p.getPare();
         db.persona cm;
-        try {
-            cm = p.getMare();
-        } catch (DBException ex) {
-            cm = new db.persona();
-        }
+        cm = p.getMare();
         
         ancestorUnions[0] = p.getUnioPares();
         ancestorUnions[1] = cp.getUnioPares();
@@ -355,18 +351,10 @@ public class formPersona {
         ancestors[0]=p.toString();
         ancestors[1]=cp.toString();
         ancestors[2]=cp.getPare().toString();
-        try {
-            ancestors[3]=cp.getMare().toString();
-        } catch (DBException ex) {
-            ancestors[3] = new db.persona().toString();
-        }
+        ancestors[3]=cp.getMare().toString();
         ancestors[4]=cm.toString();
         ancestors[5]=cm.getPare().toString();
-        try {
-            ancestors[6]=cm.getMare().toString();
-        } catch (DBException ex) {
-            ancestors[6] = new db.persona().toString();
-        }
+        ancestors[6]=cm.getMare().toString();
     }
     
 }
