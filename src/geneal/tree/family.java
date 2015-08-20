@@ -9,8 +9,11 @@ import db.persona;
 import db.unio;
 import geneal.sourceforms.formFitxa;
 import java.awt.Dimension;
+import java.awt.Event;
 import java.awt.Graphics;
+import java.awt.event.MouseListener;
 import static java.lang.Math.round;
+import java.util.HashSet;
 import javax.swing.JPanel;
 
 /**
@@ -94,6 +97,29 @@ public class family  extends JPanel{
         return un.getUnio();
     }
     
+    @Override
+    public void addMouseListener(MouseListener ma){
+        n1.addMouseListener(ma);
+        n2.addMouseListener(ma);
+    }
+    
+    public int contains(JPanel p){
+        if (n1.contains(p)){
+            return conj1;
+        }else if (n2.contains(p)){
+            return conj2;
+        }else{
+            return cUnknown;
+        }
+    }
+    
+    public HashSet getHashSet(){
+        HashSet hs = new HashSet();
+        hs.add(n1);
+        hs.add(n2);
+        return hs;
+    }
+    
     private static class vLinePane extends JPanel {
 
         @Override
@@ -150,4 +176,7 @@ public class family  extends JPanel{
     private final JPanel central;
     public static final int preferredWidth = 420;
     public static final int preferredHeight = 120;
+    public static final int conj1 = 1;
+    public static final int conj2 = 2;
+    public static final int cUnknown = 0;
 }

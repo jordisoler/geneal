@@ -14,8 +14,10 @@ import static geneal.config.*;
 import geneal.sourceforms.formFitxa;
 import static geneal.sourceforms.formutils.unknown;
 import geneal.sourceforms.popupPersona;
+import java.awt.Event;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -73,26 +75,26 @@ public class node extends JPanel{
         
         isEnabled = true;
         final node n = this;
-        content.addMouseListener(new MouseAdapter(){
-            @Override
-            public void mouseClicked(MouseEvent evt) {
-                if (isEnabled){
-                    if (evt.getClickCount() == 2) {
-                        unio u;
-                        try {
-                            u = unio.fromConjuge(p.getId());
-                            int id = u.getId();
-                            f.fillUnio(id);
-                        } catch (GException ex) {
-                            System.out.println("Unio desconeguda, de la persona "+p);
-                        }
-                        System.out.println("Source "+evt.getSource());
-                    }else if (SwingUtilities.isRightMouseButton(evt)){
-                        pop.show(n, evt.getX(), evt.getY(), p);
-                    }
-                }
-            }
-        });
+//        content.addMouseListener(new MouseAdapter(){
+//            @Override
+//            public void mouseClicked(MouseEvent evt) {
+//                if (isEnabled){
+//                    if (evt.getClickCount() == 2) {
+//                        unio u;
+//                        try {
+//                            u = unio.fromConjuge(p.getId());
+//                            int id = u.getId();
+//                            f.fillUnio(id);
+//                        } catch (GException ex) {
+//                            System.out.println("Unio desconeguda, de la persona "+p);
+//                        }
+//                        System.out.println("Source "+evt.getSource());
+//                    }else if (SwingUtilities.isRightMouseButton(evt)){
+//                        pop.show(n, evt.getX(), evt.getY(), p);
+//                    }
+//                }
+//            }
+//        });
         
         content.setLayout(new java.awt.GridLayout(4, 1));
         for (int i=0; i<labels.length; i++){
@@ -120,7 +122,7 @@ public class node extends JPanel{
         f = f_;
         pop = new popupPersona(f);
     }
-    
+        
     private String[] getValues(){
         String nom, naixement = "", defuncio, comentaris;
         nom = p.toString();
@@ -149,6 +151,15 @@ public class node extends JPanel{
             labels[i].setText(values[i]);
         }
         setBackgroundColour();
+    }
+    
+    @Override
+    public void addMouseListener(MouseListener ma){
+        content.addMouseListener(ma);
+    }
+    
+    public boolean contains(JPanel panel){
+        return content.equals(panel);
     }
     
     private persona p;
@@ -200,6 +211,10 @@ public class node extends JPanel{
         }catch (NullPointerException e){
             content.setBackground(defaultColour);
         }
+    }
+    
+    public persona getPerson(){
+        return this.p;
     }
 
     public void setEmpty() {

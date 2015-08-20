@@ -8,10 +8,15 @@ package geneal.tree;
 import db.persona;
 import db.unio;
 import geneal.sourceforms.formFitxa;
+import geneal.sourceforms.genealEventHandler;
+import static geneal.tree.family.cUnknown;
 import geneal.tree.family.size;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Arrays;
 import javax.swing.JPanel;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
@@ -24,11 +29,14 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
 public class tree extends JPanel{
     private final int Height;
     private final int Width;
+    private genealEventHandler eh;
     
     public tree(JPanel parent){
         super();
         families = new family[7];
                
+        eh = new genealEventHandler();
+        
         Width = parent.getWidth();
         Height = parent.getHeight();
         
@@ -37,7 +45,38 @@ public class tree extends JPanel{
         parent.setLayout(new  GridLayout(1,1));
         this.setLayout(new AbsoluteLayout());
         
-        fills = new fillPane(Width);
+        
+        final MouseListener familyListener = new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount()==2){
+                    for (int i=0; i<families.length; i++){
+                        int conj = families[i].contains((JPanel)e.getSource());
+                        if (conj!=cUnknown){
+                            System.out.println("Family "+i+" és la  que s'ha pitjat. Conjuge: "+conj);
+                            persona p;
+                            if (conj==family.conj1){
+                                p = families[i].getUnio().getConjuge1();
+                            }else{
+                                p = families[i].getUnio().getConjuge2();
+                            }
+                            eh.clickPerson(p);
+                        }
+                    }
+                }
+            }
+        };
+        
+        final MouseListener sonListener = new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount()==2){
+                    eh.clickPerson(fills.getClickedPerson((JPanel) e.getSource()));
+                }
+            }
+        };
+        
+        fills = new fillPane(Width, sonListener);
         
         ss = new size[] {size.SMALL, size.SMALL, size.SMALL, size.SMALL, size.MEDIUM,
             size.MEDIUM, size.BIG};
@@ -46,6 +85,7 @@ public class tree extends JPanel{
         for (int i =0; i<families.length; i++){
             families[i] = new family(i);
             this.add(families[i], new AbsoluteConstraints(Xs[i], Ys[i], -1, -1));
+            families[i].addMouseListener(familyListener);
         }
         
         
@@ -89,6 +129,10 @@ public class tree extends JPanel{
             fam.setEmpty();
         }
         fills.setEmpty();
+    }
+    
+    public void setEventHandler(genealEventHandler eh_){
+        eh = eh_;
     }
     
     public void setFormFitxaHandler(formFitxa f_){

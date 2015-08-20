@@ -17,8 +17,11 @@ import javax.swing.JPanel;
  * @author jordi
  */
 public class fillPane extends JPanel{
-    public fillPane(int maxW_){
+    private final java.awt.event.MouseListener ml;
+    
+    public fillPane(int maxW_, java.awt.event.MouseListener ml_){
         maxW = maxW_;
+        ml = ml_;
         setEmpty();
     }
     
@@ -42,8 +45,19 @@ public class fillPane extends JPanel{
                 nodeFitxa n = new nodeFitxa(small, f);
                 this.add(n);
                 n.update(p);
+                n.addMouseListener(ml);
             }
         }
+    }
+    
+    public persona getClickedPerson(JPanel panel){
+        for (int i=0; i<this.getComponentCount(); i++){
+            nodeFitxa n = (nodeFitxa) this.getComponent(i);
+            if (n.contains(panel)){
+                return n.getPerson();
+            }
+        }
+        return new persona();
     }
     
     public void addFf(formFitxa f_){

@@ -50,10 +50,6 @@ public class formFitxa {
     private final static int nousPares = 1;
     private final static int fromConjuge1 = 2;
     private final static int fromConjuge2 = 3;
-    private final static String warnChanges = "La fitxa actual ha estat "
-                    + "modificada i té canvis  no guardats.\n\t Vols continuar i "
-                    + "perdre els canvis?";
-    private final static String[] changesOptions = {"Cancela", "Guarda els canvis", "Continua sense guardar"};
     
     public static final boolean home = true;
     public static final boolean dona = false;
@@ -61,7 +57,7 @@ public class formFitxa {
     public formFitxa(){
         un = new db.unio();
     }
-    @SuppressWarnings("LeakingThisInConstructor")
+
     public formFitxa(db.unio un_,formPersonaFitxa c1_, formPersonaFitxa c2_, javax.swing.JTextField fitxa_,
             javax.swing.JTextArea comentaris_, javax.swing.JCheckBox casament_,
             formLlista fills_,formLloc lloc_, formData data_, javax.swing.JLabel visorFitxa_,
@@ -166,30 +162,7 @@ public class formFitxa {
         fill();
     }
     
-    /**
-     * Callback for click in a person.
-     * @param p Person to be handled.
-     */
-    public void clickLlista(db.persona p){
-        System.out.println("persona clicada: "+p);
-        boolean b = checkChanges();
-        if (b){
-            int reply = JOptionPane.showOptionDialog(null, warnChanges, "Geneal - Canvis no  guardats",
-                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, 
-                    null, changesOptions, changesOptions[0]);
-            if (reply == 0){
-                return;
-            }else if(reply == 1) {
-                this.committ();
-            }
-        }
-        try{                                    // Es vol introduir una  persona  amb unió
-            un=db.unio.fromConjuge(p.getId());
-            fill();
-        }catch (MUException e){} catch (DBException ex) {
-            newFitxaFromPersona(p);
-        }
-    }
+    
     
     public void committ(){
         db.persona p1, p2;
@@ -346,37 +319,10 @@ public class formFitxa {
         return this.un;
     }
     
-    public void loadPares(boolean esHome){
-        boolean b = checkChanges();
-        if (b){
-            int reply = JOptionPane.showOptionDialog(null, warnChanges, "Geneal - Canvis no  guardats",
-                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-                    null, changesOptions, changesOptions[0]);
-            if (reply == 0){
-                return;
-            }else if(reply == 1) {
-                this.committ();
-            }
-        }
-        db.persona p;
-        if (esHome){
-            p = new db.persona(c1.getId());
-            if (c1.newPares()){
-                fill(c1.getId());
-            }else{
-                loadParesFromPerson(p);
-            }
-        }else{
-            p = new db.persona(c2.getId());
-            if (c2.newPares()){
-                fill(c2.getId());
-            }else{
-                loadParesFromPerson(p);
-            }
-        }
-        
+    public void setUnio(db.unio un_){
+        this.un = un_;
     }
-    
+        
     private void setEmpty(){
         setEmptyUnio();
         c1.setEmpty();
@@ -431,7 +377,7 @@ public class formFitxa {
         }
     }
     
-    private void loadParesFromPerson(db.persona p){
+    public void loadParesFromPerson(db.persona p){
         try {
             db.naixement n = new db.naixement(p.getId());
             un = new db.unio(n.getIdUnio());
@@ -536,7 +482,7 @@ public class formFitxa {
         }
     }
 
-    private boolean checkChanges() {
+    public boolean checkChanges() {
         boolean b = true;
         int nfitxa;
         if (!fitxa.getText().isEmpty()){

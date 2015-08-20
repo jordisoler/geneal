@@ -30,6 +30,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.UnsupportedLookAndFeelException;
 import static geneal.sourceforms.formutils.*;
+import geneal.sourceforms.genealEventHandler;
 import geneal.sourceforms.popupPersonaCerca;
 import geneal.sourceforms.popupPersonaFill;
 import geneal.tree.tree;
@@ -45,6 +46,7 @@ public class App extends javax.swing.JFrame {
 
     //private db.unio un; // Padrins paterns 25
     private formFitxa f;
+    private genealEventHandler eh;
     private formLlista cerca, fills;
     //private ArrayList<Integer> lfills = new ArrayList<>(), lcerca = new ArrayList<>();
     
@@ -62,11 +64,11 @@ public class App extends javax.swing.JFrame {
     // Callbacks lists' item clicked
     private void fillClicat(int idx){
         db.persona p = fills.getSelectedPerson();
-        f.clickLlista(p);
+        eh.clickPerson(p);
     }
     private void cercaFillClicat(int idx){
         db.persona p = cerca.getSelectedPerson();
-        f.clickLlista(p);
+        eh.clickPerson(p);
     }
     
     private int getRow(javax.swing.JList list, Point point){
@@ -1374,7 +1376,7 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_mu_csvActionPerformed
 
     private void b_1paresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_1paresActionPerformed
-        f.loadPares(formFitxa.home);
+        eh.loadPares(formFitxa.home);
     }//GEN-LAST:event_b_1paresActionPerformed
 
     private void c_1sexeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_1sexeActionPerformed
@@ -1422,7 +1424,7 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_c_1municipiActionPerformed
 
     private void b_2paresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_2paresActionPerformed
-        f.loadPares(formFitxa.dona);
+        eh.loadPares(formFitxa.dona);
     }//GEN-LAST:event_b_2paresActionPerformed
 
     private void c_2sexeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_2sexeActionPerformed
@@ -1646,6 +1648,8 @@ public class App extends javax.swing.JFrame {
         f = new formFitxa(un, c1, c2, t_fitxa,  t_ucomentaris, c_casament, fills,
                 fmatrimoni, fdmatrimoni, v_fitxa,  t);
         
+        eh = new genealEventHandler(f);
+        
         ppc = new popupPersonaCerca(f, cerca);
         ppf = new popupPersonaFill(f);
         
@@ -1858,7 +1862,7 @@ public class App extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private popupPersonaCerca ppc;
     private popupPersonaFill ppf;
-    
+        
     private void novaFitxa() {
         String sf = JOptionPane.showInputDialog(null, "Número de fitxa a carregar",
                 "Carregar fitxa", JOptionPane.OK_CANCEL_OPTION);
