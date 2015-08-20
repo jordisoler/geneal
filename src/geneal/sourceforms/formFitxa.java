@@ -73,7 +73,6 @@ public class formFitxa {
         data = data_;
         visorFitxa = visorFitxa_;
         t = t_;
-        t.setFormFitxaHandler(this);
     }
     public formFitxa(formPersonaFitxa c1_, formPersonaFitxa c2_, javax.swing.JTextField fitxa_,
             javax.swing.JTextArea comentaris_, javax.swing.JCheckBox casament_,

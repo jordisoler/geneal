@@ -14,18 +14,18 @@ import db.persona;
  */
 public class ModifyPersonFitxa extends ModifyPerson {
 
-    private final formFitxa f;
+    private final genealEventHandler eh;
     
-    public ModifyPersonFitxa(persona p, formFitxa f_) {
+    public ModifyPersonFitxa(persona p) {
         super(p);
-        f = f_;
+        eh = new genealEventHandler();
     }
     
     @Override
     public void end(){
         formPersona p = this.getFormPerson();
         p.add();
-        f.reload();
+        eh.reload();
         this.dispose();
     }
     

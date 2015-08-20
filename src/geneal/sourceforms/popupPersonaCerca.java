@@ -15,8 +15,8 @@ import javax.swing.JMenuItem;
  * @author jordi
  */
 public class popupPersonaCerca extends popupPersona {
-    public popupPersonaCerca(formFitxa f_, formLlista list_){
-        super(f_);
+    public popupPersonaCerca(formLlista list_){
+        super();
         list = list_;
         Afegir = new JMenu();
         Afegir.setText("Afegir...");
@@ -56,7 +56,7 @@ public class popupPersonaCerca extends popupPersona {
     @Override
     public void eliminarPersona(java.awt.event.ActionEvent evt){
         list.dropPerson();
-        f.reloadTree();
+        eh.reloadTree();
     }
     
     @Override
@@ -66,15 +66,15 @@ public class popupPersonaCerca extends popupPersona {
     
     private void afegirFill(java.awt.event.ActionEvent evt){
         persona p = list.getSelectedPerson();
-        f.addSonFromTree(p);
+        eh.addSonFromTree(p);
     }
     private void afegirC1(java.awt.event.ActionEvent evt){
         persona p = list.getSelectedPerson();
-        f.getC1().replace(p);
+        eh.replaceC1(p);
     }
     private void afegirC2(java.awt.event.ActionEvent evt){
         persona p = list.getSelectedPerson();
-        f.getC2().replace(p);
+        eh.replaceC2(p);
     }
     
     private final formLlista list;

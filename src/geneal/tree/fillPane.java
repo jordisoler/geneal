@@ -6,7 +6,6 @@
 package geneal.tree;
 
 import db.persona;
-import geneal.sourceforms.formFitxa;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import static java.lang.Math.min;
@@ -42,7 +41,7 @@ public class fillPane extends JPanel{
             setEmpty();
         }else{
             for (persona  p : ps){
-                nodeFitxa n = new nodeFitxa(small, f);
+                nodeFitxa n = new nodeFitxa(small);
                 this.add(n);
                 n.update(p);
                 n.addMouseListener(ml);
@@ -60,14 +59,11 @@ public class fillPane extends JPanel{
         return new persona();
     }
     
-    public void addFf(formFitxa f_){
-        f  = f_;
-    }
-    
     public int getNumber(){
         return this.number;
     }
     
+    @Override
     public int  getHeight(){
         return this.height;
     }
@@ -76,9 +72,8 @@ public class fillPane extends JPanel{
     private final int maxW;
     private final int height = 120;
     private final int width = 120;
-    private formFitxa f;
 
-    public void setEmpty() {
+    public final void setEmpty() {
         number = 1;
         boolean small = false;
         this.removeAll();

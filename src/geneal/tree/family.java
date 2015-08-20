@@ -7,13 +7,10 @@ package geneal.tree;
 
 import db.persona;
 import db.unio;
-import geneal.sourceforms.formFitxa;
 import java.awt.Dimension;
-import java.awt.Event;
 import java.awt.Graphics;
 import java.awt.event.MouseListener;
 import static java.lang.Math.round;
-import java.util.HashSet;
 import javax.swing.JPanel;
 
 /**
@@ -88,6 +85,7 @@ public class family  extends JPanel{
         un.setEmpty();
     }
     
+    @Override
     public void disable(){
         n1.setDark();
         n2.setDark();
@@ -103,21 +101,18 @@ public class family  extends JPanel{
         n2.addMouseListener(ma);
     }
     
-    public int contains(JPanel p){
+    public node getNodeFromPanel(JPanel p){
         if (n1.contains(p)){
-            return conj1;
+            return n1;
         }else if (n2.contains(p)){
-            return conj2;
+            return n2;
         }else{
-            return cUnknown;
+            return new node();
         }
     }
     
-    public HashSet getHashSet(){
-        HashSet hs = new HashSet();
-        hs.add(n1);
-        hs.add(n2);
-        return hs;
+    public boolean contains(JPanel p){
+        return n1.contains(p) || n2.contains(p);
     }
     
     private static class vLinePane extends JPanel {
@@ -149,12 +144,7 @@ public class family  extends JPanel{
             g.drawLine(x1, y1, x2, y2);
         }
     }
-    
-    public void addFf(formFitxa f){
-        n1.addFf(f);
-        n2.addFf(f);
-    }
-    
+        
     public enum size{
         SMALL (round((float) (preferredWidth*0.5)), (int) round(preferredHeight*0.8)),
         MEDIUM (round((float) (preferredWidth*0.9)), (int) round(preferredHeight*0.9)),

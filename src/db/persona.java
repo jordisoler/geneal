@@ -153,7 +153,7 @@ public class persona extends conexio{
         }
     }
     
-    public persona getMare() throws DBException{
+    public persona getMare(){
         try {
             if (this.isNull()){
                 return new persona();

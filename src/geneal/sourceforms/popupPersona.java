@@ -16,12 +16,13 @@ import javax.swing.JPopupMenu;
  */
 public class popupPersona extends JPopupMenu{
     
-    public popupPersona(formFitxa f_){
+    public popupPersona(){
         super();
-        f = f_;
         p = new persona();
         elimina = new JMenuItem();
         modifica = new JMenuItem();
+        
+        eh = new genealEventHandler();
         
         elimina.setText("Eliminar");
         elimina.addActionListener(new java.awt.event.ActionListener() {
@@ -51,14 +52,18 @@ public class popupPersona extends JPopupMenu{
     
     public void eliminarPersona(java.awt.event.ActionEvent evt){
         p.delete();
-        f.reload();
+        eh.reload();
     }
     
     public void modificarPersona(java.awt.event.ActionEvent evt){
-        new ModifyPersonFitxa(p,f).setVisible(true);
+        new ModifyPersonFitxa(p).setVisible(true);
     }
     
-    public final formFitxa f;
+    public persona getPersona(){
+        return p;
+    }
+    
+    public final genealEventHandler eh;
     private persona p;
     private final JMenuItem elimina;
     private final JMenuItem modifica;

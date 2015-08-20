@@ -9,7 +9,7 @@ import db.persona;
 import db.unio;
 import geneal.sourceforms.formFitxa;
 import geneal.sourceforms.genealEventHandler;
-import static geneal.tree.family.cUnknown;
+import geneal.sourceforms.popupPersona;
 import geneal.tree.family.size;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -30,12 +30,14 @@ public class tree extends JPanel{
     private final int Height;
     private final int Width;
     private genealEventHandler eh;
+    private final popupPersona pop;
     
     public tree(JPanel parent){
         super();
         families = new family[7];
                
         eh = new genealEventHandler();
+        pop = new popupPersona();
         
         Width = parent.getWidth();
         Height = parent.getHeight();
@@ -49,18 +51,29 @@ public class tree extends JPanel{
         final MouseListener familyListener = new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount()==2){
-                    for (int i=0; i<families.length; i++){
-                        int conj = families[i].contains((JPanel)e.getSource());
-                        if (conj!=cUnknown){
-                            System.out.println("Family "+i+" és la  que s'ha pitjat. Conjuge: "+conj);
-                            persona p;
-                            if (conj==family.conj1){
-                                p = families[i].getUnio().getConjuge1();
+                for (int i=0; i<families.length-1; i++){
+                    JPanel source = (JPanel)e.getSource();
+                    boolean isTheRightNode = families[i].contains(source);
+                    node n = families[i].getNodeFromPanel(source);
+                    if (isTheRightNode && n.enabled()){                        
+                        persona p = n.getPerson();
+                        if (e.getClickCount()==2){
+                            System.out.println("Selected: "+i);
+                            if (n.isEmpty()){
+                                System.out.println("is empty");
+                                if (i < 4){
+                                    eh.loadNewPadrins(i);
+                                }else if (i==4){
+                                    eh.loadPares(formFitxa.home);
+                                }else if (i==5){
+                                    eh.loadPares(formFitxa.dona);
+                                }
                             }else{
-                                p = families[i].getUnio().getConjuge2();
+                                eh.clickPerson(p);
                             }
-                            eh.clickPerson(p);
+                        }else if (javax.swing.SwingUtilities.isRightMouseButton(e) &&
+                                !n.isEmpty()){
+                            pop.show(n, e.getX(), e.getY(), p);
                         }
                     }
                 }
@@ -70,8 +83,12 @@ public class tree extends JPanel{
         final MouseListener sonListener = new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                JPanel source = (JPanel) e.getSource();
+                persona p = fills.getClickedPerson(source);
                 if (e.getClickCount()==2){
-                    eh.clickPerson(fills.getClickedPerson((JPanel) e.getSource()));
+                    eh.clickPerson(p);
+                }else if (javax.swing.SwingUtilities.isRightMouseButton(e)){
+                    pop.show(source, e.getX(), e.getY(), p);
                 }
             }
         };
@@ -133,14 +150,6 @@ public class tree extends JPanel{
     
     public void setEventHandler(genealEventHandler eh_){
         eh = eh_;
-    }
-    
-    public void setFormFitxaHandler(formFitxa f_){
-        f = f_;
-        for (family familie : families) {
-            familie.addFf(f);
-        }
-        fills.addFf(f);
     }
     
     public void newFitxaFromC1(persona p){

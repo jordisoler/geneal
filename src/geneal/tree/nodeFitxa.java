@@ -5,16 +5,14 @@
  */
 package geneal.tree;
 
-import geneal.sourceforms.formFitxa;
-
 /**
  *
  * @author jordi
  */
 public class nodeFitxa extends node{
 
-    public nodeFitxa(boolean small, formFitxa f) {
-        super(small, f);
+    public nodeFitxa(boolean small) {
+        super(small);
     }
     
     @Override

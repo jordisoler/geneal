@@ -11,17 +11,11 @@ import db.naixement;
 import db.persona;
 import db.unio;
 import static geneal.config.*;
-import geneal.sourceforms.formFitxa;
 import static geneal.sourceforms.formutils.unknown;
-import geneal.sourceforms.popupPersona;
-import java.awt.Event;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -49,18 +43,12 @@ public class node extends JPanel{
         small = false;
         initComponents();
     }
-    public node (boolean small, formFitxa f_){
-        this(small);
-        f  = f_;
-        pop = new popupPersona(f);
-    }
     
     
     private void initComponents(){
         labels = new JLabel[4];
         scPane = new JScrollPane();
         content = new JPanel();
-        f = new  formFitxa();
         
         this.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         this.setLayout(new java.awt.GridLayout(1, 1));
@@ -74,27 +62,6 @@ public class node extends JPanel{
         }
         
         isEnabled = true;
-        final node n = this;
-//        content.addMouseListener(new MouseAdapter(){
-//            @Override
-//            public void mouseClicked(MouseEvent evt) {
-//                if (isEnabled){
-//                    if (evt.getClickCount() == 2) {
-//                        unio u;
-//                        try {
-//                            u = unio.fromConjuge(p.getId());
-//                            int id = u.getId();
-//                            f.fillUnio(id);
-//                        } catch (GException ex) {
-//                            System.out.println("Unio desconeguda, de la persona "+p);
-//                        }
-//                        System.out.println("Source "+evt.getSource());
-//                    }else if (SwingUtilities.isRightMouseButton(evt)){
-//                        pop.show(n, evt.getX(), evt.getY(), p);
-//                    }
-//                }
-//            }
-//        });
         
         content.setLayout(new java.awt.GridLayout(4, 1));
         for (int i=0; i<labels.length; i++){
@@ -118,9 +85,9 @@ public class node extends JPanel{
         load();
     }
     
-    public void addFf(formFitxa f_){
-        f = f_;
-        pop = new popupPersona(f);
+    
+    public boolean isEmpty(){
+        return p.isNull();
     }
         
     private String[] getValues(){
@@ -163,14 +130,12 @@ public class node extends JPanel{
     }
     
     private persona p;
-    private formFitxa f;
     private final boolean small;
     private JLabel[] labels;
     private JScrollPane scPane;
     private JPanel content;
-    private popupPersona pop;
     private boolean isEnabled;
-
+    
     public String getLastValue(boolean comentaris, boolean fitxa) {
         String def;
         if(comentaris){
@@ -228,6 +193,10 @@ public class node extends JPanel{
     public void setDark(){
         content.setBackground(darkGray);
         isEnabled = false;
+    }
+    
+    public boolean enabled(){
+        return this.isEnabled;
     }
 
     private void load() {

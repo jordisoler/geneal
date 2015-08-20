@@ -10,12 +10,12 @@ package geneal.sourceforms;
  * @author jordi
  */
 public class popupPersonaFill extends popupPersona{
-    public popupPersonaFill(formFitxa f_) {
-        super(f_);
+    public popupPersonaFill() {
+        super();
     }
     
     @Override
     public void eliminarPersona(java.awt.event.ActionEvent evt){
-        f.deleteFill();
+        eh.deleteFill();
     }
 }
