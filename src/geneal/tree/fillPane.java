@@ -35,7 +35,7 @@ public class fillPane extends JPanel{
         this.setSize(new Dimension(Width, height));
         this.setPreferredSize(new Dimension(Width,  height));
         
-        this.setLayout(new  GridLayout(1,number));
+        this.setLayout(new  GridLayout(1,number+1));
         
         if (ps.length==0){
             setEmpty();
@@ -46,6 +46,7 @@ public class fillPane extends JPanel{
                 n.update(p);
                 n.addMouseListener(ml);
             }
+            this.add(new nodeNewFill());
         }
     }
     

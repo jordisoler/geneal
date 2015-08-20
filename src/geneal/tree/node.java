@@ -16,6 +16,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import static javax.swing.SwingConstants.CENTER;
 
 /**
  *
@@ -100,6 +101,11 @@ public class node extends JPanel{
         comentaris = getLastValue(true);
         String[] out = {nom, naixement, defuncio, comentaris};
         return out;
+    }
+    
+    public void setText(String s){
+        labels[0].setText(s);
+        labels[0].setHorizontalAlignment(CENTER);
     }
     
     private void fillSmallNode(){

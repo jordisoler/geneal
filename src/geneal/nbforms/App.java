@@ -1648,7 +1648,7 @@ public class App extends javax.swing.JFrame {
         f = new formFitxa(un, c1, c2, t_fitxa,  t_ucomentaris, c_casament, fills,
                 fmatrimoni, fdmatrimoni, v_fitxa,  t);
         
-        eh = new genealEventHandler(f, this.jTabbedPane1);
+        eh = new genealEventHandler(f, this.jTabbedPane1, fills);
         
         ppc = new popupPersonaCerca(cerca);
         ppf = new popupPersonaFill();

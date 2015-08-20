@@ -245,13 +245,12 @@ public class tree extends JPanel{
     
     private final size[] ss;
     private final int[] Xs, Ys;
-    private formFitxa f;
     private final family[] families;
     private final fillPane fills;
 
     private void linkFill(int i, Graphics g) {
         int x1 = fills.getX()+fills.getWidth()/2, y1 = families[6].getY()+size.BIG.height();
-        int incx = fills.getWidth()/fills.getNumber();
+        int incx = fills.getWidth()/(fills.getNumber()+1);
         int x2 = (Width-fills.getWidth())/2+incx/2+incx*i;
         int y2 = fills.getY();
         int[] points = {x1, y1, x2, y2};

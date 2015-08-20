@@ -10,6 +10,7 @@ import Exceptions.LEException;
 import Exceptions.MUException;
 import Exceptions.dateException;
 import db.persona;
+import geneal.nbforms.NewFill;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -22,6 +23,7 @@ import javax.swing.JTabbedPane;
 public class genealEventHandler {
     private static formFitxa f;
     private static JTabbedPane tPane;
+    private static formLlista fills;
     private final static String warnChanges = "La fitxa actual ha estat "
                     + "modificada i té canvis  no guardats.\n\t Vols continuar i "
                     + "perdre els canvis?";
@@ -29,9 +31,10 @@ public class genealEventHandler {
     
     
     public genealEventHandler(){};
-    public genealEventHandler(formFitxa f_, JTabbedPane tPane_){
+    public genealEventHandler(formFitxa f_, JTabbedPane tPane_, formLlista fills_){
         f = f_;
         tPane = tPane_;
+        fills = fills_;
     }
     
     public void setup(formFitxa f_){
@@ -159,6 +162,22 @@ public class genealEventHandler {
 
     void reloadTree() {
         f.reloadTree();
+    }
+
+    public void newFill() {
+        boolean b = f.checkChanges();
+        if (b){
+            int reply = JOptionPane.showOptionDialog(null, warnChanges, "Geneal - Canvis no  guardats",
+                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                    null, changesOptions, changesOptions[0]);
+            if (reply == 0){
+                return;
+            }else if(reply == 1) {
+                f.committ();
+            }
+        }
+        new NewFill(fills,f.getUnio()).setVisible(true);
+        f.reload();
     }
 
 }
