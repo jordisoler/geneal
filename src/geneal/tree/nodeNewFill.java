@@ -5,7 +5,7 @@
  */
 package geneal.tree;
 
-import static geneal.config.darkGray;
+import static geneal.config.greenColour;
 import geneal.sourceforms.genealEventHandler;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -32,7 +32,7 @@ public class nodeNewFill extends node{
         };
         
         this.addMouseListener(newFillListener);
-        this.setBackground(darkGray);
+        this.setColour(greenColour);
         this.setText("Afegir fill");
     }
 }

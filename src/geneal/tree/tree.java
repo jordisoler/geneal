@@ -51,7 +51,7 @@ public class tree extends JPanel{
         final MouseListener familyListener = new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                for (int i=0; i<families.length-1; i++){
+                for (int i=0; i<families.length; i++){
                     JPanel source = (JPanel)e.getSource();
                     boolean isTheRightNode = families[i].contains(source);
                     node n = families[i].getNodeFromPanel(source);

@@ -23,6 +23,7 @@ import geneal.sourceforms.formData;
 import geneal.sourceforms.formLlista;
 import geneal.sourceforms.formLloc;
 import static geneal.sourceforms.formutils.*;
+import geneal.sourceforms.genealEventHandler;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -472,6 +473,10 @@ public class NewFill extends javax.swing.JFrame {
             n.addNaixement();
             
             list.add(p);
+            
+            genealEventHandler eh = new genealEventHandler();
+            eh.reload();
+            
             this.dispose();
         }
                     

@@ -116,6 +116,10 @@ public class node extends JPanel{
        
         setBackgroundColour();
     }
+    
+    public void setColour(java.awt.Color colour){
+        content.setBackground(colour);
+    }
 
     private void fillNode() {
         String[] values;

@@ -29,7 +29,7 @@ public class fillPane extends JPanel{
                 
         this.setVisible(true);
         number = ps.length;
-        int Width = min(maxW, number*width);
+        int Width = min(maxW, (number+1)*width);
         boolean small = Width == maxW;
         
         this.setSize(new Dimension(Width, height));

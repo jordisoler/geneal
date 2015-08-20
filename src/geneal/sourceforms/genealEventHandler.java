@@ -177,7 +177,6 @@ public class genealEventHandler {
             }
         }
         new NewFill(fills,f.getUnio()).setVisible(true);
-        f.reload();
     }
 
 }
