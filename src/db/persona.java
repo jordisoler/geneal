@@ -354,9 +354,9 @@ public class persona extends conexio{
     //----------Boolean methods-----------
     public boolean innerTree(){
         Tree t = new Tree(this);
-        ArrayList<ArrayList<persona>> branches = t.getBranches(idroot1);
-        ArrayList<ArrayList<persona>> branches2 = t.getBranches(idroot2);
-        return !branches.isEmpty() || !branches2.isEmpty();
+        unio u = unio.fromFitxa(geneal.config.rootFitxa);
+        ArrayList<ArrayList<persona>> branches = t.getBranches(u);
+        return !branches.isEmpty();
     }
     
     public boolean isNull(){
@@ -367,9 +367,13 @@ public class persona extends conexio{
     public ArrayList<Integer> getGenerations(){
         ArrayList<Integer> generations = new ArrayList<>();
         Tree t = new Tree(this);
-        ArrayList<ArrayList<persona>> branches = t.getBranches(idroot1);
+        unio u = unio.fromFitxa(geneal.config.rootFitxa);
+        ArrayList<ArrayList<persona>> branches = t.getBranches(u);
         for (ArrayList<persona> branch : branches){
-            generations.add(branch.size());
+            int siz = branch.size()-1;
+            if (!generations.contains(siz)){
+                generations.add(siz);
+            }
         }
         return generations;
     }

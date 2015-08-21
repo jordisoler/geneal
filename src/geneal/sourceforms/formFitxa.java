@@ -40,7 +40,7 @@ public class formFitxa {
     private formData data;
     private formLloc lloc;
     private formLlista fills;
-    private javax.swing.JLabel visorFitxa;
+    private javax.swing.JLabel visorFitxa, generacio;
     private int estat, idfill;
     private tree t;
     
@@ -61,7 +61,7 @@ public class formFitxa {
     public formFitxa(db.unio un_,formPersonaFitxa c1_, formPersonaFitxa c2_, javax.swing.JTextField fitxa_,
             javax.swing.JTextArea comentaris_, javax.swing.JCheckBox casament_,
             formLlista fills_,formLloc lloc_, formData data_, javax.swing.JLabel visorFitxa_,
-            tree t_){
+            tree t_, javax.swing.JLabel generacio_){
         un = un_;
         c1 = c1_;
         c2 = c2_;
@@ -73,12 +73,14 @@ public class formFitxa {
         data = data_;
         visorFitxa = visorFitxa_;
         t = t_;
+        generacio = generacio_;
     }
     public formFitxa(formPersonaFitxa c1_, formPersonaFitxa c2_, javax.swing.JTextField fitxa_,
             javax.swing.JTextArea comentaris_, javax.swing.JCheckBox casament_,
-            formLlista fills_,formLloc lloc_, formData data_, javax.swing.JLabel visorFitxa_, tree t_){
+            formLlista fills_,formLloc lloc_, formData data_, javax.swing.JLabel visorFitxa_,
+            tree t_, javax.swing.JLabel generacio_){
         this(new db.unio(), c1_, c2_, fitxa_,  comentaris_, casament_, fills_,
-                lloc_, data_, visorFitxa_, t_);
+                lloc_, data_, visorFitxa_, t_, generacio_);
     }
     
     public void fill(){
@@ -104,7 +106,7 @@ public class formFitxa {
                 c1.fill(p1);
                 c2.fill(p2);
                 t.load(un);
-                
+                generacio.setText("Generació "+p1.getGenerationsString());
             } catch (DBException ex) {
                 Logger.getLogger(formFitxa.class.getName()).log(Level.SEVERE, null, ex);
                 ex.show();

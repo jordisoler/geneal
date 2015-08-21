@@ -53,7 +53,7 @@ public final class config {
     private static final String configDir = home+File.separator+".geneal"+File.separator;
     private static final String propFile = configDir+"properties.txt";
     
-    private static Integer rootFitxa = null;
+    public static Integer rootFitxa = null;
     
     public static Font normalFont = defaultNormalFont;
     public static Font smallFont = defaultSmallFont;
@@ -83,8 +83,7 @@ public final class config {
             }
         }
         
-        //ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        //java.io.InputStream is = loader.getResourceAsStream(propFile);
+        
         java.io.InputStream is = null;
         try {
             is = new java.io.FileInputStream(f);
@@ -94,8 +93,10 @@ public final class config {
         Properties props = new Properties();
         try {
             props.load(is);
+            
+            // GET PROPERTIES
             rootFitxa = Integer.parseInt(props.get("fitxa.root").toString());
-            System.out.println("La fitxa ruta és: "+rootFitxa);
+            
         } catch (IOException ex) {
             Logger.getLogger(config.class.getName()).log(Level.SEVERE, null, ex);
         }      

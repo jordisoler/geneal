@@ -1646,7 +1646,7 @@ public class App extends javax.swing.JFrame {
         cerca = new formLlista(this.find_list);
         
         f = new formFitxa(un, c1, c2, t_fitxa,  t_ucomentaris, c_casament, fills,
-                fmatrimoni, fdmatrimoni, v_fitxa,  t);
+                fmatrimoni, fdmatrimoni, v_fitxa,  t, l_generacio);
         
         eh = new genealEventHandler(f, this.jTabbedPane1, fills);
         

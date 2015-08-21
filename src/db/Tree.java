@@ -39,22 +39,39 @@ public class Tree extends conexio{
         return this.nodes;
     }
     
-    public ArrayList<ArrayList<persona>> getBranches(int p){
+    public ArrayList<ArrayList<persona>> getBranches(unio u){
         ArrayList<ArrayList<persona>> result = new ArrayList<>();
-        Node ntop = new Node(this.root.id);
-        Node nroot = new Node(p);
-        for (Node idx: this.nodes){
-            if (idx.equals(nroot)){
-                ArrayList<persona> branch = new ArrayList<>();
-                Node nbranchloop = idx;
-                while (!nbranchloop.equals(ntop)){
-                    branch.add(new persona(nbranchloop.id));
-                    int iidx = this.nodes.indexOf(nbranchloop);
-                    nbranchloop = this.getParentNode(iidx);
-                }
-                result.add(branch);
+        
+        Integer c1 = u.getConjuge1().getId();
+        Integer c2 = u.getConjuge2().getId();
+
+        ArrayList<Integer> idxs = new ArrayList<>(); // Indices of the top node
+        for (int i=0; i<nodes.size(); i++){
+            Node n = nodes.get(i);
+            if (n.id==c1 || n.id==c2){
+                idxs.add(i);
             }
         }
+
+        for (Integer i : idxs){
+            result.add(propagateBranch(i));
+        }
+        
+        return result;
+    }
+    
+    public ArrayList<persona> propagateBranch(Integer i){
+        ArrayList<persona> result = new ArrayList<>();      
+        
+        Node n = nodes.get(i);
+        Integer parent = n.parent;
+        
+        if (i !=0 ){
+            result = propagateBranch(parent);
+        }        
+        
+        result.add(n.getPerson());
+        
         return result;
     }
     
@@ -87,6 +104,15 @@ public class Tree extends conexio{
         this.growNode(-1, p);
     }
     
+    @Override
+    public String toString(){
+        String s = "";
+        for (Node n : nodes){
+            s = s.concat(" | "+n.toString());
+        }
+        return s;
+    }
+    
     public static class Node {
         private int id;
         private int parent;
@@ -110,11 +136,14 @@ public class Tree extends conexio{
             return this.id == n.id;
         }
         
+        public persona getPerson(){
+            persona p = new persona(id);
+            return p;
+        }
         
         @Override
         public String toString(){
-            persona p = new persona(id);
-            return p.toString();
+            return ("id: "+id+", idP: "+parent);
         }
     }
 }
