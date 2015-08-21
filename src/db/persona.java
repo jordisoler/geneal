@@ -459,7 +459,7 @@ public class persona extends conexio{
                 "persona.id_persona = un.id_conjuge1 or persona.id_persona = un.id_conjuge2\n" +
                 "left join unio as un2 on\n" +
                 "naixement.id_unio = un2.id_unio\n" +
-                "where true ";
+                "where (persona.nom is not null or persona.llinatge1 is  not null) ";
             
             int idx = 0;
             for (String s : camps){
