@@ -1653,6 +1653,8 @@ public class App extends javax.swing.JFrame {
         ppc = new popupPersonaCerca(cerca);
         ppf = new popupPersonaFill();
         
+        geneal.config.setup();
+        
         novaFitxa();
     }
     
