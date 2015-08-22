@@ -447,6 +447,10 @@ public class persona extends conexio{
     
     public static persona[] search(String[] valors){
         persona.connect();
+        for (String s : valors){
+            System.out.println("Valor: "+s);
+        }
+        System.out.println("---------------------------------------------------");
         ArrayList<persona> people = new ArrayList<>();
         String llocn = "llocn", llocd = "llocd", id_p = "id";
         String[] camps = {"persona.nom", "persona.llinatge1", "persona.llinatge2",
@@ -492,7 +496,7 @@ public class persona extends conexio{
         return people.toArray(peopleArr);
     }
     
-    /**
+        /**
      *  Cerca persones a la base de dades a partir del seu nom complet.
      * S'ha d'afegir tractament per a camps nuls.
      * @param name Nom
@@ -501,34 +505,17 @@ public class persona extends conexio{
      * @return Array amb les persones trobades
      */
     public static persona[] getPeopleLike(String name, String l1, String l2){
-        persona.connect();
-        ArrayList<persona> people = new ArrayList<>();
-        try {
-            String nnom = "", nllin1 = "", nllin2="";
-            if (name==null || name.isEmpty()){
-                nnom = " or nom is null ";
+        String[] nom = {name, l1, l2}, nom_cor = new String[3];
+        for (int i=0; i<nom.length; i++){
+            String s = nom[i];
+            if (s == null || s.isEmpty()){
+                s = null;
             }
-            if (l1==null || l1.isEmpty()){
-                nllin1 = " or llinatge1 is null ";
-            }
-            if (l2==null || l2.isEmpty()){
-                nllin2 = " or llinatge2 is null ";
-            }
-            String stm = "select * from persona where nom like ? "+nnom
-                    + " and ((llinatge1 like ?)"+nllin1+") and ((llinatge2 like ?)"+nllin2+")";
-            PreparedStatement pst  =  con.prepareStatement(stm);
-            pst.setString(1, "%"+name+"%");
-            pst.setString(2, "%"+l1+"%");
-            pst.setString(3, "%"+l2+"%");
-            ResultSet rs = pst.executeQuery();
-            while(rs.next()){
-                people.add(new persona(getInt(rs,"id_persona")));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(persona.class.getName()).log(Level.SEVERE, null, ex);
+            nom_cor[i] =  s;
         }
-        persona[] peopleArr = new persona[people.size()];
-        return people.toArray(peopleArr);
+        String[] valors  = {nom_cor[0], nom_cor[1], nom_cor[2],  null,  null,  null,  null,  null,  null}; 
+        return search(valors);
+        
     }
      
     // ----------PRIVATE methods---------
