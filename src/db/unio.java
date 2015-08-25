@@ -184,6 +184,17 @@ public class unio extends conexio{
         return new persona(this.idConjuge2);
     }
     
+    public persona getConjuge(persona p) throws DBException{
+        int id  = p.getId();
+        if(id==this.idConjuge1){
+            return this.getConjuge2();
+        }else if (id==this.idConjuge2){
+            return this.getConjuge1();
+        }else{
+            throw new DBException("No conjuge per la persona "+p+" en la unio "+this.getId());
+        }
+    }
+    
     public lloc getLlocMatrimoni(){
         boda b = new boda(this.idUnio);
         return b.getLloc();

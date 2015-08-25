@@ -209,6 +209,27 @@ public class persona extends conexio{
         return fills.toArray(fillsArr);
     }
     
+    public unio[] getUnions(){
+        ArrayList<unio> unions_list = new ArrayList<>();
+        try {
+            String str = "select id_unio from unio where id_conjuge1=? or"
+                    + " id_conjuge2 = ?";
+            PreparedStatement pst = con.prepareStatement(str);
+            pst.setInt(1, this.idPersona);
+            pst.setInt(2, this.idPersona);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()){
+                try {
+                    unions_list.add(new unio(getInt(rs,"id_unio")));
+                } catch (DBException ex) {ex.show();}
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(familia.class.getName()).log(Level.SEVERE, null, ex);
+            return new unio[0];
+        }
+        return unions_list.toArray(new unio[unions_list.size()]);
+    }
+    
     public int getIdLlocNaixement(){
         naixement n =  new naixement();
         try {

@@ -61,9 +61,15 @@ public class genealEventHandler {
         try{                                    // Es vol introduir una  persona  amb unió
             f.setUnio(db.unio.fromConjuge(p.getId()));
             f.fill();
-        }catch (MUException e){} catch (DBException ex) {
+        }catch (MUException e){
+            new MU(p).setVisible(true);
+        } catch (DBException ex) {
             f.newFitxaFromPersona(p);
         }
+    }
+    
+    public void load(db.unio u){
+        f.fillUnio(u.getId());
     }
     
     public void loadPares(boolean esHome){
